@@ -2,16 +2,25 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>TODO</title>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
 </head>
+
 <body>
+
+ <%= render 'shared/navbar' %>
+
  <p class="notice"><%= notice %></p>
  <p class="alert"><%= alert %></p>
+
  <%= yield %>
+
  <%= javascript_include_tag 'application' %>
+
+ <%= render 'shared/footer' %>
 </body>
 </html>
