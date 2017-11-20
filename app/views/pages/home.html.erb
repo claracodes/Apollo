@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Events</h1>
+<p>here you can see all the events:</p>
+
+<ul>
+  <% @events.each do |event| %>
+  <li> <b>  <%= event.name %> </b><%= event.date %></li>
+  <% end %>
+</ul>
+
