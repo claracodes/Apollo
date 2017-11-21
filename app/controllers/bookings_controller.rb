@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+
   def new
   end
 
@@ -7,4 +8,11 @@ class BookingsController < ApplicationController
 
   def show
   end
+
+  def dashboard
+    # current_user
+    # @bookings = Booking.all
+  end
 end
+
+
