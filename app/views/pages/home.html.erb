@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 <div class="banner" style='background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url("https://images.unsplash.com/photo-1485518994577-6cd6324ade8f?auto=format&fit=crop&w=944&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");'>
   <div class="container text-center">
     <div class="banner-content">
+=======
+<div class="text-center">
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(' <%= cloudinary_url_internal("homepage_banner_joznai.jpg") %> '); background-size: cover">
+
+    <div class="container banner-content">
+>>>>>>> master
 
       <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
       <p>Discover cultural experiences in your city</p>
 
+<<<<<<< HEAD
       <!-- class="form-inline" -->
       <div class="search-form-bar">
         <div class="form-fields">
@@ -17,11 +25,20 @@
 
         </div>
       </div>
+=======
+      <%= simple_form_for @event, url: search_events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
+      <%= f.input :city %>
+      <%= f.input :category, collection: Event::CATEGORY %>
+      <%= f.input :date, as: :string, input_html: { class: 'datepicker' } %>
+      <%= f.button :submit %>
+      <% end %>
+>>>>>>> master
 
     </div>
   </div>
 </div>
 
+<<<<<<< HEAD
 <div class='wrapper'>
   <div class="container text-center">
     <h1>Be inspired</h1>
@@ -37,6 +54,20 @@
           </div>
         </div>
         <% end %>
+=======
+<div class='suggestion-wrapper'>
+  <h1>Suggestions for you</h1>
+
+  <div class="container">
+    <% @events.each do |event| %>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class='eventcard' style="background-image: url('<%= cl_image_path(event.photo) %>'); background-size: cover">
+
+        <h3><%= event.name %></h3> <br>
+        <%= event.date.day %>.<%= event.date.month %>.<%= event.date.year %> <br>
+        <div class="desc"><%= event.description.split.slice(0, 5).join(" ") %></div>
+        <%= link_to 'More', event_path(event) %>
+>>>>>>> master
       </div>
     </div>
   </div>

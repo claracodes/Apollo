@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+
   def new
   end
 
@@ -7,4 +8,15 @@ class BookingsController < ApplicationController
 
   def show
   end
+
+  def dashboard
+    @bookings = []
+    Booking.all.each do |booking|
+      if current_user.id == booking.user.id
+        @bookings << booking
+      end
+    end
+  end
 end
+
+
