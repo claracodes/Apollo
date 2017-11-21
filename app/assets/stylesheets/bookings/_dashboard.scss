@@ -1,0 +1,22 @@
+.booked-section {
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 3px 3px 6px black;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center
+}
+
+#map {
+  flex: 0 0 450px;
+  height: 450px;
+  position: sticky !important;
+  top: 0 !important;
+}
+.content {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}

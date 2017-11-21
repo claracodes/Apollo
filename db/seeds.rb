@@ -15,15 +15,17 @@ Booking.destroy_all
 
 puts 'Creating 15 new venues'
 15.times do |venue|
-  venue = Venue.new(name: Faker::Ancient.god, description: Faker::Hipster.sentence(10), phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email)
-  puts venue.inspect
+  venue = Venue.new(name: Faker::Ancient.god, description: Faker::Lorem.sentences(5),
+                    phone: Faker::PhoneNumber.phone_number,
+                    email: Faker::Internet.email)
   venue.save!
 end
 
 puts 'Creating 40 new events'
 40.times do |event|
-  event = Event.new(name: Faker::Hipster.word, description: Faker::Lorem.sentences(5), category: Event::CATEGORY.sample, date: Faker::Date.forward(300), price: Faker::Commerce.price, venue_id: Venue.all.sample)
-  puts event.inspect
+  event = Event.new(name: Faker::Hipster.word, description: Faker::Lorem.sentences(5),
+                    category: Event::CATEGORY.sample, date: Faker::Date.forward(300),
+                    price: Faker::Commerce.price, venue_id: Venue.all.ids.sample)
   event.save!
 end
 
@@ -39,6 +41,6 @@ end
 
 puts 'Creating 10 new bookings'
 10.times do |booking|
-  booking = Booking.new(event_id: Event.all.sample, user_id: User.all.sample)
+  booking = Booking.new(event_id: Event.all.ids.sample, user_id: User.all.ids.sample)
   booking.save!
 end
