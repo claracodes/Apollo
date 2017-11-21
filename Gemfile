@@ -9,6 +9,8 @@ gem 'rails', '5.0.6'
 gem 'redis'
 gem 'devise'
 gem 'faker'
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
