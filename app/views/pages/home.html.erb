@@ -6,11 +6,10 @@
       <h1>Apollo</h1>
       <p>Discover cultural experiences in your city</p>
 
-      <!-- class="form-inline" -->
       <%= simple_form_for @event, url: search_events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
       <%= f.input :city %>
       <%= f.input :category, collection: Event::CATEGORY %>
-      <%= f.input :date %>
+      <%= f.input :date, as: :string, input_html: { class: 'datepicker' } %>
       <%= f.button :submit %>
       <% end %>
 
