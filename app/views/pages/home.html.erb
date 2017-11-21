@@ -6,7 +6,7 @@
       <p>Discover cultural experiences in your city</p>
 
       <!-- class="form-inline" -->
-      <%= simple_form_for @event, url: search_path, html: {method: "GET"} do |f| %>
+      <%= simple_form_for @event, url: search_events_path, html: {method: "GET"} do |f| %>
       <%= f.input :city %>
       <%= f.input :category, collection: Event::CATEGORY %>
       <%= f.input :date %>
