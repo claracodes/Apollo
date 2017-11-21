@@ -10,8 +10,12 @@ class BookingsController < ApplicationController
   end
 
   def dashboard
-    # current_user
-    # @bookings = Booking.all
+    @bookings = []
+    Booking.all.each do |booking|
+      if current_user.id == booking.user.id
+        @bookings << booking
+      end
+    end
   end
 end
 

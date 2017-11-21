@@ -11,8 +11,8 @@
 
       <!-- Links when logged in -->
       <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-
-
+      <!-- why do we have a link to host, if the user is signed in? shouldn't it lead automatically to the host dashboard? -->
+      <%= link_to "Dashboard", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
