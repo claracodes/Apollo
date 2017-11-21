@@ -8,7 +8,5 @@ class Event < ApplicationRecord
   # validates :duration, presence: true
   validates :date, presence: true
   validates :price, presence: true
-
-
-
+  mount_uploader :photo, PhotoUploader
 end
