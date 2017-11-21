@@ -1,20 +1,14 @@
 <h1>Hello <%= current_user.first_name %></h1>
-<div class="content">
-
-  <div class="booked-section">
-    Your booked events:
-
+<div class="booked-section">
     <div class="card-booked">
+      <h3>Your booked events:</h2>
       <% @bookings.each do |booking| %>
-      <div>
-        <%= booking.event.date %>
-        <%= booking.event.name %>
-        <%= link_to 'Details', event_path(booking.event) %>
-        status paid - to be paid
+      <div class='list'>
+        <%= booking.event.date.day %>.<%= booking.event.date.month %>.<%= booking.event.date.year %> -
+        <%= link_to booking.event.name, event_path(booking.event), class: "link" %>
       </div>
       <% end %>
     </div>
-  </div>
 
   <div id="map">Map</div>
 </div>
@@ -26,7 +20,7 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 52.5206, lng: 13.4098},
           scrollwheel: false,
-          zoom: 8
+          zoom: 12
         });
       }
     </script>

@@ -1,12 +1,37 @@
-.booked-section {
+.card-booked {
+  flex: 0 0 450px;
+  height: 300px;
   background-color: white;
   border-radius: 3px;
-  box-shadow: 3px 3px 6px black;
+  box-shadow: 3px 3px 6px gray;
   padding: 10px;
 }
 
 h1 {
   text-align: center
+}
+
+h3 {
+  margin: 0px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.list {
+  padding: 5px;
+
+}
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  color: black
+}
+
+.link:hover {
+  text-decoration: none;
+  background-color: #F7F7F7;
+  color: black;
 }
 
 #map {
@@ -15,8 +40,9 @@ h1 {
   position: sticky !important;
   top: 0 !important;
 }
-.content {
+.booked-section {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  padding: 15px;
 }

@@ -26,10 +26,9 @@ end
 
 puts 'Creating 5 new events (sleep of 10 seconds)'
 5.times do |event|
-  @venue = Venue.all.sample
   event = Event.new(name: Faker::Hipster.word, description: Faker::Lorem.sentences(5),
                     category: Event::CATEGORY.sample, date: Faker::Date.forward(300),
-                    price: Faker::Commerce.price, venue: @venue,
+                    price: Faker::Commerce.price, venue_id: Venue.all.ids.sample,
                     remote_photo_url: "https://source.unsplash.com/random/800x600")
   event.save!
   sleep(10)
