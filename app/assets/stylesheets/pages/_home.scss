@@ -1,43 +1,6 @@
 // Specific CSS for your home-page
-.suggestion-wrapper {
-  text-align: center;
-}
-
-.eventcard {
-  padding: 5px;
-  margin: 10px;
-  background-color: white;
-  box-shadow: 3px 3px 6px black;
-  border-radius: 3px;
-  height: 200px;
-}
-
-.desc {
-  margin-top: 8px;
-}
-
-h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 0;
-  margin-top: 5px;
-}
 .alert, .notice {
   display: none;
-}
-.banner {
-  height: 100vh;
-  background-size: cover;
-  color: white;
-  font-family: "Fira Sans", sans-serif;
-  padding-top: 12%;
-  padding-bottom: 38%
-}
-.banner p {
-  font-size: 22px;
-  font-weight: lighter;
-  margin-bottom: 40px;
-  opacity: 0.8;
 }
 #logo-home {
   width: 600px;
@@ -53,7 +16,7 @@ label {
 .search-form-bar {
   border-radius: 2px;
   padding: 18px 0 14px 0;
-  width: 400px;
+  width: 100%;
   margin: 0 auto;
 }
 .form-fields {
@@ -61,4 +24,7 @@ label {
 }
 .banner-content {
   display: inline-block;
+}
+input {
+  margin: 0 10px;
 }
