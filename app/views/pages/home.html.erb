@@ -7,7 +7,7 @@
       <p>Discover cultural experiences in your city</p>
 
       <!-- class="form-inline" -->
-      <%= simple_form_for @event, url: search_events_path, html: {method: "GET"} do |f| %>
+      <%= simple_form_for @event, url: search_events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
       <%= f.input :city %>
       <%= f.input :category, collection: Event::CATEGORY %>
       <%= f.input :date %>
@@ -24,7 +24,8 @@
   <div class="container">
     <% @events.each do |event| %>
     <div class="col-xs-12 col-sm-4 col-md-3">
-      <div class='eventcard'>
+      <div class='eventcard' style="background-image: url('<%= cl_image_path(event.photo) %>'); background-size: cover">
+
         <h3><%= event.name %></h3> <br>
         <%= event.date.day %>.<%= event.date.month %>.<%= event.date.year %> <br>
         <div class="desc"><%= event.description.split.slice(0, 5).join(" ") %></div>

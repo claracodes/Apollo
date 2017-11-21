@@ -13,16 +13,19 @@ Venue.destroy_all
 User.destroy_all
 Booking.destroy_all
 
-puts 'Creating 15 new venues'
-15.times do |venue|
-  venue = Venue.new(name: Faker::Ancient.god, description: Faker::Hipster.sentence(10), phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email)
+puts 'Creating 5 new venues (sleep of 10 seconds)'
+5.times do |venue|
+  venue = Venue.new(name: Faker::Ancient.god, description: Faker::Hipster.sentence(10), phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, remote_photo_url: "https://source.unsplash.com/random/800x600")
   venue.save!
+  sleep(10)
+
 end
 
-puts 'Creating 40 new events'
-40.times do |event|
-  event = Event.new(name: Faker::Hipster.word, description: Faker::Lorem.sentences(5), category: Event::CATEGORY.sample, date: Faker::Date.forward(300), price: Faker::Commerce.price, venue_id: Venue.all.sample)
+puts 'Creating 5 new events (sleep of 10 seconds)'
+5.times do |event|
+  event = Event.new(name: Faker::Hipster.word, description: Faker::Lorem.sentences(5), category: Event::CATEGORY.sample, date: Faker::Date.forward(300), price: Faker::Commerce.price, venue_id: Venue.all.sample, remote_photo_url: "https://source.unsplash.com/random/800x600")
   event.save!
+  sleep(10)
 end
 
 puts 'Creating 25 new users'
@@ -36,6 +39,8 @@ end
 
 puts 'Creating 10 new bookings'
 10.times do |booking|
-  booking = Booking.new(event_id: Event.all.sample, user_id: User.all.sample)
+  @event = Event.all.sample
+  @user = User.all.sample
+  booking = Booking.new(event: @event, user: @user)
   booking.save!
 end
