@@ -16,9 +16,49 @@
   margin-top: 8px;
 }
 
-h3{
+h3 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 0;
   margin-top: 5px;
+}
+.alert, .notice {
+  display: none;
+}
+.banner {
+  height: 100vh;
+  background-size: cover;
+  color: white;
+  font-family: "Fira Sans", sans-serif;
+  padding-top: 12%;
+  padding-bottom: 38%
+}
+.banner p {
+  font-size: 22px;
+  font-weight: lighter;
+  margin-bottom: 40px;
+  opacity: 0.8;
+}
+#logo-home {
+  width: 600px;
+}
+label {
+  display: none;
+}
+.input-form {
+  background-color: transparent;
+  border-bottom: 2px solid white;
+  display: inline-block;
+}
+.search-form-bar {
+  border-radius: 2px;
+  padding: 18px 0 14px 0;
+  width: 400px;
+  margin: 0 auto;
+}
+.form-fields {
+  font-size: 0;
+}
+.banner-content {
+  display: inline-block;
 }
