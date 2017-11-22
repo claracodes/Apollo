@@ -30,22 +30,22 @@ puts 'Creating 2 real venues'
   venuekulturbrauerei.save
 
 puts 'Creating 4 events (2 for each real venue)'
-  event1 = Event.new(name: "LalouLand", description: "Faker::Lorem.sentences(5)",
+  event1 = Event.new(name: "LalouLand", description: Faker::Lorem.sentences(5),
     category: "theater", date: Faker::Date.forward(30),
     price: 22, venue_id: venuegorki.id, city: 'Berlin',
     remote_photo_url: 'https://images.unsplash.com/photo-1468866576576-de8a9bf61f92?auto=format&fit=crop&w=1863&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')
   event1.save
-  event2 = Event.new(name: "Gorki Supershow", description: "Faker::Lorem.sentences(5)",
+  event2 = Event.new(name: "Gorki Supershow", description: Faker::Lorem.sentences(5),
     category: "theater", date: Faker::Date.forward(30),
     price: 25, venue_id: venuegorki.id, city: 'Berlin',
     remote_photo_url: 'https://images.unsplash.com/photo-1505823212735-223f81435f4e?auto=format&fit=crop&w=2211&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')
   event2.save
-  event3 = Event.new(name: "Clare Livecode", description: "Faker::Lorem.sentences(5)",
+  event3 = Event.new(name: "Clare Livecode", description: Faker::Lorem.sentences(5),
     category: "theater", date: Faker::Date.forward(30),
     price: 45, venue_id: venuekulturbrauerei.id, city: 'Berlin',
     remote_photo_url: 'https://images.unsplash.com/photo-1477281765962-ef34e8bb0967?auto=format&fit=crop&w=1864&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')
   event3.save
-  event4 = Event.new(name: "Waltz with Bashir", description: "Faker::Lorem.sentences(5)",
+  event4 = Event.new(name: "Waltz with Bashir", description: Faker::Lorem.sentences(5),
     category: "theater", date: Faker::Date.forward(30),
     price: 12, venue_id: venuekulturbrauerei.id, city: 'Berlin',
     remote_photo_url: 'https://images.unsplash.com/photo-1499720843949-d9e6f318dca0?auto=format&fit=crop&w=2250&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')
