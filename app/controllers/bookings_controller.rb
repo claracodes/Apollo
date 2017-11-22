@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
   end
 
   def dashboard
+    #please leave theses comments for now - i want to do some research on it :)
     # @bookings = []
     # Booking.all.each do |booking|
     #   if current_user.id == booking.user.id
