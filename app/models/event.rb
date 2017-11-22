@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  CATEGORY = ["theater", "exhibition", "movie", "cultural sight", "museum", "opera", "concert"]
+  CATEGORY = ["theater", "exhibition", "museum", "movie", "cultural sight", "opera", "concert"]
   validates :name, presence: true
   validates :description, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORY,

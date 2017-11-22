@@ -17,6 +17,14 @@ class EventsController < ApplicationController
     end
   end
 
+  # def search
+  #   params[:search] ||= {}
+  #   @events = Event.all
+  #   # or params[:search].each.... don't forget to change form to simple_form_for :search
+  #   [:category, :city, :date].each do |query|
+  #     @events = @events.where(query => params[:search][query].downcase) unless params[:search][query]
+  #   end
+  # end
 
   def hostdashboard
     @venues = current_user.venues

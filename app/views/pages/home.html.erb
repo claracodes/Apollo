@@ -9,9 +9,9 @@
         <div class="form-fields">
           <%= simple_form_for @event, url: search_events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
           <%= f.input :city, placeholder: "Where are you?", class: "input-form" %>
-          <%= f.input :category, collection: Event::CATEGORY, class: "input-form" %>
-          <%= f.input :date, as: :string, input_html: { class: 'datepicker' } %>
-          <%= f.button :submit, class: "btn btn-danger" %>
+          <%= f.input :category, collection: Event::CATEGORY, class: "input-form", prompt: "What are you looking for?" %>
+          <%= f.input :date, as: :string, input_html: { class: 'datepicker' }, placeholder: "  When?" %>
+          <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
           <% end %>
         </div>
       </div>
