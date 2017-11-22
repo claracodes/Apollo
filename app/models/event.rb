@@ -8,5 +8,9 @@ class Event < ApplicationRecord
   # validates :duration, presence: true
   validates :date, presence: true
   validates :price, presence: true
+  belongs_to :venue
+  has_many :bookings
   mount_uploader :photo, PhotoUploader
+  has_many :bookings
+  belongs_to :venue
 end
