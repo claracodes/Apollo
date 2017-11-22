@@ -11,4 +11,6 @@ class Event < ApplicationRecord
   belongs_to :venue
   has_many :bookings
   mount_uploader :photo, PhotoUploader
+  has_many :bookings
+  belongs_to :venue
 end

@@ -15,6 +15,13 @@ class EventsController < ApplicationController
         @events << event
       end
     end
+
+    @venues = Venue.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
+      marker.lat venue.latitude
+      marker.lng venue.longitude
+      marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
+    end
   end
 
   # def search
