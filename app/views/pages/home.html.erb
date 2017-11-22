@@ -20,12 +20,13 @@
 </div>
 
 <div class='wrapper-card'>
+  <h1 class="text-center"><span>Be inspired</span></h1>
   <div class="container container-card">
-    <h1 class="text-center">Be inspired</h1>
+
     <div class="cards">
       <% @events.each do |event| %>
       <div class='event-card'>
-        <%= image_tag "https://source.unsplash.com/random", class: "img-card" %>
+        <div class="img-card" style="background-image: url('https://source.unsplash.com/random/300x180');"></div>
         <div class="info">
           <h3><%= link_to "#{event.name}", event_path(event) %></h3>
           <p class="event-date"> <%= event.date.day %>.<%= event.date.month %>.<%= event.date.year %></p>
