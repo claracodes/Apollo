@@ -1,0 +1,27 @@
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+#map {
+  flex: 0 0 700px;
+  height: calc(100vh - 30px);
+  position: sticky !important;
+  top: 0 !important;
+  position: absolute;
+}
+
+.cards-container {
+  width: 850px;
+}
+
+.eventcard {
+  padding-bottom: 5px;
+  margin: 10px;
+  background-color: white;
+  box-shadow: 3px 3px 6px black;
+  border-radius: 3px;
+  height: 200px;
+  margin-left: 50px;
+}
