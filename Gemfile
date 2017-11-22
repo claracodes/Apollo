@@ -11,7 +11,7 @@ gem 'devise'
 gem 'faker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
-gem 'bootstrap-datepicker-rails'
+
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

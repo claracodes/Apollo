@@ -7,7 +7,7 @@
       <p>Discover cultural experiences in your city</p>
 
       <%= simple_form_for @event, url: search_events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
-      <%= f.input :city %>
+      <%= f.input :city, placeholder: "Where are you?" %>
       <%= f.input :category, collection: Event::CATEGORY %>
       <%= f.input :date, as: :string, input_html: { class: 'datepicker' } %>
       <%= f.button :submit %>
