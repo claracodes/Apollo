@@ -4,4 +4,5 @@ class Venue < ApplicationRecord
   validates :phone, presence: true
   validates :email, presence: true
   mount_uploader :photo, PhotoUploader
+  has_many :events
 end

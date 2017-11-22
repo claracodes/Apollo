@@ -1,0 +1,18 @@
+<h1>Hostdashboard</h1>
+
+<div class="dashboard">
+  <div class="venues">
+    <% @venues.each do |venue| %>
+    <h3> <%= venue.name %></h3> <%= link_to 'Edit venue description', edit_venue_path(venue) %>
+  </div>
+  <div class="events">
+    <% venue.events.each do |event|  %>
+    <%= link_to event.name, event_path(event) %>
+    - <%= event.date %>
+    <%= link_to 'Edit', edit_event_path(event) %>
+    <%= link_to 'Delete', events_path(event), method: :delete %>
+    <% end %>
+  </div>
+  <% end %>
+  <h3><%= link_to 'Create a new event', new_event_path %></h3>
+</div>

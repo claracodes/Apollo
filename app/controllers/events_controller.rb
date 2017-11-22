@@ -1,7 +1,10 @@
 class EventsController < ApplicationController
-  def show
-    @event = Event.find(params[:id])
-  end
+
+ before_action :host?, only: [:hostdashboard, :edit, :delete, :create]
+
+ def show
+  @event = Event.find(params[:id])
+ end
 
   def search
     @events = []
@@ -14,10 +17,22 @@ class EventsController < ApplicationController
     end
   end
 
+
+  def hostdashboard
+    @venues = current_user.venues
+  end
+
+  private
+
+  def host?
+    current_user.host
+  end
+
   private
 
   def event_params
     params.require(:event).permit(:date, :city, :category)
   end
+
 
 end
