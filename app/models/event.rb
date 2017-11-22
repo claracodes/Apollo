@@ -9,4 +9,6 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :price, presence: true
   mount_uploader :photo, PhotoUploader
+  has_many :bookings
+  belongs_to :venue
 end
