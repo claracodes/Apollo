@@ -8,19 +8,19 @@
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500" rel="stylesheet">
 </head>
 
 <body>
+  <%= render 'shared/navbar' %>
 
- <%= render 'shared/navbar' %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
- <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
+  <%= yield %>
 
- <%= yield %>
+  <%= javascript_include_tag 'application' %>
 
- <%= javascript_include_tag 'application' %>
-
- <%= render 'shared/footer' %>
+  <%= render 'shared/footer' %>
 </body>
 </html>

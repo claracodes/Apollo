@@ -1,26 +1,32 @@
 // Specific CSS for your home-page
-.suggestion-wrapper {
-  text-align: center;
+.alert, .notice {
+  display: none;
 }
-
-.eventcard {
-  padding: 5px;
-  margin: 10px;
-  background-color: white;
-  box-shadow: 3px 3px 6px black;
-  border-radius: 3px;
-  height: 200px;
+#logo-home {
+  width: 600px;
 }
-
-.desc {
-  margin-top: 8px;
+label {
+  display: none;
 }
-
-h3{
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 0;
-  margin-top: 5px;
+.input-form {
+  background-color: transparent;
+  border-bottom: 2px solid white;
+  display: inline-block;
+}
+.search-form-bar {
+  border-radius: 2px;
+  padding: 18px 0 14px 0;
+  width: 100%;
+  margin: 0 auto;
+}
+.form-fields {
+  font-size: 0;
+}
+.banner-content {
+  display: inline-block;
+}
+input {
+  margin: 0 10px;
 }
 
 label{
