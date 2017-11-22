@@ -1,5 +1,75 @@
-.wrapper {
-  width: 500px;
-  margin: 30px auto;
-  background-color: blue;
+.img-event {
+  height: 400px;
+  width: 60%;
+  overflow: hidden;
+  position: absolute;
+}
+.header-event {
+  position: relative;
+  text-transform: uppercase;
+  color: #1C1C1C;
+  h1 {
+    position: relative;
+    margin: 0;
+    left: 820px;
+    text-align: left;
+    top: 200px;
+    font-size: 50px;
+    span {
+      padding: 5px 15px;
+      background-color: $red;
+    }
+  }
+  .date-event {
+    position: relative;
+    left: 890px;
+    font-weight: bolder;
+    top: 200px;
+    font-size: 28px;
+  }
+  .event-category {
+    position: relative;
+    color: white;
+    font-weight: bolder;
+    left: 890px;
+    top: 225px;
+    span {
+      background-color: #1C1C1C;
+      padding: 5px 10px;
+    }
+  }
+}
+.container-margin-top {
+  margin-top: 350px;
+}
+.event-desc {
+  h4 {
+    padding-bottom: 10px;
+    border-bottom: 0.4px solid $gray;
+  }
+  max-width: 700px;
+}
+.price {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid $gray;
+  margin-bottom: 15px;
+  p {
+    margin-bottom: 3px;
+  }
+}
+.flex-desc {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.box-event {
+  padding: 15px 20px;
+  background-color: white;
+}
+.event-input {
+  margin: 0;
+}
+#map {
+  margin-top: 50px;
 }

@@ -1,5 +1,53 @@
 <div class="wrapper">
-  <h1><%= @event.name %></h1>
-  <p><%= @event.description %></p>
-  <%= link_to 'Go back', root_path %>
+  <div class="header-event">
+    <div class="img-event" style="background-image: url('https://source.unsplash.com/random/900x400')"></div>
+    <p class="date-event"> <%= @event.date %> </p>
+    <h1><span><%= @event.name %></span></h1>
+    <p class="event-category"><span> <%= @event.category %></span> </p>
+  </div>
+  <div class="container container-margin-top">
+    <div class="flex-desc">
+      <div class="event-desc">
+        <h4>ABOUT</h4>
+        <p><%= @event.description %></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        <%= link_to 'Go back', root_path %>
+      </div>
+      <div class="box-event">
+        <div class="price">
+          <p>Price</p>
+          <p> <%= @event.price %> € </p>
+        </div>
+        <div class="form-group">
+          <%= simple_form_for @event, url: new_event_booking_path([@event, @booking]), html: {method: "GET"} do |f| %>
+          <%= f.input :date, as: :string, input_html: { class: 'datepicker event-input' } %>
+          <%= f.button :submit, class: "btn btn-danger event-input" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="map"></div>
+<!--   <%= @event.venue.inspect %> -->
 </div>
+
+<!-- Gmaps js: building the map -->
+<%= content_for(:after_js) do %>
+<%= javascript_tag do %>
+function initMap() {
+var map = new google.maps.Map(document.getElementById('map'), {
+center: {lat: 52.5206, lng: 13.4098},
+scrollwheel: false,
+zoom: 8
+});
+}
+<% end %>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Gmaps JavaScript -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiK1cPDZngWI88d3s_FjxN4r18yzp5-v4&callback=initMap">
+</script>
+<% end %>

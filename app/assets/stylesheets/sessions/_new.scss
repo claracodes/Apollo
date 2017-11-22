@@ -2,6 +2,15 @@
   background-color: white;
   border-radius: 3px;
   box-shadow: 3px 3px 6px gray;
-  padding: 10px;
+  padding: 10px 50px;
   text-align: center;
+}
+.wrapper-session {
+  height: calc(100vh - 170px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    margin-left: 0;
+  }
 }
