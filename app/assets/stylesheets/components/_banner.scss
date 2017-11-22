@@ -22,7 +22,7 @@
 // }
 
 .banner {
-  height: 100vh;
+  height: calc(100vh - 70px);
   background-size: cover;
   color: white;
   font-family: "Fira Sans", sans-serif;
