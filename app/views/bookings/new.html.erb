@@ -1,10 +1,19 @@
-<div class="wrapper wrapper-booking">
+<div class="wrapper wrapper-session">
   <div class="container">
-    <div class="booking-text text-center">
-      <div class="text-booking">
-        <h1>CONGRATULATIONS!</h1>
-        <h1>You are going to <span> <%= @event.name %> </span></h1>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4 log-in">
+        <h3>Booking details:</h3>
+        <p> <%= @event.name %>
+         <%= @event.date.day %>.<%= @event.date.month %>.<%= @event.date.year %></p>
+         <p>in</p>
+         <%= @event.venue.name.capitalize %>
+         <p> <%= @event.price %>€ </p>
+         <%= simple_form_for [@event, @booking] do |f| %>
+         <!-- number of persons and other stuff -->
+
+         <%= f.submit "Pay now", class: "btn btn-danger" %>
+         <% end %>
+       </div>
+     </div>
+   </div>
+ </div>
