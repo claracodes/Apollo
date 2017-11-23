@@ -37,6 +37,27 @@ handler.getMap().setZoom(2);
 handler.getMap().setZoom(14);
 }
 });
+var styles = [ [
+    {
+        "featureType": "all",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#9904a4"
+            }
+        ]];
+
+var handler = Gmaps.build('Google');
+handler.buildMap({
+  provider: {
+    styles: styles
+    // pass in other Google Maps API options here
+    // => https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+  },
+  internal: { id: 'map' } }, function() {
+  // [ ... ]
+});
+
 <% end %>
 <% end %>
 
