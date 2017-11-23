@@ -1,0 +1,38 @@
+<!-- Page container -->
+<div class="main-container">
+
+  <!-- Card container -->
+  <div class="cards-container">
+      <% @events.each do |event| %>
+        <div class='eventcard' style="background-image: url('<%= cl_image_path(event.photo) %>'); background-size: cover">
+          <h3><%= event.name %></h3> <br>
+          <%= event.date.day %>.<%= event.date.month %>.<%= event.date.year %> <br>
+          <div class="desc"><%= event.description.split.slice(0, 5).join(" ") %></div>
+          <%= link_to 'More', event_path(event) %>
+        </div>
+      <% end %>
+
+  </div>
+
+
+  <!-- Map container -->
+  <div id="map" style="width: 100%; height: 600px;"></div>
+
+</div>
+
+<!-- javascript -->
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  <% end %>
+<% end %>
