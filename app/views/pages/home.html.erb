@@ -30,7 +30,7 @@
         <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
         <div class="info">
           <h3><span><%= event.name %></span></h3>
-          <p class="event-date"> <%= event.date.day %>.<%= event.date.month %>.<%= event.date.year %></p>
+          <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %></p>
           <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
         </div>
       </div>
