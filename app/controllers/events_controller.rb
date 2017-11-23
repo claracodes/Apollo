@@ -2,9 +2,11 @@ class EventsController < ApplicationController
 
  before_action :host?, only: [:hostdashboard, :edit, :delete, :create]
 
- def show
-  @event = Event.find(params[:id])
- end
+  def show
+    @event = Event.find(params[:id])
+    @venues = Venue.find(@event.venue_id)
+    for_maps
+  end
 
   def index
     if params[:search]
@@ -17,11 +19,7 @@ class EventsController < ApplicationController
     end
 
     @venues = Venue.where.not(latitude: nil, longitude: nil)
-    @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
-      marker.lat venue.latitude
-      marker.lng venue.longitude
-      marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
-    end
+    for_maps
   end
 
   # def search
@@ -53,5 +51,11 @@ class EventsController < ApplicationController
     params.require(:event).permit(:date, :city, :category)
   end
 
-
+  def for_maps
+    @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
+      marker.lat venue.latitude
+      marker.lng venue.longitude
+      marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
+    end
+  end
 end
