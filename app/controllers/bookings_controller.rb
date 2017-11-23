@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
 
     @bookings = current_user.bookings
 
-    @venues = Event.where(id: @bookings.map(&:event_id)).map(&:venue)
+    @venues = Event.where(id: @bookings.pluck(:event_id)).map(&:venue)
     @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude

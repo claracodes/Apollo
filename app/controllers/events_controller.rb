@@ -4,6 +4,13 @@ class EventsController < ApplicationController
 
  def show
   @event = Event.find(params[:id])
+
+  @venues = Venue.find(@event.venue_id)
+    @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
+      marker.lat venue.latitude
+      marker.lng venue.longitude
+      marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
+    end
  end
 
   def search
