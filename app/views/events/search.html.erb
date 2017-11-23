@@ -8,7 +8,7 @@
           <h3><%= event.name %></h3> <br>
           <%= event.date.day %>.<%= event.date.month %>.<%= event.date.year %> <br>
           <div class="desc"><%= event.description.split.slice(0, 5).join(" ") %></div>
-          <%= link_to 'More', event_path(event) %>
+          <%= link_to 'More', root_path %>
         </div>
       <% end %>
 
