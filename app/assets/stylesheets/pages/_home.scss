@@ -32,3 +32,19 @@ input {
 label{
   display: none;
 }
+.director img {
+  width: 40px;
+  margin-top: 5px;
+}
+.be-inspired {
+  color: white;
+  p {
+    margin-top: 110px;
+    margin-bottom: 8px;
+  }
+  &:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 0.3;
+  }
+}
