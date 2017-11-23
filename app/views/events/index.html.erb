@@ -1,38 +1,39 @@
-<!-- Page container -->
-<div class="main-container">
+<div class="wrapper wrapper-search">
+  <!-- Page container -->
+  <div class="container container-search">
 
   <!-- Card container -->
-  <div class="cards-container">
+<div class="cards">
       <% @events.each do |event| %>
-        <div class='eventcard' style="background-image: url('<%= cl_image_path(event.photo) %>'); background-size: cover">
-          <h3><%= event.name %></h3> <br>
-          <%= event.date.day %>.<%= event.date.month %>.<%= event.date.year %> <br>
-          <div class="desc"><%= event.description.split.slice(0, 5).join(" ") %></div>
-          <%= link_to 'More', event_path(event) %>
+      <div class='event-card'>
+        <%= link_to "", event_path(event) %>
+        <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
+        <div class="info">
+          <h3><span><%= event.name %></span></h3>
+          <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %></p>
+          <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
         </div>
+      </div>
       <% end %>
-
+    </div>
   </div>
-
-
   <!-- Map container -->
-  <div id="map" style="width: 100%; height: 600px;"></div>
-
+  <div id="map-search" ></div>
 </div>
 
 <!-- javascript -->
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    var handler = Gmaps.build('Google');
-    handler.buildMap({ internal: { id: 'map' } }, function() {
-      markers = handler.addMarkers(<%= raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      if (markers.length == 0) {
-        handler.getMap().setZoom(2);
-      } else if (markers.length == 1) {
-        handler.getMap().setZoom(14);
-      }
-    });
-  <% end %>
+<%= javascript_tag do %>
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: { id: 'map-search' } }, function() {
+markers = handler.addMarkers(<%= raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
+});
+<% end %>
 <% end %>

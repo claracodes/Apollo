@@ -1,5 +1,19 @@
 // Import page-specific CSS files here.
 @import "show";
 @import "hostdashboard";
-@import "search"
 
+.wrapper-search {
+  display: flex;
+  position: relative;
+}
+.container-search {
+  padding: 0;
+}
+
+#map-search {
+  position: sticky !important;
+  flex: 0 0 450px;
+  height: 100vh;
+  top: 0 !important;
+  right: 0 !important;
+}
