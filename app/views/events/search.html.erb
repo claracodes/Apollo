@@ -3,38 +3,6 @@
   <div class="container container-search">
 
 
-    <!-- FORM FOR FILTER: TO DO #############
-    <div class="filter-bar">
-      <div class="form-fields">
-        <%= simple_form_for "", html: {method: "GET", :class => 'form-inline'} do |f| %>
-
-        <%= f.input :city, placeholder: "Where are you?", class: "input-form form-control" %>
-        <%= f.input :category, collection: Event::CATEGORY, class: "input-form form-control", prompt: "What are you looking for?" %>
-        <%= f.input :date, as: :string, input_html: { class: 'datepicker form-control' }, placeholder: "  When?" %>
-        <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
-        <% end %>
-      </div>
-    </div>
-    ###########################################
-
-
-    ##### CODE ON INTERNET ########
-    <%if params.has_key?(:tag)%>
-    <%tag_ids = params[:tag][:ids]%>
-    <%else%>
-    <%tag_ids = Array.new%>
-    <%end%>
-
-
-    <%= form_tag users_path, :method => 'get' do %>
-    <%= collection_check_boxes :options, :tag_ids, Tag.order(:name), :id, :name, {multiple: true} %>
-    <%= text_field_tag :search, params[:search], :placeholder => "Search", :id => "query" %>
-    <%= submit_tag "Search", :name => nil, :style => "float:left;"%>
-    <% end %>
-    ##################################
-  -->
-
-
 
     <!-- Card container -->
     <div class="cards">
