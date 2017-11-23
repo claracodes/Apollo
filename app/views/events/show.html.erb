@@ -19,9 +19,8 @@
           <p> <%= @event.price %> € </p>
         </div>
         <div class="form-group">
-          <%= simple_form_for @event, url: new_event_booking_path([@event, @booking]), html: {method: "GET"} do |f| %>
-          <%= f.input :date, as: :string, input_html: { class: 'datepicker event-input' } %>
-          <%= f.button :submit, class: "btn btn-danger event-input" %>
+          <%= simple_form_for [@event, Booking.new] do |f| %>
+          <%= f.button :submit, class: "btn btn-danger event-input", value: "Book now!" %>
           <% end %>
         </div>
       </div>
