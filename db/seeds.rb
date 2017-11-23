@@ -24,10 +24,37 @@ puts 'Creating 2 hosts'
   host2.save
 
 puts 'Creating 2 real venues'
-  venuegorki = Venue.new(name: "Gorki theater", city: "Berlin", address: "Am Festungsgraben 2, 10117 Berlin", description: "The Maxim Gorki Theatre is a theatre in Berlin-Mitte named after the Soviet writer, Maxim Gorky. In 2012, the Mayor of Berlin Klaus Wowereit named Şermin Langhoff artist director of the theatre.", phone: "030 202210", email: "ticket@gorki.de", user_id: host1.id, remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511361809/gorki_s2kmxi.jpg")
+  venuegorki = Venue.new(name: "Gorki theater", city: "Berlin", address: "Am Festungsgraben 2, 10117 Berlin",
+                         description: "The Maxim Gorki Theatre is a theatre in Berlin-Mitte
+                         named after the Soviet writer, Maxim Gorky. In 2012, the Mayor of Berlin Klaus
+                         Wowereit named Şermin Langhoff artist director of the theatre.",
+                         phone: "030 202210", email: "ticket@gorki.de", user_id: host1.id,
+                         remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511361809/gorki_s2kmxi.jpg")
   venuegorki.save
-  venuekulturbrauerei = Venue.new(name: "kulturbrauerei", city: "Berlin", address: "Schönhauser Allee 36, 10435 Berlin", description: "History brewery now an arts & entertainment complex with rock concerts, shows & open-air events.", phone: "030 44352614", email: "info@kulturbrauerei.de", user_id: host2.id, remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511362463/photo-1494380147893-cab0a83aecbe_sgxpxm.jpg")
+  venuekulturbrauerei = Venue.new(name: "kulturbrauerei", city: "Berlin",
+                                  address: "Schönhauser Allee 36, 10435 Berlin",
+                                  description: "History brewery now an arts & entertainment complex with rock
+                                  concerts, shows & open-air events.", phone: "030 44352614",
+                                  email: "info@kulturbrauerei.de", user_id: host2.id,
+                                  remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511362463/photo-1494380147893-cab0a83aecbe_sgxpxm.jpg")
   venuekulturbrauerei.save
+  venue3 = Venue.new(name: "Volksbühne", city: "Berlin", address: "Linienstraße 227,
+                    10178 Berlin", description: "Die Volksbühne Berlin (vormals Volksbühne
+                    am Rosa-Luxemburg-Platz) entstand 1890 während einer Gründungsversammlung des
+                    Vereins Freie Volksbühne.", phone: "030 59303050",
+                    email: "info@volksbuehne.de", user_id: host2.id,
+                    remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511362463/photo-1494380147893-cab0a83aecbe_sgxpxm.jpg")
+  venue3.save
+  venue4 = Venue.new(name: "Bode Museum", city: "Berlin", address: "Am Kupfergraben, 10117 Berlin",
+                    description: "Das Bode-Museum, 1904 als Kaiser-Friedrich-Museum eröffnet,
+                    gehört zum Ensemble der Museumsinsel in Berlin und damit zum Weltkulturerbe der UNESCO.",
+                    phone: "030 0599393",
+                    email: "info@bodemuseum.de", user_id: host1.id,
+                    remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511362463/photo-1494380147893-cab0a83aecbe_sgxpxm.jpg")
+  venue4.save
+
+
+
 
 puts 'Creating 4 events (2 for each real venue)'
   event1 = Event.new(name: "LalouLand", description: Faker::Lorem.sentences(5),

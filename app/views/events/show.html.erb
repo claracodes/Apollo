@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="header-event">
-    <div class="img-event" style="background-image: url('https://source.unsplash.com/random/900x400')"></div>
-    <p class="date-event"> <%= @event.date.day %> / <%= @event.date.month %> / <%= @event.date.year %> </p>
+    <div class="img-event" style="background-image: url('<%= cl_image_path(@event.photo) %>')"></div>
+    <p class="date-event"> <%= @event.date %> </p>
     <h1><span><%= @event.name %></span></h1>
     <p class="event-category"><span> <%= @event.category %></span> </p>
   </div>

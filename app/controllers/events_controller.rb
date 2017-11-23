@@ -6,14 +6,14 @@ class EventsController < ApplicationController
   @event = Event.find(params[:id])
  end
 
-  def search
-    @events = []
-    Event.all.each do |event|
-      if event.category == event_params[:category]
-        #&& event.date == event_params[:date]
-        #&& event.city == event_params[:city]
-        @events << event
-      end
+  def index
+    if params[:search]
+      @events = Event.all
+      # binding.pry
+      @events = @events.where(city: params[:search][:city].capitalize) if params[:search][:city].present?
+      @events = @events.where(category: params[:search][:category]) if params[:search][:category].present?
+    else
+      @events = Event.all
     end
 
     @venues = Venue.where.not(latitude: nil, longitude: nil)
