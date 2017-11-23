@@ -7,14 +7,9 @@ class EventsController < ApplicationController
  end
 
   def search
-    @events = []
-    Event.all.each do |event|
-      if event.category == event_params[:category]
-        #&& event.date == event_params[:date]
-        #&& event.city == event_params[:city]
-        @events << event
-      end
-    end
+    @events = Event.where(city: event_params[:city], category: event_params[:category] )
+    # date: event_params[:date]
+    # third search condition - but we have to have real good seeds for that! :)
 
     @venues = Venue.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
