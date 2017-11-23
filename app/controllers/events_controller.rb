@@ -33,6 +33,12 @@ class EventsController < ApplicationController
   #   end
   # end
 
+  ############## TEST FOR THE RESULTS PAGE ###################
+  # def filter
+  #   @events = Event.filter(event_params)
+  # end
+  ############################################################
+
   def hostdashboard
     @venues = current_user.venues
   end
@@ -42,8 +48,6 @@ class EventsController < ApplicationController
   def host?
     current_user.host
   end
-
-  private
 
   def event_params
     params.require(:event).permit(:date, :city, :category)
