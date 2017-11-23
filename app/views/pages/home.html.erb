@@ -7,7 +7,7 @@
       <!-- class="form-inline" -->
       <div class="search-form-bar">
         <div class="form-fields">
-          <%= simple_form_for @event, url: search_events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
+          <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
           <%= f.input :city, placeholder: "Where are you?", class: "input-form form-control" %>
           <%= f.input :category, collection: Event::CATEGORY, class: "input-form form-control", prompt: "What are you looking for?" %>
           <%= f.input :date, as: :string, input_html: { class: 'datepicker form-control' }, placeholder: "  When?" %>
@@ -30,7 +30,7 @@
         <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
         <div class="info">
           <h3><span><%= event.name %></span></h3>
-          <p class="event-date"> <%= event.date.day %>.<%= event.date.month %>.<%= event.date.year %></p>
+          <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %></p>
           <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
         </div>
       </div>
