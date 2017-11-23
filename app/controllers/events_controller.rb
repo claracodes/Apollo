@@ -6,10 +6,15 @@ class EventsController < ApplicationController
   @event = Event.find(params[:id])
  end
 
-  def search
-    @events = Event.where(city: event_params[:city], category: event_params[:category] )
-    # date: event_params[:date]
-    # third search condition - but we have to have real good seeds for that! :)
+  def index
+    if params[:search]
+      @events = Event.all
+      # binding.pry
+      @events = @events.where(city: params[:search][:city].capitalize) if params[:search][:city].present?
+      @events = @events.where(category: params[:search][:category]) if params[:search][:category].present?
+    else
+      @events = Event.all
+    end
 
     @venues = Venue.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
