@@ -25,19 +25,21 @@ puts 'Creating 2 hosts'
 
 puts 'Creating 2 real venues'
   venuegorki = Venue.new(name: "Gorki theater", city: "Berlin", address: "Am Festungsgraben 2, 10117 Berlin",
-                         description: "The Maxim Gorki Theatre is a theatre in Berlin-Mitte
-                         named after the Soviet writer, Maxim Gorky. In 2012, the Mayor of Berlin Klaus
-                         Wowereit named Şermin Langhoff artist director of the theatre.",
-                         phone: "030 202210", email: "ticket@gorki.de", user_id: host1.id,
-                         remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511361809/gorki_s2kmxi.jpg")
+                     description: "The Maxim Gorki Theatre is a theatre in Berlin-Mitte
+                     named after the Soviet writer, Maxim Gorky. In 2012, the Mayor of Berlin Klaus
+                     Wowereit named Şermin Langhoff artist director of the theatre.",
+                     phone: "030 202210", email: "ticket@gorki.de", user_id: host1.id,
+                     remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511361809/gorki_s2kmxi.jpg")
   venuegorki.save
-  venuekulturbrauerei = Venue.new(name: "kulturbrauerei", city: "Berlin",
-                                  address: "Schönhauser Allee 36, 10435 Berlin",
-                                  description: "History brewery now an arts & entertainment complex with rock
-                                  concerts, shows & open-air events.", phone: "030 44352614",
-                                  email: "info@kulturbrauerei.de", user_id: host2.id,
-                                  remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511362463/photo-1494380147893-cab0a83aecbe_sgxpxm.jpg")
+
+  venuekulturbrauerei = Venue.new(name: "Kulturbrauerei", city: "Berlin",
+                    address: "Schönhauser Allee 36, 10435 Berlin",
+                    description: "History brewery now an arts & entertainment complex with rock
+                    concerts, shows & open-air events.", phone: "030 44352614",
+                    email: "info@kulturbrauerei.de", user_id: host2.id,
+                    remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511362463/photo-1494380147893-cab0a83aecbe_sgxpxm.jpg")
   venuekulturbrauerei.save
+
   venue3 = Venue.new(name: "Volksbühne", city: "Berlin", address: "Linienstraße 227,
                     10178 Berlin", description: "Die Volksbühne Berlin (vormals Volksbühne
                     am Rosa-Luxemburg-Platz) entstand 1890 während einer Gründungsversammlung des
@@ -45,14 +47,30 @@ puts 'Creating 2 real venues'
                     email: "info@volksbuehne.de", user_id: host2.id,
                     remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511362463/photo-1494380147893-cab0a83aecbe_sgxpxm.jpg")
   venue3.save
-  venue4 = Venue.new(name: "Bode Museum", city: "Berlin", address: "Am Kupfergraben, 10117 Berlin",
+
+  museum1 = Venue.new(name: "Bode Museum", city: "Berlin", address: "Am Kupfergraben, 10117 Berlin",
                     description: "Das Bode-Museum, 1904 als Kaiser-Friedrich-Museum eröffnet,
                     gehört zum Ensemble der Museumsinsel in Berlin und damit zum Weltkulturerbe der UNESCO.",
                     phone: "030 0599393",
                     email: "info@bodemuseum.de", user_id: host1.id,
                     remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511362463/photo-1494380147893-cab0a83aecbe_sgxpxm.jpg")
-  venue4.save
+  museum1.save
 
+  museum2 = Venue.new(name: "Historisches Museum", city: "Berlin", address: "Unter den Linden 2, 10117 Berlin",
+                    description: 'The German Historical Museum, known by the acronym DHM, is a museum in Berlin, Germany devoted to German history. It describes itself as a place of "enlightenment and understanding of the shared history of Germans and Europeans', phone: "030 203040", email: "info@histomuseum.de", user_id: host2.id, remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511529978/hsitomuseum_gw85k7.jpg")
+  museum2.save
+
+  museum3 = Venue.new(name: "DDR Museum", city: "BerlKarl-Liebknecht-Str. 1, 10178 Berlin",
+                    description: 'The DDR Museum is a museum in the centre of Berlin. The museum is located in the former governmental district of East Germany, right on the river Spree, opposite the Berlin Cathedral. The museum is the 11th most visited museum in Berlin.', phone: "030 003040", email: "info@ddrmuseum.de", user_id: host1.id, remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511530183/berlin-DDR-museum-Berlin1500x850_fibecx.jpg")
+  museum3.save
+
+  museum4 = Venue.new(name: "Neues Museum", city: "Bodestraße 1-3, 10178 Berlin",
+                    description: 'The Neues Museum is a museum in Berlin, Germany, located to the north of the Altes Museum on Museum Island. It was built between 1843 and 1855 according to plans by Friedrich August Stüler, a student of Karl Friedrich Schinkel.', phone: "033 003040", email: "info@yesmuseum.de", user_id: host2.id, remote_photo_url: "http://res.cloudinary.com/daqyyyytv/image/upload/v1511530354/reference-neues-museum-berlin_onlikr.jpg")
+  museum4.save
+
+  museum5 = Venue.new(name: "People Museum", city: "Panoramastraße 1A, 10178 Berlin",
+                    description: 'The People Museum is a museum in Berlin, Germany, located to the north of the Yepayepa Museum on Museum Island. It was built between 1843 and 1855 according to plans by Friedrich August Stüler, a student of Karl Friedrich Schinkel.', phone: "033 003040", email: "info@yesmuseum.de", user_id: host3.id, remote_photo_url: "")
+  museum5.save
 
 
 

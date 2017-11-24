@@ -20,7 +20,7 @@ class EventsController < ApplicationController
       @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
       @events = @events.where("events.price <= ?", @query[:price].to_i) if @query[:price].present?
       @events = @events.where(tag: @query[:tag]) if @query[:tag].present?
-      @events = @events.where(english: @query[:english]) if @query[:english].present?
+      # @events = @events.where(english: @query[:english]) if @query[:english].present?
     else
       @events = Event.all
     end
