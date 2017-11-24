@@ -31,12 +31,6 @@ class EventsController < ApplicationController
   #   end
   # end
 
-  ############## TEST FOR THE RESULTS PAGE ###################
-  # def filter
-  #   @events = Event.filter(event_params)
-  # end
-  ############################################################
-
   def hostdashboard
     @venues = current_user.venues
   end

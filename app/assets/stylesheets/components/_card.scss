@@ -93,6 +93,20 @@
   p {
     padding-left: 5px;
   }
+  span {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  .event-name-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    p {
+      font-weight: bolder;
+      font-size: 20px;
+    }
+  }
 }
 .event-date {
   background-color: $gray;
@@ -109,3 +123,4 @@
     text-transform: uppercase;
   }
 }
+
