@@ -9,11 +9,17 @@ class EventsController < ApplicationController
   end
 
   def index
+
+    @query = params[:search]
     if params[:search]
       @events = Event.all
-      # binding.pry
       @events = @events.where(city: params[:search][:city].capitalize) if params[:search][:city].present?
       @events = @events.where(category: params[:search][:category]) if params[:search][:category].present?
+      @events = @events.where(date: params[:search][:date].to_date) if params[:search][:date].present?
+      @events = @events.where("events.price <= ?", params[:search][:price].to_i) if params[:search][:price].present?
+      @events = @events.where(tag: params[:search][:tag]) if params[:search][:tag].present?
+      @events = @events.where(english: params[:search][:english]) if params[:search][:english].present?
+      #raise
     else
       @events = Event.all
     end
