@@ -25,7 +25,7 @@ class EventsController < ApplicationController
       @events = Event.all
     end
 
-    @venues = Venue.where.not(latitude: nil, longitude: nil)
+    @venues = Venue.where(id: @events.map(&:venue_id))
     for_maps
   end
 
