@@ -1,28 +1,20 @@
-// .img-event {
-//   height: 400px;
-//   width: 55%;
-//   overflow: hidden;
-//   position: absolute;
-//   background-size: cover;
-// }
-
-.image-event {
-  min-height: 400px;
-  height: 100%;
-  background-position:  center;
+.img-event {
+  height: 400px;
+  width: 55%;
+  overflow: hidden;
+  position: absolute;
+  background-size: cover;
 }
 .header-event {
-  position: absolute;
+  position: relative;
   text-transform: uppercase;
   color: #1C1C1C;
-  left: -70px;
-  width: 100%;
-  top: 200px;
-
   h1 {
     position: relative;
     margin: 0;
+    left: 820px;
     text-align: left;
+    top: 200px;
     font-size: 50px;
     span {
       padding: 5px 15px;
@@ -31,16 +23,17 @@
   }
   .date-event {
     position: relative;
+    left: 890px;
     font-weight: bolder;
-    left: 90px;
-    font-size: 24px;
+    top: 200px;
+    font-size: 28px;
   }
   .event-category {
     position: relative;
     color: white;
     font-weight: bolder;
-    margin-top: 20px;
-    left: 90px;
+    left: 890px;
+    top: 225px;
     span {
       background-color: #1C1C1C;
       padding: 5px 10px;
@@ -48,7 +41,7 @@
   }
 }
 .container-margin-top {
-  margin-top: 5em;
+  margin-top: 350px;
 }
 .event-desc {
   h4 {
@@ -74,21 +67,10 @@
 .box-event {
   padding: 15px 20px;
   background-color: white;
-  flex: 1;
-  margin-left: 50px;
 }
 .event-input {
   margin: 0;
 }
 #map {
   margin-top: 50px;
-}
-
-
-@media screen and (max-width: 960px) {
-  .header-event {
-    position: relative;
-    left: 0;
-    top: 40px;
-  }
 }

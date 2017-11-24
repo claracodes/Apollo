@@ -45,8 +45,7 @@ class BookingsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
-      marker.picture({url: 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-32.png', width: 32, height: 32})
-      marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
+      # marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
     end
   end
 end
