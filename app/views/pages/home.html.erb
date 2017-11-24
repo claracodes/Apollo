@@ -8,9 +8,9 @@
       <div class="search-form-bar">
         <div class="form-fields">
           <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
-          <%= f.input :city, placeholder: "Where are you?", class: "input-form form-control" %>
-          <%= f.input :category, collection: Event::CATEGORY, class: "input-form form-control", prompt: "What are you looking for?" %>
-          <%= f.input :date, as: :string, input_html: { class: 'datepicker form-control' }, placeholder: "  When?" %>
+          <%= f.input :city, placeholder: "Where are you?", class: "input-form form-control", label: false %>
+          <%= f.input :category, collection: Event::CATEGORY, class: "input-form form-control", label: false, prompt: "What are you looking for?" %>
+          <%= f.input :date, as: :string, input_html: { class: 'datepicker form-control' }, label: false, placeholder: "  When?" %>
           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
           <% end %>
         </div>
@@ -34,8 +34,11 @@
       <%= link_to "", event_path(event) %>
       <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
       <div class="info">
-        <h3><span><%= event.name %></span></h3>
-        <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %></p>
+        <div class="event-name-price">
+          <h3><span><%= event.name %></span></h3>
+          <p> <%= event.price %> € </p>
+        </div>
+        <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
         <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
       </div>
     </div>

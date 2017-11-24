@@ -2,6 +2,29 @@
   <!-- Page container -->
   <div class="container container-search">
 
+    <!-- Search bar -->
+    <div class="search-form-bar">
+      <div class="form-fields">
+        <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline form-prevent-submit'} do |f| %>
+        <%= f.input :city, placeholder: "  City", label: false, class: "input-form form-control", input_html: { value: @query[:city] } %>
+        <%= f.input :category, collection: Event::CATEGORY, label: false, class: "input-form form-control", prompt: " Category ", selected: @query[:category]%>
+        <%= f.input :date, as: :string, input_html: { class: 'datepicker form-control', value: @query[:date] }, label: false, placeholder: "  Date" %>
+
+        <%= f.input :price,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, style: "background: transparent; border: none;
+          box-shadow: none;" }, class: "input-form form-control" %>
+
+        <%= f.input :tags,  prompt: "Tags", label: false, class: "input-form form-control", collection: Event::TAG %>
+
+        <%= f.input :english, as: :radio_buttons, prompt: "English", class: "input-form form-control" %>
+
+        <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="price-slider"></div>
+    </br>
+
     <!-- Card container -->
     <div class="cards">
       <% @events.each do |event| %>
@@ -9,8 +32,11 @@
         <%= link_to "", event_path(event) %>
         <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
         <div class="info">
+          <div class="event-name-price">
           <h3><span><%= event.name %></span></h3>
-          <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %></p>
+          <p> <%= event.price %> € </p>
+        </div>
+          <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
           <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
         </div>
       </div>
@@ -211,7 +237,7 @@
     handler.getMap().setZoom(2);
     } else if (markers.length == 1) {
     handler.getMap().setZoom(14);
-    }
-    });
-  <% end %>
+  }
+});
+<% end %>
 <% end %>
