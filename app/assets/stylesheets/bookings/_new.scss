@@ -14,3 +14,30 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.pay {
+  text-align: right !important;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.pay-bottom {
+  border-bottom: 0.5px solid $gray;
+  margin-bottom: 10px;
+}
+
+.payment-details {
+  text-align: left;
+  h4 {
+    margin: 0px;
+    color: black;
+    span {
+    padding: 5px 10px;
+    background-color: $red;
+  }
+  }
+
+}
+
+
+
