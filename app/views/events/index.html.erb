@@ -49,6 +49,25 @@
 
 <!-- javascript -->
 <% content_for(:after_js) do %>
+
+  <%= javascript_tag do %>
+
+  $( function() {
+  console.log("hello!");
+    $( "#price-slider" ).slider({
+      range: "min",
+      value: parseInt(<%= @query[:price].try(:gsub, " €", "") || 15 %>),
+      min: 0,
+      max: 80,
+      slide: function(event, ui) {
+        $( "#price-display").val( ui.value + " €");
+      }
+    });
+    $( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");
+  } );
+
+  <% end %>
+
   <%= javascript_tag do %>
     var styles = [{
         "featureType": "water",
