@@ -16,6 +16,8 @@ gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
 gem 'omniauth-facebook'
+gem "selectize-rails"
+gem 'jquery-ui-rails'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
