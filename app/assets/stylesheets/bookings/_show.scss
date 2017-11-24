@@ -1,11 +1,30 @@
+.wrapper-booking {
+  height: calc(100vh - 170px);
+}
+.booking-text {
+  span {
+    text-transform: uppercase;
+    background-color: $red;
+    padding: 0 10px;
+    color: #1C1C1C;
+  }
+  color: white;
+  height: 610px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 .small-link {
   font: $body-font;
   text-decoration: none;
-  color: $gray;
- &:hover{
-  text-decoration: none;
-  color: $gray;
-  background-color: $red
- }
+  color: white;
+  &:hover{
+    text-decoration: none;
+    padding: 3px 8px;
+    color: $gray;
+    font-weight: bolder;
+    background-color: $red
+  }
 }
+
 
