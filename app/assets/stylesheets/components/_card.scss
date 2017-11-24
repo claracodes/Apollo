@@ -63,13 +63,26 @@
   filter: grayscale(100%);
 }
 .container-card {
-  padding: 15px;
+  padding: 0 15px;
   max-width: 950px;
   h1 {
     text-transform: uppercase;
     font-weight: bolder;
     margin-bottom: 50px;
     color: $gray;
+  }
+  .title-home {
+    padding: 30px auto;
+    margin: 0;
+    margin-bottom: 20px;
+    color: $gray;
+    font-size: 27px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    span {
+      background-color: $red;
+      padding: 5px 10px;
+    }
   }
 }
 .info {
@@ -79,6 +92,20 @@
   margin-left: 15px;
   p {
     padding-left: 5px;
+  }
+  span {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  .event-name-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    p {
+      font-weight: bolder;
+      font-size: 20px;
+    }
   }
 }
 .event-date {
@@ -96,3 +123,4 @@
     text-transform: uppercase;
   }
 }
+

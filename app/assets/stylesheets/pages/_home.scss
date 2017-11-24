@@ -13,6 +13,10 @@
   background-color: transparent;
   border-bottom: 2px solid white;
   display: inline-block;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
 }
 .search-form-bar {
   border-radius: 2px;
@@ -30,6 +34,28 @@ input {
   margin: 0 10px;
 }
 
+
 // label{
 //   display: none;
 // }
+
+label{
+  display: none;
+}
+.director img {
+  width: 40px;
+  margin-top: 5px;
+}
+.be-inspired {
+  color: white;
+  p {
+    margin-top: 110px;
+    margin-bottom: 8px;
+  }
+  &:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 0.3;
+  }
+}
+

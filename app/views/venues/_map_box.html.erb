@@ -1,3 +1,3 @@
-<h3>Event name</h3>
-<p>Event date </p>
-
+<h3> <%= venue.name %> </h3>
+<p> <%= venue.address %> </p>
+<%= link_to "This venue has #{venue.events.count} events planned", root_path %>
