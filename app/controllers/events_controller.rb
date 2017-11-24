@@ -10,16 +10,17 @@ class EventsController < ApplicationController
 
   def index
 
-    @query = params[:search]
+    # @query = params[:search]
+    session[:search_query] = params[:search] || params
+    @query = session[:search_query]
     if params[:search]
       @events = Event.all
-      @events = @events.where(city: params[:search][:city].capitalize) if params[:search][:city].present?
-      @events = @events.where(category: params[:search][:category]) if params[:search][:category].present?
-      @events = @events.where(date: params[:search][:date].to_date) if params[:search][:date].present?
-      @events = @events.where("events.price <= ?", params[:search][:price].to_i) if params[:search][:price].present?
-      @events = @events.where(tag: params[:search][:tag]) if params[:search][:tag].present?
-      @events = @events.where(english: params[:search][:english]) if params[:search][:english].present?
-      #raise
+      @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
+      @events = @events.where(category: @query[:category]) if @query[:category].present?
+      @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
+      @events = @events.where("events.price <= ?", @query[:price].to_i) if @query[:price].present?
+      @events = @events.where(tag: @query[:tag]) if @query[:tag].present?
+      @events = @events.where(english: @query[:english]) if @query[:english].present?
     else
       @events = Event.all
     end
@@ -29,7 +30,7 @@ class EventsController < ApplicationController
   end
 
   # def search
-  #   params[:search] ||= {}
+  #   @query ||= {}
   #   @events = Event.all
   #   # or params[:search].each.... don't forget to change form to simple_form_for :search
   #   [:category, :city, :date].each do |query|

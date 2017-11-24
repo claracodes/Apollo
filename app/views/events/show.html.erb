@@ -1,4 +1,21 @@
 <div class="wrapper">
+
+  <div class="header-event">
+    <div class="img-event" style="background-image: url('<%= cl_image_path(@event.photo) %>')"></div>
+    <p class="date-event"> <%= @event.date %> </p>
+    <h1><span><%= @event.name %></span></h1>
+    <p class="event-category"><span> <%= @event.category %></span> </p>
+  </div>
+  <div class="container container-margin-top">
+    <div class="flex-desc">
+      <div class="event-desc">
+        <h4>ABOUT</h4>
+        <p><%= @event.description %></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </br>
+        <%= link_to 'Go back', events_path(search: session[:search_query]) %>
+
+
   <div class="row">
     <div class="col-md-7 image-event"  style="background-image: url('<%= cl_image_path(@event.photo) %>'); background-size: cover">
       &nbsp;
