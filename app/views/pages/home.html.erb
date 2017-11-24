@@ -39,7 +39,7 @@
           <p> <%= event.price %> € </p>
         </div>
         <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
-        <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
+        <p class="desc"><%= event.description %></p>
       </div>
     </div>
     <% end %>
