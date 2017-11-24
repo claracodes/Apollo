@@ -14,10 +14,9 @@
         <%= f.input :price,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, style: "background: transparent; border: none;
           box-shadow: none; width: 70px; margin-left: 0;" }, class: "input-form form-control" %>
 
+        <%#= f.input :english, as: :radio_buttons, prompt: "English", class: "input-form form-control" %>
 
           <%= f.input :tags,  prompt: "Tags", label: false, class: "input-form form-control", collection: Event::TAG %>
-
-          <%= f.input :english, as: :radio_buttons, prompt: "English", class: "input-form form-control" %>
 
           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
           <% end %>
@@ -56,16 +55,15 @@
   console.log("hello!");
   $( "#price-slider" ).slider({
   range: "min",
-  value: parseInt(<%= @query[:price].try(:gsub, " €", "") || 15 %>),
+  value: parseInt(<%= @query[:price].try(:gsub, " €", "") || 60 %>),
   min: 0,
-  max: 80,
+  max: 60,
   slide: function(event, ui) {
   $( "#price-display").val( ui.value + " €");
 }
 });
 $( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");
 } );
-
 <% end %>
 
 <%= javascript_tag do %>
