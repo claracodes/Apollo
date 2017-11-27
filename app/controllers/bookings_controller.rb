@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @event_pages = true
     @event = Event.find(params[:event_id])
     @booking = Booking.new
     authorize @booking
@@ -24,12 +25,15 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @event_pages = true
     @booking = Booking.includes(:event).find(params[:id])
     authorize @booking
   end
 
+
   def index
-    #please leave theses comments for now - i want to do some research on it :) Clara
+    @event_pages = true
+    #please leave theses comments for now - i want to do some research on it :)
     # @bookings = []
     # Booking.all.each do |booking|
     #   if current_user.id == booking.user.id

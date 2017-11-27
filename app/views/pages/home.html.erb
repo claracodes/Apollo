@@ -7,22 +7,21 @@
       <!-- class="form-inline" -->
       <div class="search-form-bar">
         <div class="form-fields">
-          <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline'} do |f| %>
-          <%= f.input :city, placeholder: "Where are you?", class: "input-form form-control", label: false %>
-          <%= f.input :category, collection: Event::CATEGORY, class: "input-form form-control", label: false, prompt: "What are you looking for?" %>
-          <%= f.input :date, as: :string, input_html: { class: 'datepicker form-control' }, label: false, placeholder: "  When?" %>
-          <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
+          <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => "form-inline"} do |f| %>
+          <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
+          <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "  When?" %>
+<!--           <%= f.button :submit, class: "btn btn-danger", value: "Search" %> -->
           <% end %>
         </div>
       </div>
     </div>
+    <a href="#inspiration-card" class="be-inspired">
+      <div class="text-center">
+        <!-- <p>BE INSPIRED</p> -->
+        <div class="director"><%= image_tag "bar-04.png" %> </div>
+      </div>
+    </a>
   </div>
-  <a href="#inspiration-card" class="be-inspired">
-    <div class="text-center">
-      <p>BE INSPIRED</p>
-      <div class="director"><%= image_tag "bar-04.png" %> </div>
-    </div>
-  </a>
 </div>
 
 <div class='wrapper-card' id="inspiration-card">

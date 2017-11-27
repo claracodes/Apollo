@@ -31,6 +31,20 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+
+
+  ########### FOR RESIZING THE CLOUDINARY IMGS ####################
+  # process eager: true  # Force version generation at upload time.
+
+  # version :standard do
+  #   resize_to_fit 800, 600
+  # end
+  #################################################################
+
+
+
+
+
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process :resize_to_fit => [50, 50]

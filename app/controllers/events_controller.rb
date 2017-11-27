@@ -3,6 +3,7 @@ class EventsController < ApplicationController
  before_action :host?, only: [:hostdashboard, :edit, :delete, :create]
 
   def show
+    @event_pages = true
     @event = Event.find(params[:id])
     @venues = Venue.find(@event.venue_id)
     for_maps
@@ -10,6 +11,7 @@ class EventsController < ApplicationController
   end
 
   def index
+    @event_pages = true
 
     # @query = params[:search]
     session[:search_query] = params[:search] || params
@@ -29,19 +31,6 @@ class EventsController < ApplicationController
     @venues = Venue.where(id: @events.map(&:venue_id))
     for_maps
     authorize @event
-  end
-
-  # def search
-  #   @query ||= {}
-  #   @events = Event.all
-  #   # or params[:search].each.... don't forget to change form to simple_form_for :search
-  #   [:category, :city, :date].each do |query|
-  #     @events = @events.where(query => params[:search][query].downcase) unless params[:search][query]
-  #   end
-  # end
-
-  def hostdashboard #do we still need that?
-    @venues = current_user.venues
   end
 
   private
