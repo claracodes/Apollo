@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :venues, only: [:index, :edit]
+  resources :venues, only: [:index, :edit, :show]
 
   root to: 'pages#home'
 end

@@ -1,3 +1,43 @@
-<h3> <%= venue.name %> </h3>
-<p> <%= venue.address %> </p>
-<%= link_to "This venue has #{venue.events.count} events planned", root_path %>
+<div class="map_box">
+
+  <h3> <%= venue.name %> </h3>
+  <p> <%= venue.address %> </p>
+  <p> <%= venue.description %></p>
+
+
+  <% @events.take(3).each do |event| %>
+  <!-- can use .recent(3)/random(3) -->
+
+
+    <%= link_to "", event_path(event) %>
+
+  <% end %>
+
+
+
+  <%= link_to "", venue_path(@venue) %>
+
+</div>
+
+
+
+
+
+
+
+
+<!--
+<% @events.each do |event| %>
+    <div class='event-card'>
+      <%= link_to "", event_path(event) %>
+      <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
+      <div class="info">
+        <div class="event-name-price">
+          <h3><span><%= event.name %></span></h3>
+          <p> <%= event.price %> € </p>
+        </div>
+        <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
+        <p class="desc"><%= event.description %></p>
+      </div>
+    </div>
+    <% end %> -->
