@@ -1,52 +1,59 @@
-<h1>Hello <span class="name"><%= current_user.first_name %><span></h1>
-<div class="booked-section">
- <!--    <div class="card-booked">
-      <h3>Your events:</h3>
-      <% @bookings.each do |booking| %>
-      <div class='list'>
-        <%= booking.event.date.day %>.<%= booking.event.date.month %>.<%= booking.event.date.year %> -
-        <%= link_to booking.event.name, event_path(booking.event), class: "link" %>
-      </div>
-      <% end %>
-    </div> -->
+<h1>Hello <span><%= current_user.first_name %></span></h1>
+<div class="container">
+  <div class="row">
 
-    <div class="booking-list">
-      <h2>Your bookings:</h2>
-      <% @bookings.each do |booking| %>
-      <div class='event-list-item'>
-        <%= link_to "", event_path(booking.event) %>
-
-        <div class="info">
-          <div class="event-name-price">
-            <h3><span><%= booking.event.name %></span></h3>
-            <p> Booked! </p>
+    <div class="col-xs-12 col-sm-6 col-md-5">
+      <div class="booking-list">
+        <h3>Your bookings:</h3>
+        <% @bookings.each do |booking| %>
+        <div class='event-list-item'>
+          <%= link_to "", event_path(booking.event) %>
+          <div class="info">
+            <div class="event-name-price">
+              <h4><span><%= booking.event.name %></span></h4>
+              <p> Booked! </p>
+            </div>
+            <p class="list-event-date"><%= booking.event.date.day %> / <%= booking.event.date.month %> / <%= booking.event.date.year %></p>
           </div>
-          <p class="event-date"><%= booking.event.date.day %> / <%= booking.event.date.month %> / <%= booking.event.date.year %></p>
         </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
-    <div id="map-search"></div>
 
+    <div class="col-xs-12 col-sm-6 col-md-4 cal">
+      <div id="calendar"></div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class='placeholder'>
+        <h5>Social activites:</h5>
+      </div>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="map-dashboard"></div>
+    </div>
+  </div>
+</div>
 
-  <div id="calendar"></div>
 
-  <!-- javascript -->
 
-  <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-  var styles = [{
-  "featureType": "water",
-  "elementType": "geometry",
-  "stylers": [
-  {
-    "color": "#e9e9e9"
-  },
-  {
-    "lightness": 17
-  }
-  ]
+<!-- javascript -->
+
+<% content_for(:after_js) do %>
+<%= javascript_tag do %>
+var styles = [{
+"featureType": "water",
+"elementType": "geometry",
+"stylers": [
+{
+  "color": "#e9e9e9"
+},
+{
+  "lightness": 17
+}
+]
 },
 {
   "featureType": "landscape",
@@ -213,7 +220,7 @@
 var handler = Gmaps.build('Google');
 
 handler.buildMap({ provider: {styles: styles},
-internal: { id: 'map-search' } }, function() {
+internal: { id: 'map-dashboard' } }, function() {
 
 markers = handler.addMarkers(<%= raw @hash.to_json %>);
 
