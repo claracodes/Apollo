@@ -7,6 +7,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @venues = Venue.find(@event.venue_id)
     for_maps
+    authorize @event
   end
 
   def index
@@ -16,7 +17,7 @@ class EventsController < ApplicationController
     session[:search_query] = params[:search] || params
     @query = session[:search_query]
     if params[:search]
-      @events = Event.all
+      @events = policy_scope(Event)
       @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
       @events = @events.where(category: @query[:category]) if @query[:category].present?
       @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
@@ -30,20 +31,6 @@ class EventsController < ApplicationController
 
     @venues = Venue.where(id: @events.map(&:venue_id))
     for_maps
-  end
-
-  # def search
-  #   @query ||= {}
-  #   @events = Event.all
-  #   # or params[:search].each.... don't forget to change form to simple_form_for :search
-  #   [:category, :city, :date].each do |query|
-  #     @events = @events.where(query => params[:search][query].downcase) unless params[:search][query]
-  #   end
-  # end
-
-  def hostdashboard
-    @event_pages = true
-    @venues = current_user.venues
   end
 
   private
