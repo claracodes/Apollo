@@ -19,7 +19,7 @@
   <div class="text-center">
     </br>
     <p> There are <strong><%= venue.events.count %></strong> events at <%= venue.name %></p>
-    <h5><%= link_to "See More", venues_path(@venue), class: 'link-back' %></h4>
+    <h5><%= link_to "See More", venue_path(venue), class: 'link-back' %></h4>
   </div>
 </div>
 

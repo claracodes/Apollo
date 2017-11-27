@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
 
-  before_action :host?
+  # before_action :host?
 
   def show
     @venue_pages = true

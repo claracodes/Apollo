@@ -20,6 +20,7 @@ class EventsController < ApplicationController
       @events = policy_scope(Event)
       @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
       @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
+      # Just added the mood, waiting for Angellica's code to finish it
       # @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
       @events = @events.where(category: @query[:category]) if @query[:category].present?
       @events = @events.where("events.price <= ?", @query[:price].to_i) if @query[:price].present?
@@ -35,9 +36,9 @@ class EventsController < ApplicationController
 
   private
 
-  def host?
-    current_user.host
-  end
+  # def host?
+  #   current_user.host
+  # end
 
   def event_params
     params.require(:event).permit(:date, :city, :category)
