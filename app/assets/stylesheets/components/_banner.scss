@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 55vh;
+  height: 62vh;
   background-position: center;
   background-size: cover;
   color: white;
@@ -11,6 +11,9 @@
     font-size: 22px;
     font-weight: lighter;
     margin-bottom: 20px;
-    opacity: 0.8;
   }
+}
+.director img {
+  width: 40px;
+  margin-top: 70px;
 }
