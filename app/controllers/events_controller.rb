@@ -3,12 +3,14 @@ class EventsController < ApplicationController
  before_action :host?, only: [:hostdashboard, :edit, :delete, :create]
 
   def show
+    @event_pages = true
     @event = Event.find(params[:id])
     @venues = Venue.find(@event.venue_id)
     for_maps
   end
 
   def index
+    @event_pages = true
 
     # @query = params[:search]
     session[:search_query] = params[:search] || params
@@ -39,6 +41,7 @@ class EventsController < ApplicationController
   # end
 
   def hostdashboard
+    @event_pages = true
     @venues = current_user.venues
   end
 
