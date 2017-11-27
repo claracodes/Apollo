@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @event_pages = true
     @event = Event.find(params[:event_id])
     @booking = Booking.new
   end
@@ -22,10 +23,12 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @event_pages = true
     @booking = Booking.includes(:event).find(params[:id])
   end
 
   def dashboard
+    @event_pages = true
     #please leave theses comments for now - i want to do some research on it :)
     # @bookings = []
     # Booking.all.each do |booking|

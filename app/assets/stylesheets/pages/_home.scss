@@ -1,30 +1,15 @@
-
-// Specific CSS for your home-page
 .alert, .notice {
   display: none;
 }
 #logo-home {
-  width: 600px;
+  max-width: 500px;
 }
-// label {
-//   display: none;
-// }
-
-
 ::-webkit-input-placeholder {
   font-weight: 300;
 }
-
-
-.banner-content {
-  display: inline-block;
-}
-
-
-// label{
-//   display: none;
+// .banner-content {
+//   display: inline-block;
 // }
-
 .director img {
   width: 40px;
   margin-top: 5px;
@@ -32,8 +17,8 @@
 .be-inspired {
   color: white;
   p {
-    margin-top: 110px;
-    margin-bottom: 8px;
+    margin-top: 70px;
+    margin-bottom: 3px;
   }
   &:hover {
     text-decoration: none;
@@ -42,3 +27,8 @@
   }
 }
 
+@media screen and (max-width: 760px) {
+  #logo-home {
+    width: 300px;
+  }
+}
