@@ -18,6 +18,7 @@ gem "gmaps4rails"
 gem 'omniauth-facebook'
 gem "selectize-rails"
 gem 'jquery-ui-rails'
+gem 'pundit'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
