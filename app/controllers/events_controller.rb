@@ -19,10 +19,11 @@ class EventsController < ApplicationController
     if params[:search]
       @events = policy_scope(Event)
       @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
-      @events = @events.where(category: @query[:category]) if @query[:category].present?
       @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
+      # @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
+      @events = @events.where(category: @query[:category]) if @query[:category].present?
       @events = @events.where("events.price <= ?", @query[:price].to_i) if @query[:price].present?
-      @events = @events.where(tag: @query[:tag]) if @query[:tag].present?
+      # @events = @events.where(tag: @query[:tag]) if @query[:tag].present?
       # @events = @events.where(english: @query[:english]) if @query[:english].present?
     else
       @events = Event.all

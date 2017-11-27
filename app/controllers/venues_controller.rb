@@ -21,8 +21,4 @@ class VenuesController < ApplicationController
   def host?
     @user.host
   end
-
-  def venue_params
-    params.require(:venue).permit(:date, :city, :category)
-  end
 end
