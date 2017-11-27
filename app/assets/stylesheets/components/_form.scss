@@ -6,11 +6,12 @@
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 3px solid white;
+  border-bottom: 2px solid white;
   color: white !important;
-  max-width: 350px !important;
-  font-size: 30px;
+  max-width: 300px !important;
+  font-size: 26px;
   margin-bottom: 20px;
+  margin-top: 15px;
   &:focus {
     border-color: inherit;
     -webkit-box-shadow: none;
