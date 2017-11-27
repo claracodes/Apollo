@@ -1,0 +1,30 @@
+.input-form {
+  background-color: none;
+  border-bottom: 2px solid white;
+  display: inline-block;
+  border-radius: 0px !important;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 3px solid white;
+  color: white !important;
+  width: 350px !important;
+  font-size: 30px;
+  &:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+.search-form-bar {
+  border-radius: 2px;
+  padding: 18px 0 14px 0;
+  width: 100%;
+  margin: 0 auto;
+}
+input {
+  margin: 0 10px;
+}
+label{
+  display: none;
+}

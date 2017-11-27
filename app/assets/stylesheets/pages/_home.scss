@@ -1,3 +1,4 @@
+
 // Specific CSS for your home-page
 .alert, .notice {
   display: none;
@@ -9,29 +10,14 @@
 //   display: none;
 // }
 
-.input-form {
-  background-color: transparent;
-  border-bottom: 2px solid white;
-  display: inline-block;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 1px solid black;
+
+::-webkit-input-placeholder {
+  font-weight: 300;
 }
-.search-form-bar {
-  border-radius: 2px;
-  padding: 18px 0 14px 0;
-  width: 100%;
-  margin: 0 auto;
-}
-// .form-fields {
-//   font-size: 0;
-// }
+
+
 .banner-content {
   display: inline-block;
-}
-input {
-  margin: 0 10px;
 }
 
 
@@ -39,9 +25,6 @@ input {
 //   display: none;
 // }
 
-label{
-  display: none;
-}
 .director img {
   width: 40px;
   margin-top: 5px;
