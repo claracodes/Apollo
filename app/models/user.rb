@@ -27,5 +27,5 @@ class User < ApplicationRecord
 
   has_many :events
   has_many :bookings
-  has_many :venues
+  has_many :venues #for the hosts
 end

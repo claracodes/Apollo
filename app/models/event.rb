@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   CATEGORY = ["theater", "exhibition", "museum", "movie", "cultural sight", "opera", "concert"]
-  TAG = ["Dramatic", "Romantic", "Humor", "Modern", "Traditional"]
+  MOOD = ["Dramatic", "Romantic", "Glamorous", "Wild", "Nerdy"]
+  TAG = ["Dramatic", "Romantic", "Modern", "Funny"]
   validates :name, presence: true
   validates :description, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORY,
@@ -9,7 +10,9 @@ class Event < ApplicationRecord
   # validates :duration, presence: true
   validates :date, presence: true
   validates :price, presence: true
-  has_many :bookings
+  validates :mood, presence: true, inclusion: { in: MOOD,
+              message: "%{value} is not a valid mood" }
+
   mount_uploader :photo, PhotoUploader
   has_many :bookings
   belongs_to :venue
