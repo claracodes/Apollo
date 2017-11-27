@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     session[:search_query] = params[:search] || params
     @query = session[:search_query]
     if params[:search]
-      @events = Event.all
+      @events = policy_scope(Event)
       @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
       @events = @events.where(category: @query[:category]) if @query[:category].present?
       @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
@@ -30,7 +30,6 @@ class EventsController < ApplicationController
 
     @venues = Venue.where(id: @events.map(&:venue_id))
     for_maps
-    authorize @event
   end
 
   private
