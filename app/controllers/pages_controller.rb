@@ -2,6 +2,6 @@ class PagesController < ApplicationController
 
   def home
     @event = Event.new
-    @events = Event.first(3)
+    @events = Event.last(3)
   end
 end

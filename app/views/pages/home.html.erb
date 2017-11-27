@@ -8,10 +8,11 @@
         <!-- class="form-inline" -->
         <div class="search-form-bar">
           <div class="form-fields">
-            <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => "form-inline"} do |f| %>
+            <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
             <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
-            <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "  When?" %>
-            <!--           <%= f.button :submit, class: "btn btn-danger", value: "Search" %> -->
+            <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "When?" %>
+            <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
+            <!--           <%# f.button :submit, class: "btn btn-danger", value: "Search" %> -->
             <% end %>
           </div>
         </div>
@@ -25,15 +26,16 @@
     </div>
   </div>
 
+
   <p class="text-center title-home"><span>HOW DO YOU FEEL LIKE?</span> </p>
   <div class="container container-moods">
     <div class="flex-list">
       <ul class="list-inline text-center list-moods">
-        <li style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'romantic.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-02" %><%= link_to "", events_path %><p>ROMANTIC</p></a></li>
-        <li style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'wild.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-01" %><%= link_to "", events_path %><p>WILD</p></a></li>
-        <li style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'nerdy.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-04" %><%= link_to "", events_path %><p>NERDY</p></a></li>
-        <li style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'glamorous.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-05" %><%= link_to "", events_path %><p>GLAMOROUS</p></a></li>
-        <li style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'drama.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-03" %><%= link_to "", events_path %><p>DRAMATIC</p></a></li>
+        <li data-mood="Romantic" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'romantic.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-02" %><p>ROMANTIC</p></a></li>
+        <li data-mood="Wild" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'wild.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-01" %><p>WILD</p></a></li>
+        <li data-mood="Nerdy" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'nerdy.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-04" %><p>NERDY</p></a></li>
+        <li data-mood="Glamorous" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'glamorous.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-05" %><p>GLAMOROUS</p></a></li>
+        <li data-mood="Dramatic" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'drama.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-03" %><p>DRAMATIC</p></a></li>
       </ul>
     </div>
   </div>

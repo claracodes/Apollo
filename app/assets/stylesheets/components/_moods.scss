@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-around;
   li {
+    cursor: pointer;
     filter: grayscale(100%);
     position: relative;
     display: flex;
