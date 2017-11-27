@@ -6,6 +6,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @venues = Venue.find(@event.venue_id)
     for_maps
+    authorize @event
   end
 
   def index
@@ -27,6 +28,7 @@ class EventsController < ApplicationController
 
     @venues = Venue.where(id: @events.map(&:venue_id))
     for_maps
+    authorize @event
   end
 
   # def search
@@ -38,7 +40,7 @@ class EventsController < ApplicationController
   #   end
   # end
 
-  def hostdashboard
+  def hostdashboard #do we still need that?
     @venues = current_user.venues
   end
 
