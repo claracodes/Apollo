@@ -10,7 +10,7 @@
           <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => "form-inline"} do |f| %>
           <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
           <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "  When?" %>
-<!--           <%= f.button :submit, class: "btn btn-danger", value: "Search" %> -->
+           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
           <% end %>
         </div>
       </div>
