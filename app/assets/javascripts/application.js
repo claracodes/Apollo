@@ -6,4 +6,8 @@
 //= require selectize
 //= require underscore
 //= require gmaps/google
+//= require moment
+//= require fullcalendar
+
+$('#calendar').fullCalendar({});
 //= require_tree .
