@@ -1,26 +1,43 @@
-<div class="banner" style='background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url("https://images.unsplash.com/photo-1485518994577-6cd6324ade8f?auto=format&fit=crop&w=944&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");'>
-  <div class="container text-center">
-    <div class="banner-content">
-      <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
-      <p>Discover cultural experiences in your city</p>
+<div class="wrapper wrapper-home">
+  <div class="banner" style='background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url("https://images.unsplash.com/photo-1485518994577-6cd6324ade8f?auto=format&fit=crop&w=944&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");'>
+    <div class="container text-center">
+      <div class="banner-content">
+        <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
+        <p>Discover cultural experiences in your city</p>
 
-      <!-- class="form-inline" -->
-      <div class="search-form-bar">
-        <div class="form-fields">
-          <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => "form-inline"} do |f| %>
-          <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
-          <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "  When?" %>
-           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
-          <% end %>
+        <!-- class="form-inline" -->
+        <div class="search-form-bar">
+          <div class="form-fields">
+            <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
+            <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
+            <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "When?" %>
+            <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
+            <!--           <%# f.button :submit, class: "btn btn-danger", value: "Search" %> -->
+            <% end %>
+          </div>
         </div>
       </div>
+      <a href="#inspiration-card" class="be-inspired">
+        <div class="text-center">
+          <!-- <p>BE INSPIRED</p> -->
+          <div class="director"><%= image_tag "bar-04.png" %> </div>
+        </div>
+      </a>
     </div>
-    <a href="#inspiration-card" class="be-inspired">
-      <div class="text-center">
-        <!-- <p>BE INSPIRED</p> -->
-        <div class="director"><%= image_tag "bar-04.png" %> </div>
-      </div>
-    </a>
+  </div>
+
+
+  <p class="text-center title-home"><span>HOW DO YOU FEEL LIKE?</span> </p>
+  <div class="container container-moods">
+    <div class="flex-list">
+      <ul class="list-inline text-center list-moods">
+        <li data-mood="Romantic" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'romantic.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-02" %><p>ROMANTIC</p></a></li>
+        <li data-mood="Wild" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'wild.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-01" %><p>WILD</p></a></li>
+        <li data-mood="Nerdy" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'nerdy.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-04" %><p>NERDY</p></a></li>
+        <li data-mood="Glamorous" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'glamorous.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-05" %><p>GLAMOROUS</p></a></li>
+        <li data-mood="Dramatic" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'drama.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-03" %><p>DRAMATIC</p></a></li>
+      </ul>
+    </div>
   </div>
 </div>
 
