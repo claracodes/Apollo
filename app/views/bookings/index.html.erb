@@ -1,8 +1,19 @@
 <h1>Hello <span><%= current_user.first_name %></span></h1>
+<div class="wrapper-tab">
+  <div class="tabs">
+    <%= link_to  dashboard_path, class: "tab" do %>
+    <h3>Calendar</h3>
+    <% end %>
+    <%= link_to dashboard_bookmarks_path, class: "tab" do %>
+    <h3>Bookmarks</h3>
+    <% end %>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
 
-    <div class="col-xs-12 col-sm-6 col-md-5">
+    <div class="col-xs-12 col-sm-6">
       <div class="booking-list">
         <h3>Your bookings:</h3>
         <% @bookings.each do |booking| %>
@@ -20,15 +31,10 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-4 cal">
+    <div class="col-xs-12 col-sm-6">
       <div id="calendar"></div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class='placeholder'>
-        <h5>Social activites:</h5>
-      </div>
-    </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
@@ -38,10 +44,9 @@
 </div>
 
 
-
 <!-- javascript -->
-
 <% content_for(:after_js) do %>
+<!-- this is the map -->
 <%= javascript_tag do %>
 var styles = [{
 "featureType": "water",

@@ -9,5 +9,5 @@
 //= require moment
 //= require fullcalendar
 
-$('#calendar').fullCalendar({});
+
 //= require_tree .

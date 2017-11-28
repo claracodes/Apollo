@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127104734) do
+ActiveRecord::Schema.define(version: 20171128161526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20171127104734) do
     t.string   "photo"
     t.boolean  "english"
     t.string   "mood"
+    t.date     "end_time"
     t.index ["venue_id"], name: "index_events_on_venue_id", using: :btree
   end
 
