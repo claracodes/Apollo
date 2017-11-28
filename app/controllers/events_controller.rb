@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     session[:search_query] = params[:search] || params
     @query = session[:search_query]
     if params[:search]
+
       @events = policy_scope(Event)
       @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
       @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
@@ -26,20 +27,16 @@ class EventsController < ApplicationController
       @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
       # @events = @events.where(english: @query[:english]) if @query[:english].present?
     else
-      @events = Event.all
+      @events = policy_scope(Event)
     end
-
     @venues = Venue.where(id: @events.map(&:venue_id))
     for_maps
   end
 
   def upvote
     @event = set_event
-    authorize @event
-
     @event.upvote_from current_user
-
-    redirect_to events_path
+    authorize @event
   end
 
   private
