@@ -22,6 +22,15 @@
     opacity: 0.3;
   }
 }
+.normal-search {
+  cursor: pointer;
+  font-weight: lighter;
+  text-decoration: underline;
+  color: #7F7F7F;
+  &:hover {
+    color: #BFBFBF;
+  }
+}
 
 @media screen and (max-width: 760px) {
   #logo-home {

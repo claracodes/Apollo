@@ -12,7 +12,7 @@
             <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
             <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "When?" %>
             <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
-            <!--           <%# f.button :submit, class: "btn btn-danger", value: "Search" %> -->
+            <% f.button :submit, as: :hidden, value: "Search", input_html: { id: "hidden-search"} %>
             <% end %>
           </div>
         </div>
@@ -28,7 +28,7 @@
 
 
   <p class="text-center title-home">
-    <span>HOW DO YOU FEEL LIKE?</span>
+    <span>WHAT DO YOU FEEL LIKE?</span>
   </p>
   <div class="container container-moods">
     <div class="flex-list">
@@ -56,6 +56,7 @@
       </ul>
     </div>
   </div>
+  <p data-search="Search" class="normal-search text-center">or Search without moods</p>
 </div>
 
 <div class='wrapper-card' id="inspiration-card">

@@ -1,5 +1,5 @@
 .container-moods {
-  height: calc(38vh - 80px);
+  height: calc(38vh - 100px);
   display: flex;
   justify-content: space-around;
 }
@@ -83,14 +83,10 @@
   align-items: center;
 }
 .title-home {
-  padding: 30px 0 0 0;
+  padding: 22px 0 0 0;
   margin: 0;
   color: $gray;
   font-size: 24px;
   font-weight: lighter;
   text-transform: uppercase;
-    // span {
-    //   background-color: $red;
-    //   padding: 5px 10px;
-    // }
   }
