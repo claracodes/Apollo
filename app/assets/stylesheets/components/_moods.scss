@@ -1,9 +1,10 @@
 .container-moods {
-  height: calc(38vh - 100px);
+  height: calc(38vh - 115px);
   display: flex;
   justify-content: space-around;
 }
 .list-moods {
+  margin-bottom: 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -16,8 +17,8 @@
     align-items: center;
     justify-content: space-around;
     border-radius: 50%;
-    min-height: 140px;
-    min-width: 140px;
+    min-height: 125px;
+    min-width: 125px;
     transition: all 0.3s ease;
     img {
       width: 70px;
