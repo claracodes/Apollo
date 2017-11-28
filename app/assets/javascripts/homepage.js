@@ -15,3 +15,10 @@ $(".list-moods > li").click(function(e) {
   $('#home-form').submit();
 });
 
+$(".normal-search").click(function(e) {
+  e.preventDefault();
+  // fetch value of button (nerdy, ...)
+  var search = $(this).data("search") // returns the value data-mood of the li
+  // submit the value to the whole simple_form
+  $('#home-form').submit();
+});
