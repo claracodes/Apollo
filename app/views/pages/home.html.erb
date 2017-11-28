@@ -27,15 +27,32 @@
   </div>
 
 
-  <p class="text-center title-home"><span>HOW DO YOU FEEL LIKE?</span> </p>
+  <p class="text-center title-home">
+    <span>HOW DO YOU FEEL LIKE?</span>
+  </p>
   <div class="container container-moods">
     <div class="flex-list">
       <ul class="list-inline text-center list-moods">
-        <li data-mood="Romantic" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'romantic.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-02" %><p>ROMANTIC</p></a></li>
-        <li data-mood="Wild" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'wild.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-01" %><p>WILD</p></a></li>
-        <li data-mood="Nerdy" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'nerdy.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-04" %><p>NERDY</p></a></li>
-        <li data-mood="Glamorous" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'glamorous.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-05" %><p>GLAMOROUS</p></a></li>
-        <li data-mood="Dramatic" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'drama.jpg' %>); background-size: cover;"><%= image_tag "icons-apollo-03" %><p>DRAMATIC</p></a></li>
+        <li id="romantic" data-mood="Romantic">
+          <%= image_tag "icons-apollo-02" %>
+          <p>ROMANTIC</p>
+        </li>
+        <li id="wild" data-mood="Wild">
+          <%= image_tag "icons-apollo-01" %>
+          <p>WILD</p>
+        </li>
+        <li id="nerdy" data-mood="Nerdy">
+          <%= image_tag "icons-apollo-04" %>
+          <p>NERDY</p>
+        </li>
+        <li id="glamorous" data-mood="Glamorous">
+          <%= image_tag "icons-apollo-05" %>
+          <p>GLAMOROUS</p>
+        </li>
+        <li id="dramatic" data-mood="Dramatic" style="background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url(<%= image_path 'drama.jpg' %>); background-size: cover;">
+          <%= image_tag "icons-apollo-03" %>
+          <p>DRAMATIC</p>
+        </li>
       </ul>
     </div>
   </div>

@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-around;
   li {
+    background-size: cover;
     cursor: pointer;
     filter: grayscale(100%);
     position: relative;
@@ -31,7 +32,6 @@
       margin: 0;
     }
     &:hover {
-      background: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(127,24,49,0.6) 20%);
       filter: none;
       p {
         display: block
@@ -42,6 +42,38 @@
     }
   }
 }
+
+#romantic {
+  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('romantic.jpg');
+  &:hover {
+    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('romantic.jpg');
+  }
+}
+#wild {
+  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('wild.jpg');
+  &:hover {
+    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('wild.jpg');
+  }
+}
+#nerdy {
+  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('nerdy.jpg');
+  &:hover {
+    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('nerdy.jpg');
+  }
+}
+#dramatic {
+  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('drama.jpg');
+  &:hover {
+    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('drama.jpg');
+  }
+}
+#glamorous {
+  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('glamorous.jpg');
+  &:hover {
+    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('glamorous.jpg');
+  }
+}
+
 .flex-list {
   color: white;
   font-weight: bolder;
@@ -61,4 +93,4 @@
     //   background-color: $red;
     //   padding: 5px 10px;
     // }
-}
+  }
