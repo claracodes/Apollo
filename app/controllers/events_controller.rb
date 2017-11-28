@@ -33,11 +33,21 @@ class EventsController < ApplicationController
     for_maps
   end
 
+  def upvote
+    set_event
+    @event.upvote_from current_user
+    redirect_to events_path
+  end
+
   private
 
   # def host?
   #   current_user.host
   # end
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:date, :city, :category)

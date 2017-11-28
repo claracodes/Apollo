@@ -19,6 +19,7 @@ gem 'omniauth-facebook'
 gem "selectize-rails"
 gem 'jquery-ui-rails'
 gem 'pundit'
+gem 'acts_as_votable', '~> 0.11.1'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

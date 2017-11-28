@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
+
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
@@ -28,4 +30,7 @@ class User < ApplicationRecord
   has_many :events
   has_many :bookings
   has_many :venues #for the hosts
+
+  # For the bookmark feature:
+  acts_as_voter
 end
