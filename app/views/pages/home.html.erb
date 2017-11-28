@@ -56,6 +56,15 @@
         </div>
         <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
         <p class="desc"><%= event.description %></p>
+
+        <!-- Testing bookmark button // I changed "put" for "get" -->
+        <%= link_to upvote_event_path(event), method: :put do %>
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-bookmark"></span> Bookmark
+          <span class="badge"><%= event.get_upvotes.size %></span>
+        </button>
+        <% end %>
+
       </div>
     </div>
     <% end %>

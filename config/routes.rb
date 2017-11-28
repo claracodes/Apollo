@@ -9,9 +9,13 @@ Rails.application.routes.draw do
   get "bookings/:id", to: 'bookings#show', as: :booking
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htmlx
   resources :events, only: [:show, :index, :new, :edit, :destroy] do
+    # Added for upvotes // I changed "put" for "get"
+    member do
+      put "upvote", to: "events#upvote"
+    end
     resources :bookings, only: [:new, :create] do
       member do
-        get '/payment', to: "bookings#payment", as: :payment
+        put '/payment', to: "bookings#payment", as: :payment
       end
     end
     collection do                       # collection => no restaurant id in URL (member has it)
