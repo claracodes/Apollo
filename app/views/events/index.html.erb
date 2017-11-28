@@ -241,20 +241,27 @@ var styles = [{
   }
   ]
 }];
-var handler = Gmaps.build('Google');
 
-handler.buildMap({ provider: {styles: styles},
-internal: { id: 'map-search' } }, function() {
 
-markers = handler.addMarkers(<%= raw @hash.to_json %>);
+var handler = Gmaps.build('Google', { markers: { clusterer: null } });
 
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length == 0) {
-handler.getMap().setZoom(2);
-} else if (markers.length == 1) {
-handler.getMap().setZoom(14);
-}
+handler.buildMap({ provider: {styles: styles}, internal: { id: 'map-search' } }, function() {
+
+markers = (<%= raw @hash.to_json %>)
+console.log(markers)
+
+Gmaps.store = {}
+Gmaps.store.markers = markers.map(function(m) {
+  marker = handler.addMarker(m);
+  marker.serviceObject.set('id', m.id);
+  return marker;
 });
+handler.bounds.extendWith(Gmaps.store.markers);
+handler.fitMapToBounds();
+});
+
+
+
+
 <% end %>
 <% end %>
