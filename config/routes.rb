@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   resources :events, only: [:show, :index, :new, :edit, :destroy] do
     # Added for upvotes // I changed "put" for "get"
     member do
-      get "bookmark", to: "events#upvote"
+      put "upvote", to: "events#upvote"
     end
     resources :bookings, only: [:new, :create] do
       member do
-        get '/payment', to: "bookings#payment", as: :payment
+        put '/payment', to: "bookings#payment", as: :payment
       end
     end
     collection do                       # collection => no restaurant id in URL (member has it)

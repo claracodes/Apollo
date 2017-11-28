@@ -34,8 +34,11 @@ class EventsController < ApplicationController
   end
 
   def upvote
-    set_event
+    @event = set_event
+    authorize @event
+
     @event.upvote_from current_user
+
     redirect_to events_path
   end
 
