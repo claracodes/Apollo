@@ -57,10 +57,9 @@
         <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
         <p class="desc"><%= event.description %></p>
 
-        <!-- Testing bookmark button // I changed "put" for "get" -->
-        <%= link_to upvote_event_path(event), method: :put do %>
-        <button type="button" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-bookmark"></span> Bookmark
+        <%= link_to upvote_event_path(event), method: :put, remote: true do %>
+        <button type="button" class="btn btn-default btn-sm" id="bookmark-<%= event.id %>">
+          <span class="glyphicon glyphicon-heart-empty"></span> Bookmark
           <span class="badge"><%= event.get_upvotes.size %></span>
         </button>
         <% end %>
@@ -68,6 +67,7 @@
       </div>
     </div>
     <% end %>
+    </div>
   </div>
 </div>
-</div>
+

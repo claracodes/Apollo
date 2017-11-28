@@ -1,0 +1,13 @@
+const bookmarked = document.getElementById("bookmark-<%= @event.id %>");
+console.log("helllo")
+const votes = "<%= @event.get_upvotes.size %>"
+bookmarked.querySelector(".badge").innerHTML = votes
+const heart = bookmarked.querySelector(".glyphicon")
+if (<%= current_user.liked? @event %>) {
+  heart.classList.remove("glyphicon-heart-empty");
+  heart.classList.add("glyphicon-heart");
+} else {
+  heart.classList.remove("glyphicon-heart");
+  heart.classList.add("glyphicon-heart-empty");
+}
+
