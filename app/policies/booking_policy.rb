@@ -12,4 +12,8 @@ class BookingPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  # def bookmark?
+  #   true
+  # end
 end
