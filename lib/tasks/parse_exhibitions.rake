@@ -27,7 +27,7 @@ namespace :parse  do
     # user_id: host1.id,
     # remote_photo_url: ,
   )
-  p Venue.name
+  p @venue_name
   end
 end
 #byebug
