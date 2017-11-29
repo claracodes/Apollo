@@ -35,8 +35,16 @@ def index
 
   def upvote
     @event = set_event
-    @event.upvote_from current_user
+    if current_user.voted_for? @event
+      @event.unliked_by current_user
+    else
+      @event.liked_by current_user
+    end
     authorize @event
+    respond_to do |format|
+      format.html { redirect_to "/" }
+      format.js # upvote.js.erb
+    end
   end
 
   private
