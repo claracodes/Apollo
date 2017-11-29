@@ -1,0 +1,30 @@
+// overwriting the default css settings from fullcalendar - therefore the many importants
+
+#calendar{
+  font-family: $body-font;
+  font-size: 16px;
+  color: $red;
+  background-color: white;
+  padding: 20px;
+}
+
+.fc-today {
+  background: $light-gray !important;
+}
+
+.fc-button {
+  border-radius: 0 !important;
+  background-color: $light-gray !important;
+  border: none !important;
+  font-family: $body-font !important;
+  cursor: default !important;
+}
+
+.fc-state-default {
+  background-image: none !important;
+  text-shadow: none !important;
+}
+
+.fc-state-hover {
+  background-color: $red !important;
+}

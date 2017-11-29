@@ -27,7 +27,7 @@ class User < ApplicationRecord
     return user
   end
 
-  has_many :events
+  has_many :events, through: :bookings
   has_many :bookings
   has_many :venues #for the hosts
 

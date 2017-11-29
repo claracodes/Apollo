@@ -49,14 +49,13 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking).order(created_at: :desc)
 
     @venues = Event.where(id: @bookings.pluck(:event_id)).map(&:venue)
-    @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
-      marker.lat venue.latitude
-      marker.lng venue.longitude
-      marker.picture({url: 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-32.png', width: 32, height: 32})
-      marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
-    end
+    # @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
+    #   marker.lat venue.latitude
+    #   marker.lng venue.longitude
+    #   marker.picture({url: 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-32.png', width: 32, height: 32})
+    #   marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
+    # end
 
-    #authorize @booking
   end
 end
 
