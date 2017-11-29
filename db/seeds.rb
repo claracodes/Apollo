@@ -211,29 +211,4 @@ end
 #  remote_photo_url: 'http://res.cloudinary.com/daqyyyytv/image/upload/v1511534713/ari-he-317209_naeghh.jpg')
 # )
 
-# Scraper for Category Exhibition
 
-@exhibition = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/en/exhibitions/?selected_date=2017-12-04"))
-@count_exhibition = 1 if @count_exhibition == 20
-
-20.times do |i|
- if @exhibition.xpath("//*[@id='container']/div/div[#{i}]/a/h3").empty?
-  p "empty"
-#  byebug
- else
-#  @exhibition_url = @exhibition.xpath("//*[@id='container']/div/div[1]/div[#{i}]/a").attr("href")
-  p "not empty"
-  r = Event.create!(
-    name: @exhibition.xpath("//*[@id='container']/div/div[#{i}]/a/h3").text.strip,
-    description: "test",
-    category: "exhibition",
-    tags: "Dramatic",
-    date: Faker::Date.forward(1),
-    price: 15,
-    mood: "Dramatic",
-    venue_id: museum6.id,
-    city: 'Berlin',
-    remote_photo_url: 'http://res.cloudinary.com/daqyyyytv/image/upload/v1511534713/ari-he-317209_naeghh.jpg'
-  )
- end
-end
