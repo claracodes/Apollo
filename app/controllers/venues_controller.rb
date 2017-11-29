@@ -17,7 +17,25 @@ class VenuesController < ApplicationController
     @event_pages = true
   end
 
+  def upvote
+    @venue = set_venue
+    if current_user.voted_for? @venue
+      @venue.unliked_by current_user
+    else
+      @venue.liked_by current_user
+    end
+    authorize @venue
+    respond_to do |format|
+      format.html { redirect_to "/" }
+      format.js # upvote.js.erb
+    end
+  end
+
   private
+
+  def set_venue
+    @venue = Venue.find(params[:id])
+  end
 
   def for_maps
     @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|

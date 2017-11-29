@@ -1,6 +1,11 @@
-<h2>Social stuff</h2>
-<% current_user.friends.each do |friend|  %>
-    <% friend.events.each do |event| %>
-     <%=  friend.first_name %> is going to <%= event.name %> <br>
+<h1>Hello <span><%= current_user.first_name %></span></h1>
+<div class="wrapper-tab">
+  <div class="tabs">
+    <%= link_to  dashboard_path, class: "tab" do %>
+    <h3>Calendar</h3>
     <% end %>
-<% end  %>
+    <%= link_to dashboard_bookmarks_path, class: "tab" do %>
+    <h3>Bookmarks</h3>
+    <% end %>
+  </div>
+</div>

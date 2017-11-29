@@ -57,7 +57,9 @@ class BookingsController < ApplicationController
     # end
 
     def bookmark #for now this page is used for displaying/playing/trying out the social newsfeed
+      @event_pages = true
       skip_authorization
+
     end
   end
 end
