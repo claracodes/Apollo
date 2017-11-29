@@ -5,6 +5,7 @@ namespace :parse  do
 30.times do |d|
 @event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/en/exhibitions/?selected_date=2017-12-#{d + 1}"))
 @date = Date.parse("Dec #{d + 1} 2017")
+p @date
 
   # Venue Creator
   20.times do |i|
@@ -41,12 +42,12 @@ namespace :parse  do
   # Event Creator
 
   20.times do |i|
-    puts "this is event #{i}"
+#    puts "this is event #{i}"
     # checks if the accessed container is empty
     if @event.xpath("//*[@id='container']/div/div[#{i}]/a/h3").empty?
-      p "empty"
+#      p "empty"
     else
-      p "not empty"
+#      p "not empty"
       # creates url of event outside of index page
       @event_url = "https://www.museumsportal-berlin.de/#{@event.xpath("//*[@id='container']/div/div[#{i}]/a").attr('href').text.strip}"
       # creates Nokogiri variable with Event-URL
@@ -68,6 +69,7 @@ namespace :parse  do
         city: 'Berlin',
         remote_photo_url: @picture_url,
         )
+      p @event.xpath("//*[@id='container']/div/div[#{i}]/a/h3").text.strip
       # byebug
       #p @picture_url
     end

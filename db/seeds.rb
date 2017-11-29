@@ -191,24 +191,3 @@ puts 'Creating 10 new bookings'
   booking = Booking.new(event: @event, user: @user)
   booking.save!
 end
-
-
-# Scraper for Category Exhibition
-
-#@exhibition = Nokogiri::HTML(open("https://www.visitberlin.de/en/event-calendar-berlin?cat%5B%5D=9315&keys=&date_between%5Bmin%5D=2017-12-04&date_between%5Bmax%5D=2017-12-04&district=All&page=0"))
-
-#20.times do
-#  r = Event.create!(
-#  name: @exhibition.xpath("//*[@id="main-content"]/div[2]/ul/li[1]/article/div[2]/h3/a").text.strip
-#  description: ",
-#  category: "exhibition",
-#  tags: "",
-#  date: Faker::Date.forward(1),
-#  price: 15,
-#  mood: "Dramatic",
-#  venue_id: museum6.id,
-#  city: 'Berlin',
-#  remote_photo_url: 'http://res.cloudinary.com/daqyyyytv/image/upload/v1511534713/ari-he-317209_naeghh.jpg')
-# )
-
-
