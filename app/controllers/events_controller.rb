@@ -35,9 +35,10 @@ def index
 
   def upvote
     @event = set_event
-    @event.liked_by current_user
-    unless @event.vote_registered?
+    if current_user.voted_for? @event
       @event.unliked_by current_user
+    else
+      @event.liked_by current_user
     end
     authorize @event
     respond_to do |format|

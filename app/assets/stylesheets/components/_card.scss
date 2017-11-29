@@ -10,7 +10,7 @@
   border-bottom: 1px solid #E6E6E6;
   padding: 20px;
   width: 100%;
-  a {
+  & > a {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -98,6 +98,12 @@
       background-color: transparent;
     }
   }
+  .heart-bookmark p {
+    padding: 0;
+    font-size: 30px;
+    border: 0;
+    color: $red;
+  }
   .event-name-price {
     display: flex;
     justify-content: space-between;
@@ -124,5 +130,6 @@
   }
 }
 // just to update the branch
+
 
 
