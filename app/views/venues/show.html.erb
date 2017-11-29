@@ -1,1 +1,384 @@
-<h1>Hello world</h1>
+<div class="wrapper">
+  <div class="header-venue">
+    <div class="image-venue"  style="background-image: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(15,15,15,0.8) 100%), url('<%= cl_image_path(@venue.photo) %>'); background-size: cover">
+      &nbsp;
+    </div>
+    <div class="venue-infos">
+      <h1><span><%= @venue.name %></span></h1>
+      <p class="address"><%= @venue.address %></p>
+      <p><i class="fa fa-phone" aria-hidden="true"></i> <%= @venue.phone %> -
+        <i class="fa fa-envelope" aria-hidden="true"></i> <%= @venue.email %></p>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="flex-desc">
+      <div class="right-infos">
+        <div class="event-desc venue-desc">
+          <div class="venue-infos">
+          </div>
+          <h4>ABOUT</h4>
+          <p class="show-desc"><%= @venue.description %></p>
+        </div>
+        <!-- cards -->
+        <div class="cards">
+          <% @venue.events.each do |event| %>
+          <div class='event-card'>
+            <%= link_to "", event_path(event) %>
+            <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
+            <div class="info">
+              <div class="event-name-price">
+                <h3><span><%= event.name %></span></h3>
+                <p> <%= event.price %> € </p>
+              </div>
+              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %>
+                <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div id="map-search" ></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- javascript -->
+  <!-- javascript -->
+  <% content_for(:after_js) do %>
+
+  <%= javascript_tag do %>
+  var styles = [
+  {
+    "featureType": "all",
+    "elementType": "all",
+    "stylers": [
+    {
+      "visibility": "on"
+    }
+    ]
+  },
+  {
+    "featureType": "all",
+    "elementType": "labels",
+    "stylers": [
+    {
+      "visibility": "on"
+    }
+    ]
+  },
+  {
+    "featureType": "all",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "on"
+    }
+    ]
+  },
+  {
+    "featureType": "all",
+    "elementType": "labels.text.fill",
+    "stylers": [
+    {
+      "saturation": 36
+    },
+    {
+      "color": "#333333"
+    },
+    {
+      "lightness": 40
+    },
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "all",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+    {
+      "visibility": "on"
+    },
+    {
+      "color": "#ffffff"
+    },
+    {
+      "lightness": 16
+    }
+    ]
+  },
+  {
+    "featureType": "all",
+    "elementType": "labels.icon",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+      "lightness": 20
+    }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+    {
+      "color": "#fefefe"
+    },
+    {
+      "lightness": 17
+    },
+    {
+      "weight": 1.2
+    }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "administrative.province",
+    "elementType": "geometry",
+    "stylers": [
+    {
+      "visibility": "on"
+    }
+    ]
+  },
+  {
+    "featureType": "administrative.locality",
+    "elementType": "all",
+    "stylers": [
+    {
+      "visibility": "on"
+    }
+    ]
+  },
+  {
+    "featureType": "administrative.neighborhood",
+    "elementType": "all",
+    "stylers": [
+    {
+      "visibility": "on"
+    }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "all",
+    "stylers": [
+    {
+      "visibility": "on"
+    }
+    ]
+  },
+  {
+    "featureType": "landscape",
+    "elementType": "geometry",
+    "stylers": [
+    {
+      "color": "#f5f5f5"
+    },
+    {
+      "lightness": 20
+    }
+    ]
+  },
+  {
+    "featureType": "landscape",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "landscape.man_made",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+      "color": "#f4f4f4"
+    }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+    {
+      "color": "#f5f5f5"
+    },
+    {
+      "lightness": 21
+    }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+      "color": "#f2f2f2"
+    }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+    {
+      "color": "#dedede"
+    },
+    {
+      "lightness": 21
+    }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+      "color": "#edffeb"
+    }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "on"
+    }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+      "color": "#ffffff"
+    },
+    {
+      "lightness": 17
+    }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+    {
+      "color": "#ffffff"
+    },
+    {
+      "lightness": 29
+    },
+    {
+      "weight": 0.2
+    }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+    {
+      "color": "#ffffff"
+    },
+    {
+      "lightness": 18
+    }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "geometry",
+    "stylers": [
+    {
+      "color": "#ffffff"
+    },
+    {
+      "lightness": 16
+    }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "geometry",
+    "stylers": [
+    {
+      "color": "#f2f2f2"
+    },
+    {
+      "lightness": 19
+    }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+    {
+      "color": "#e9e9e9"
+    },
+    {
+      "lightness": 17
+    }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+      "color": "#dfeffa"
+    }
+    ]
+  }
+  ]
+
+
+var handler = Gmaps.build('Google');
+handler.buildMap({ provider: {styles: styles},
+internal: { id: 'map-search' } }, function() {
+markers = handler.addMarkers(<%= raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
+});
+
+<% end %>
+<% end %>
