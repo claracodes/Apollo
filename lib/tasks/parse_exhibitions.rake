@@ -15,7 +15,7 @@ namespace :parse  do
       @exhibition_url = "https://www.museumsportal-berlin.de/#{@exhibition.xpath("//*[@id='container']/div/div[#{i}]/a").attr('href').text.strip}"
       @exhibition_url_nokogiri = Nokogiri::HTML(open("#{@exhibition_url}"))
       @event_price = @exhibition_url_nokogiri.xpath("//*[@id='collapse-prices']/div/dl[1]/dd").empty? ? "Free Admission" : @exhibition_url_nokogiri.xpath("//*[@id='collapse-prices']/div/dl[1]/dd").text.strip
-      @picture_url = "https://www.museumsportal-berlin.de/#{@exhibition_url_nokogiri.xpath("//*[@id='cover_img']/a[1]/img")}".nil? ? "https://www.museumsportal-berlin.de/#{@exhibition_url_nokogiri.xpath("//*[@id='cover_img']/a[1]/img").attr("data-original").value}" : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/200px-No_image_available.svg.png"
+      @picture_url = @exhibition_url_nokogiri.xpath("//*[@id='cover_img']/a[1]/img").empty? ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/200px-No_image_available.svg.png" : "https://www.museumsportal-berlin.de/#{@exhibition_url_nokogiri.xpath("//*[@id='cover_img']/a[1]/img").attr("data-original").value}"
 #      p @event_price
       r = Event.create!(
         name: @exhibition.xpath("//*[@id='container']/div/div[#{i}]/a/h3").text.strip,
@@ -27,7 +27,7 @@ namespace :parse  do
         mood: "Dramatic",
         venue_id: Venue.find_by_name("City Museum Berlin").id,
         city: 'Berlin',
-        remote_photo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/200px-No_image_available.svg.png",
+        remote_photo_url: @picture_url,
       )
 #      byebug
       p @picture_url
