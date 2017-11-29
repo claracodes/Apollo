@@ -14,14 +14,13 @@
 </div>
 
 <div class="wrapper">
-
 <div class="container container-margin-top">
   <div class="flex-desc">
     <div class="event-desc">
       <h4>ABOUT</h4>
       <p><%= @event.description %></p>
       <p>You’ve probably seen a streamlined, amped version of Shakespeare before, but the gimmick here is that at each performance, one actor begins by consuming enough shots to trip even the best-trained tongue. At Wednesday’s show it was Caitlin Morris, who played Lady Macbeth and one of the witches. The show’s alcoholic content also gives a certain license to the onlookers, who become participants in the festivities. Two audience members in particular are involved, having paid extra for the privilege of sitting on thrones, where they are given champagne, caviar and the right to order the designated drinker to drink even more shots.</p>
-      <%= link_to 'Go back', events_path(search: session[:search_query]), class: 'link-back' %>
+      <%= link_to '< Go back', events_path(search: session[:search_query]), class: 'link-back' %>
     </div>
       <div class="box-event">
         <div class="price">
@@ -31,6 +30,12 @@
         <div class="form-group">
           <%= link_to 'Book now', new_event_booking_path(@event), class: "btn btn-danger btn-block event-input" %>
         </div>
+
+        <%= link_to upvote_event_path(@event), class: "heart-bookmark", method: :put, remote: true do %>
+          <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(@event) ? '' : '-empty' %>" id="bookmark-<%= @event.id %>"></p>
+          <span>Bookmark</span>
+        <% end %>
+
       </div>
     </div>
   </div>
