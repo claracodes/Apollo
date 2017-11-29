@@ -10,4 +10,7 @@ class Venue < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  # For the bookmark feature:
+  acts_as_votable
 end

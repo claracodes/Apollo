@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :venues, only: [:index, :edit, :show]
+  resources :venues, only: [:index, :edit, :show] do
+    member do
+        put "upvote", to: "venues#upvote"
+      end
+    end
 
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.host } do
