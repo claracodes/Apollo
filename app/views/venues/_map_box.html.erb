@@ -6,7 +6,7 @@
   <br>
 
   <!-- <h6>Current events at <%= venue.name %></h6> -->
-  <% venue.events.take(3).each do |event| %>
+  <% venue.events.take(2).each do |event| %>
   <!-- can use .recent(3)/random(3) -->
   <%= link_to "", event_path(event) %>
   <div class="map-card">
@@ -19,7 +19,7 @@
   <div class="text-center">
     </br>
     <p> There are <strong><%= venue.events.count %></strong> events at <%= venue.name %></p>
-    <h5><%= link_to "See More", venue_path(venue), class: 'link-back' %></h4>
+    <h5><%= link_to "See More", venue_path(venue), class: 'link-back' %></h5>
   </div>
 </div>
 

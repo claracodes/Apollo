@@ -1,0 +1,49 @@
+.header-venue {
+  position: relative;
+  margin-bottom: 140px;
+  color: $gray;
+}
+.image-venue {
+  min-height: 400px;
+  height: 100%;
+  width: 100vw;
+  background-position: center;
+}
+
+.right-infos {
+  flex: 1;
+  max-width: 100%;
+}
+.show-desc {
+  font-weight: lighter;
+}
+.venue-desc {
+  margin: 0 auto 70px auto;
+}
+.venue-infos {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: -102px;
+  text-align: center;
+  .address {
+    margin-bottom: 0;
+    margin-top: 18px;
+  }
+  p {
+    margin-top: 0;
+    font-size: 15px;
+    i {
+      color: $red;
+    }
+  }
+  h1 {
+    text-transform: uppercase;
+    font-size: 50px;
+    span {
+      padding: 5px 15px;
+      background-color: $red;
+    }
+  }
+}
