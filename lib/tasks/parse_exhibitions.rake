@@ -21,10 +21,10 @@ namespace :parse  do
         name: @exhibition.xpath("//*[@id='container']/div/div[#{i}]/a/h3").text.strip,
         description: @exhibition_url_nokogiri.xpath("//*[@id='exhibition']/div/div/div[1]/article/div[5]/p[1]").text.strip,
         category: "exhibition",
-        tags: "Dramatic",
+        tags: ["Dramatic", "Romantic", "Modern", "Funny"].sample,
         date: Faker::Date.forward(1),
         price: @event_price,
-        mood: "Dramatic",
+        mood: ["Dramatic", "Romantic", "Glamorous", "Wild", "Nerdy"].sample,
         venue_id: Venue.find_by_name("City Museum Berlin").id,
         city: 'Berlin',
         remote_photo_url: @picture_url,
@@ -36,5 +36,6 @@ namespace :parse  do
     byebug
   end
 end
+
 
 #([^\+]+).*/.match
