@@ -1,5 +1,4 @@
 const bookmarked = document.getElementById("bookmark-<%= @event.id %>");
-console.log("helllo")
 const votes = "<%= @event.get_upvotes.size %>"
 bookmarked.querySelector(".badge").innerHTML = votes
 const heart = bookmarked.querySelector(".glyphicon")

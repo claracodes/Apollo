@@ -46,28 +46,34 @@
    <div class="cards">
     <p class="title-home text-center"><span>Our latest discoveries</span></p>
     <% @events.each do |event| %>
-    <div class='event-card'>
-      <%= link_to "", event_path(event) %>
-      <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
-      <div class="info">
-        <div class="event-name-price">
-          <h3><span><%= event.name %></span></h3>
-          <p> <%= event.price %> € </p>
+      <div class='event-card'>
+        <%= link_to "", event_path(event) %>
+        <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
+        <div class="info">
+          <div class="event-name-price">
+            <h3><span><%= event.name %></span></h3>
+            <p> <%= event.price %> € </p>
+          </div>
+          <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
+          <p class="desc"><%= event.description %></p>
+
+          <%= link_to upvote_event_path(event), method: :put, remote: true do %>
+            <button type="button" class="btn btn-default btn-sm" id="bookmark-<%= event.id %>">
+              <span class="glyphicon glyphicon-heart-empty"></span>
+              <span class="badge"><%= event.get_upvotes.size %></span>
+            </button>
+          <% end %>
+
         </div>
-        <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
-        <p class="desc"><%= event.description %></p>
-
-        <%= link_to upvote_event_path(event), method: :put, remote: true do %>
-        <button type="button" class="btn btn-default btn-sm" id="bookmark-<%= event.id %>">
-          <span class="glyphicon glyphicon-heart-empty"></span> Bookmark
-          <span class="badge"><%= event.get_upvotes.size %></span>
-        </button>
-        <% end %>
-
       </div>
-    </div>
     <% end %>
-    </div>
   </div>
 </div>
+</div>
 
+
+<!-- & > a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  } -->
