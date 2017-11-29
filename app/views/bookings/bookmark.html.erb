@@ -1,0 +1,6 @@
+<h2>Social stuff</h2>
+<% current_user.friends.each do |friend|  %>
+    <% friend.events.each do |event| %>
+     <%=  friend.first_name %> is going to <%= event.name %> <br>
+    <% end %>
+<% end  %>

@@ -27,5 +27,10 @@ Rails.application.routes.draw do
 
   resources :venues, only: [:index, :edit, :show]
 
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.host } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   root to: 'pages#home'
 end

@@ -56,6 +56,9 @@ class BookingsController < ApplicationController
     #   marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
     # end
 
+    def bookmark #for now this page is used for displaying/playing/trying out the social newsfeed
+      skip_authorization
+    end
   end
 end
 

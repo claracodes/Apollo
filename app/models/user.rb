@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
-
+  attr_reader :last_name
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -33,4 +33,13 @@ class User < ApplicationRecord
 
   # For the bookmark feature:
   acts_as_voter
+
+  def friends
+    graph = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
+    friends = graph.get_connections(uid, "friends") || []
+    users = friends.map do |friend|
+      User.find_by(uid: friend['id'])
+    end
+    users
+  end
 end
