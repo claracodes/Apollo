@@ -1,32 +1,76 @@
-<div class="banner" style='background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url("https://images.unsplash.com/photo-1485518994577-6cd6324ade8f?auto=format&fit=crop&w=944&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");'>
-  <div class="container text-center">
-    <div class="banner-content">
-      <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
-      <p>Discover cultural experiences in your city</p>
+<div class="wrapper wrapper-home">
+  <div class="banner banner-home">
+  <div class="navbar-home">
+    <% if user_signed_in? %>
+    <%= link_to "Dashboard", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% else %>
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+  </div>
 
-      <!-- class="form-inline" -->
-      <div class="search-form-bar">
-        <div class="form-fields">
-          <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => "form-inline"} do |f| %>
-          <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
-          <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "  When?" %>
-           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
-          <% end %>
+    <div class="container text-center">
+      <div class="banner-content">
+        <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
+        <p>Discover cultural experiences in your city</p>
+
+        <!-- class="form-inline" -->
+        <div class="search-form-bar">
+          <div class="form-fields">
+            <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
+            <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
+            <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "When?" %>
+            <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
+            <% f.button :submit, as: :hidden, value: "Search", input_html: { id: "hidden-search"} %>
+            <% end %>
+          </div>
         </div>
       </div>
+      <a href="#inspiration-card" class="be-inspired">
+        <div class="text-center">
+          <!-- <p>BE INSPIRED</p> -->
+          <div class="director"><%= image_tag "bar-04.png" %> </div>
+        </div>
+      </a>
     </div>
-    <a href="#inspiration-card" class="be-inspired">
-      <div class="text-center">
-        <!-- <p>BE INSPIRED</p> -->
-        <div class="director"><%= image_tag "bar-04.png" %> </div>
-      </div>
-    </a>
   </div>
+
+
+  <p class="text-center title-home">
+    <span>WHAT DO YOU FEEL LIKE?</span>
+  </p>
+  <div class="container container-moods">
+    <div class="flex-list">
+      <ul class="list-inline text-center list-moods">
+        <li id="romantic" data-mood="Romantic">
+          <%= image_tag "icons-apollo-02" %>
+          <p>ROMANTIC</p>
+        </li>
+        <li id="wild" data-mood="Wild">
+          <%= image_tag "icons-apollo-01" %>
+          <p>WILD</p>
+        </li>
+        <li id="nerdy" data-mood="Nerdy">
+          <%= image_tag "icons-apollo-04" %>
+          <p>NERDY</p>
+        </li>
+        <li id="glamorous" data-mood="Glamorous">
+          <%= image_tag "icons-apollo-05" %>
+          <p>GLAMOROUS</p>
+        </li>
+        <li id="dramatic" data-mood="Dramatic">
+          <%= image_tag "icons-apollo-03" %>
+          <p>DRAMATIC</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <p data-search="Search" class="normal-search text-center">or Search without moods</p>
 </div>
 
 <div class='wrapper-card' id="inspiration-card">
   <div class="container container-card">
-   <div class="cards">
+   <div class="cards cards-home">
     <p class="title-home text-center"><span>Our latest discoveries</span></p>
     <% @events.each do |event| %>
     <div class='event-card'>
@@ -39,6 +83,15 @@
         </div>
         <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
         <p class="desc"><%= event.description %></p>
+
+        <!-- Testing bookmark button // I changed "put" for "get" -->
+        <%= link_to upvote_event_path(event), method: :put do %>
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-bookmark"></span> Bookmark
+          <span class="badge"><%= event.get_upvotes.size %></span>
+        </button>
+        <% end %>
+
       </div>
     </div>
     <% end %>

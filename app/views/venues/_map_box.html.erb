@@ -1,3 +1,27 @@
-<h3> <%= venue.name %> </h3>
-<p> <%= venue.address %> </p>
-<%= link_to "This venue has #{venue.events.count} events planned", root_path %>
+<div class="map_box">
+
+  <h3> <%= venue.name %> </h3>
+  <p> <%= venue.address %> </p>
+  <p> <%= venue.description.split.slice(0, 35).join(" ") %></p>
+  <br>
+
+  <!-- <h6>Current events at <%= venue.name %></h6> -->
+  <% venue.events.take(3).each do |event| %>
+  <!-- can use .recent(3)/random(3) -->
+  <%= link_to "", event_path(event) %>
+  <div class="map-card">
+    <h6><%= event.name %></h6>
+    <p><%= event.mood %></p>
+    <p><%= event.description.split.slice(0, 10).join(" ") %></p>
+  </div>
+  <% end %>
+
+  <div class="text-center">
+    </br>
+    <p> There are <strong><%= venue.events.count %></strong> events at <%= venue.name %></p>
+    <h5><%= link_to "See More", venue_path(venue), class: 'link-back' %></h4>
+  </div>
+</div>
+
+
+

@@ -16,4 +16,7 @@ class Event < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   has_many :bookings
   belongs_to :venue
+
+  # For the bookmark feature:
+  acts_as_votable
 end

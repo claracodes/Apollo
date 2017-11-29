@@ -21,6 +21,7 @@ gem 'jquery-ui-rails'
 gem 'pundit'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'acts_as_votable', '~> 0.11.1'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
