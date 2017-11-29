@@ -89,9 +89,33 @@
 .link-back {
   color: $gray;
   text-decoration: none;
+  font-size: 22px;
+  position: relative;
+  top: 20px;
   &:hover{
     color: $gray;
     text-decoration: none;
     background-color: $red;
+  }
+}
+
+.heart-bookmark {
+  p {
+    background-color: transparent;
+    padding: 0;
+    font-size: 30px;
+    border: 0;
+    color: $red;
+    position: relative;
+    left: 8px;
+  }
+  span {
+    position: relative;
+    left: 12px;
+    bottom: 7px;
+    color: $red;
+    &:hover{
+      text-decoration: none;
+    }
   }
 }
