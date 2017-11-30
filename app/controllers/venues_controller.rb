@@ -4,9 +4,9 @@ class VenuesController < ApplicationController
 
   def show
     @event_pages = true
-    @venue = Venue.find(params[:id])
-    authorize @venue
+    @venue = set_venue
     for_maps
+    authorize @venue
   end
 
   def index
@@ -48,7 +48,12 @@ class VenuesController < ApplicationController
   end
 
   def fetch_moods(venue)
-    "/assets/icons-apollo-black-#{venue.events.first.mood}.png"
+    # added if/else cause sometimes venue/event don't have moods so it crashes
+    if venue.events.first && venue.events.first.try(:mood)
+      "/assets/icons-apollo-black-#{venue.events.first.mood}.png"
+    else
+      "/assets/icons-apollo-black-Dramatic.png"
+    end
   end
 
   def host?
