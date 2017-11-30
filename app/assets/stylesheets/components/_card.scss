@@ -1,3 +1,20 @@
+.detail-info {
+  background-color: $gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-weight: bolder;
+  width: 100%;
+  .event-date {
+    margin-bottom: 0;
+  }
+  .text-category {
+    padding-right: 4px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+}
 .event-card {
   position: relative;
   padding: 5px;
@@ -48,9 +65,6 @@
   }
 }
 .cards {
-  // position: relative;
-  // max-height: 100px;
-  // display: inline;
   background-color: white;
   padding: 30px;
 }
@@ -89,7 +103,7 @@
   }
 }
 .info {
-  flex: 1;
+  flex-grow: 1;
   padding-left: 10px;
   font-size: 13px;
   margin-left: 15px;
@@ -101,12 +115,6 @@
       background-color: transparent;
     }
   }
-  .heart-bookmark p {
-    padding: 0;
-    font-size: 30px;
-    border: 0;
-    color: $red;
-  }
   .event-name-price {
     display: flex;
     justify-content: space-between;
@@ -117,12 +125,6 @@
     }
   }
 }
-.event-date {
-  background-color: $gray;
-  color: white;
-  font-weight: bolder;
-  max-width: 100%;
-}
 .wrapper-card {
   h1 {
     background-color: rgba(0,0,0,0.1);
@@ -132,7 +134,19 @@
     text-transform: uppercase;
   }
 }
-// just to update the branch
+.desc-likes {
+  display: flex;
+  justify-content: space-between;
 
-
-
+}
+.likes{
+  a {
+    background-color: transparent;
+    padding: 0;
+    font-size: 20px;
+    border: 0;
+    color: $red;
+    position: relative;
+    left: 8px;
+  }
+}
