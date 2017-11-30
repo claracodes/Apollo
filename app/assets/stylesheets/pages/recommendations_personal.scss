@@ -1,0 +1,135 @@
+.grid {
+  display: grid;
+  grid-template-colums: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; // 7 columns
+  grid-template-rows: 30vh 30vh 30vh;
+  margin: 30px 100px;
+  padding: 20px;
+  background-color: white
+}
+
+.element {
+  padding: 5px;
+  background-color: white;
+  &:hover {
+    background-color: $light-gray
+  }
+  span {
+      color: $gray;
+      text-decoration: none;
+      background-color: $red;
+      padding-left: 5px;
+      padding-right: 5px;
+  }
+}
+
+.crop {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    img {
+    width: 400px;
+    height: 300px;
+    margin: -75px 0 0 -100px;
+}
+}
+
+.element1 {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 3;
+  border-bottom: 1px solid #E6E6E6;
+  border-right: 1px solid #E6E6E6;
+}
+
+.element2 {
+  grid-row: 1 / span 1;
+  grid-column: 4 /span 2;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.element4 {
+  grid-row: 1 / span 2;
+  grid-column: 6 /span 2;
+  border-left: 1px solid #E6E6E6;
+}
+
+.element5 {
+  grid-row: 2 / span 2;
+  grid-column: 1 /span 2;
+  border-right: 1px solid #E6E6E6;
+}
+
+.element6 {
+  grid-row: 2 / span 1;
+  grid-column: 3 /span 3;
+}
+
+.element7 {
+  grid-row: 3 / span 2;
+  grid-column: 3 /span 2;
+  border-top: 1px solid #E6E6E6;
+  border-right: 1px solid #E6E6E6;
+}
+
+.element8 {
+  grid-row: 3 / span 1;
+  grid-column: 5 /span 3;
+  border-top: 1px solid #E6E6E6;
+  }
+
+// for mobile phones:
+@media(max-width: 720px) {
+  .grid {
+    display: grid;
+    grid-template-colums: 1fr; // 7 columns
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 5px;
+    background-color: white
+    }
+  .element1 {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    border-bottom: 1px solid #E6E6E6;
+    border-right: 0px;
+  }
+
+  .element2 {
+    grid-row: 2 / span 1;
+    grid-column: 1 /span 1;
+    border-bottom: 1px solid #E6E6E6;
+  }
+
+  .element4 {
+    grid-row: 3 / span 1;
+    grid-column: 1 /span 1;
+    border-bottom: 1px solid #E6E6E6;
+    border-left: 0px;
+  }
+
+  .element5 {
+    grid-row: 4 / span 1;
+    grid-column: 1 /span 1;
+    border-bottom: 1px solid #E6E6E6;
+    border-right: 0px;
+  }
+
+  .element6 {
+    grid-row: 5 / span 1;
+    grid-column: 1 /span 1;
+    border-bottom: 1px solid #E6E6E6;
+  }
+
+  .element7 {
+    grid-row: 6 / span 1;
+    grid-column: 1 /span 1;
+    border-bottom: 1px solid #E6E6E6;
+    border-top: 0px;
+    border-right: 0px;
+  }
+
+  .element8 {
+    grid-row: 7 / span 1;
+    grid-column: 1 /span 1;
+    border-top: 0px;
+    }
+
+}

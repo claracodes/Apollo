@@ -1,0 +1,27 @@
+<h1>Personal recommendations</h1>
+
+<% if current_user.friends.count == 1  %>
+
+<div class="grid">
+  <div class="element element1"> Test</div>
+  <div class="element element2 venue">Test2</div>
+  <div class="element element4">Test4</div>
+  <div class="element element5 venue_by_us">Test5</div>
+  <div class="element element6">
+    <div class="element-header">
+      <%= current_user.friends.last.first_name %> has recently booked
+      <span> <%= current_user.friends.last.bookings.last.event.name %> </span>
+    </div>
+    <div class="img-element crop" style="background-image: url('<%= cl_image_path(current_user.friends.last.bookings.last.event.photo) %>');"></div>
+
+  </div>
+  <div class="element element7">Test7</div>
+  <div class="element element8">Test8</div>
+</div>
+
+<% else %>
+
+
+<h1>Hello</h1
+
+<% end %>
