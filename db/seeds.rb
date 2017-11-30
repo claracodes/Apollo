@@ -107,7 +107,7 @@ p "Category: Exhibitions --> Date: #{@date}"
 
 # Scraper for Categories Film, Theater and Concert
 
-available_categories = {movie: "film", theater: "theaterperformance", concert: "konzert"}
+available_categories = {theater: "theaterperformance", concert: "konzert", movie: "film"}
 available_categories.each do |cat|
 
 10.times do |d|
