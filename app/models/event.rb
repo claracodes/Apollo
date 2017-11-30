@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   MOOD = ["Dramatic", "Romantic", "Glamorous", "Wild", "Nerdy"]
   TAG = ["Dramatic", "Romantic", "Modern", "Funny"]
   validates :name, presence: true
-  validates :description, presence: true
+#  validates :description, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORY,
               message: "%{value} is not a valid category" }
   # validates :start_time, presence: true
