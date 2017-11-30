@@ -184,12 +184,10 @@ sleep 3
 sleep 3
 end
 
-
-
-puts 'Creating 10 new bookings'
-10.times do |booking|
-  @event = Event.all.sample
-  @user = User.all.sample
-  booking = Booking.new(event: @event, user: @user)
-  booking.save!
-end
+#puts 'Creating 10 new bookings'
+#10.times do |booking|
+#  @event = Event.all.sample
+#  @user = User.all.sample
+#  booking = Booking.new(event: @event, user: @user)
+#  booking.save!
+#end
