@@ -137,10 +137,11 @@
 .desc-likes {
   display: flex;
   justify-content: space-between;
-
 }
 .likes{
+
   a {
+    position: relative;
     background-color: transparent;
     padding: 0;
     font-size: 20px;
@@ -148,5 +149,10 @@
     color: $red;
     position: relative;
     left: 8px;
+    p {
+      margin-top: 8px;
+      position: absolute;
+      right: 9px;
+    }
   }
 }
