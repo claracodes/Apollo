@@ -8,6 +8,19 @@
       <p class="address"><%= @venue.address %></p>
       <p><i class="fa fa-phone" aria-hidden="true"></i> <%= @venue.phone %> -
         <i class="fa fa-envelope" aria-hidden="true"></i> <%= @venue.email %></p>
+
+        <% if user_signed_in? %>
+          <%= link_to upvote_venue_path(@venue), class: "heart-bookmark", method: :put, remote: true do %>
+          <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(@venue) ? '' : '-empty' %>" id="bookmark-<%= @venue.id %>"></p>
+          <span>Bookmark</span>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
+          <p class="glyphicon glyphicon-heart-empty"></p>
+          <span>Bookmark</span>
+          <% end %>
+        <% end %>
+
       </div>
     </div>
   </div>
