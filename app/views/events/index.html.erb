@@ -26,7 +26,7 @@
       <div class="cards">
         <% @events.each do |event| %>
         <div class='event-card'>
-          <%= link_to "", event_path(event) %>
+
           <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
           <div class="info">
             <div class="event-name-price">
@@ -51,6 +51,20 @@
                 <% end %>
               </div>
             </div>
+            <div class="friend-bookings">
+
+              <% current_user.friends.last(1).each do |friend| %>
+              <% friend.bookings.each do |booking| %>
+              <% if booking.event_id == event.id %>
+
+              <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
+
+              <% end %>
+              <% end %>
+              <% end %>
+
+            </div>
+            <%= link_to "", event_path(event) %>
           </div>
         </div>
         <% end %>
@@ -59,7 +73,6 @@
     <!-- Map container -->
     <div id="map-search" ></div>
   </div>
-
 
 
   <!-- javascript -->
