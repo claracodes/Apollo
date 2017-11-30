@@ -68,6 +68,7 @@ p "Category: Exhibitions --> Date: #{@date}"
       end
     end
   end
+sleep 3
 
   # Event Creator
 
@@ -103,6 +104,7 @@ p "Category: Exhibitions --> Date: #{@date}"
     end
   end
  end
+sleep 3
 
 
 # Scraper for Categories Film, Theater and Concert
@@ -142,6 +144,7 @@ p "Category: #{cat[0].capitalize} --> Date: #{@date}"
       end
     end
   end
+sleep 3
   #byebug
 
   # Event Creator
@@ -178,6 +181,7 @@ p "Category: #{cat[0].capitalize} --> Date: #{@date}"
     end
   end
   end
+sleep 3
 end
 
 
