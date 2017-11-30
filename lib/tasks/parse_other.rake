@@ -2,10 +2,15 @@ namespace :parse  do
   desc "Parsing of events based on Berlin events"
   task :other_event_creator => :environment do
 
+# Scraper for Categories Film, Theater and Concert
+
+available_categories = {movie: "film", theater: "theaterperformance", concert: "konzert"}
+available_categories.each do |cat|
+
 3.times do |d|
-@event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/de/veranstaltungen/?selected_date=2017-12-#{d + 1}&category=film"))
+@event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/de/veranstaltungen/?selected_date=2017-12-#{d + 1}&category=#{cat[1]}"))
 @date = Date.parse("Dec #{d + 1} 2017")
-p @date
+p "Category: #{cat[0].capitalize} --> Date: #{@date}"
 
   # Venue Creator
   20.times do |i|
@@ -30,7 +35,7 @@ p @date
         # user_id: host1.id,
         # remote_photo_url: ,
         )
-        p @venue_name
+        p "> Venue: #{@venue_name}"
       end
     end
   end
@@ -57,7 +62,7 @@ p @date
       r = Event.create!(
         name: @event.xpath("//*[@id='container']/div/div[#{i}]/a/h3").text.strip,
         description: "#{@event_url_nokogiri.xpath("//*[@id='exhibition']/div/div/div[1]/article/div[5]/p[1]").text.strip} #{@event_url_nokogiri.xpath("//*[@id='exhibition']/div/div/div[1]/article/div[4]/p[1]").text.strip} #{@event_url_nokogiri.xpath("//*[@id='exhibition']/div/div/div[1]/article/div[3]/p[1]").text.strip}",
-        category: "movie",
+        category: cat[0],
         tags: ["Dramatic", "Romantic", "Modern", "Funny"].sample,
         date: @date,
         price: @event_price,
@@ -66,9 +71,11 @@ p @date
         city: 'Berlin',
         remote_photo_url: @picture_url,
         )
-      p @event.xpath("//*[@id='container']/div/div[#{i}]/a/h3").text.strip
+      p "> Event: #{@event.xpath("//*[@id='container']/div/div[#{i}]/a/h3").text.strip}"
     end
   end
   end
 end
 end
+end
+
