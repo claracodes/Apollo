@@ -36,7 +36,7 @@ end
 
 #Scraper for Exhibitions
 
-31.times do |d|
+10.times do |d|
 @event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/en/exhibitions/?selected_date=2017-12-#{d + 1}"))
 @date = Date.parse("Dec #{d + 1} 2017")
 p "Category: Exhibitions --> Date: #{@date}"
@@ -110,7 +110,7 @@ p "Category: Exhibitions --> Date: #{@date}"
 available_categories = {movie: "film", theater: "theaterperformance", concert: "konzert"}
 available_categories.each do |cat|
 
-31.times do |d|
+10.times do |d|
 @event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/de/veranstaltungen/?selected_date=2017-12-#{d + 1}&category=#{cat[1]}"))
 @date = Date.parse("Dec #{d + 1} 2017")
 p "Category: #{cat[0].capitalize} --> Date: #{@date}"
