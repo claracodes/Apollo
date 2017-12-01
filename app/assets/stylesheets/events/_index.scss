@@ -17,3 +17,12 @@
   top: 0 !important;
   right: 0 !important;
 }
+#price-slider {
+  span {
+    background-color: $red;
+    &:focus {
+      outline-style: none;
+      border: 0;
+    }
+  }
+}
