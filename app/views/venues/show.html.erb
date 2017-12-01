@@ -35,26 +35,45 @@
         </div>
         <!-- cards -->
         <div class="cards">
-          <% @venue.events.each do |event| %>
-          <div class='event-card'>
-            <%= link_to "", event_path(event) %>
-            <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
-            <div class="info">
-              <div class="event-name-price">
-                <h3><span><%= event.name %></span></h3>
-                <p> <%= event.price %> € </p>
-              </div>
-              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %>
-                <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
+        <% @venue.events.each do |event| %>
+        <div class='event-card'>
+          <%= link_to "", event_path(event) %>
+          <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
+          <div class="info">
+            <div class="event-name-price">
+              <h3><span><%= event.name %></span></h3>
+              <p> <%= event.price %> € </p>
+            </div>
+            <div class="detail-info">
+              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
+              <p class="text-category"> <%= event.category %> </p>
+            </div>
+            <div class="desc-likes">
+              <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
+              <div class="likes">
+                <% if user_signed_in? %>
+                <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
+                <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
+                <% end %>
+                <% else %>
+                <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
+                <p class="glyphicon glyphicon-heart-empty"></p>
+                <% end %>
+                <% end %>
               </div>
             </div>
-            <% end %>
           </div>
+        </div>
+        <% end %>
+      </div>
         </div>
         <div id="map-search" ></div>
       </div>
     </div>
   </div>
+
+
+
 
 
 

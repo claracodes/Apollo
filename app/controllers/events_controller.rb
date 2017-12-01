@@ -75,31 +75,14 @@ def index
     @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
-      marker.json({ :id => venue.id })
-      marker.picture({url: fetch_moods(venue), width: 32, height: 32})
+      # marker.json({ :id => venue.id })
+      marker.picture({url: 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-32.png', width: 32, height: 32})
       marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
     end
   end
 
-  def fetch_moods(venue)
-    "/assets/icons-apollo-black-#{venue.events.first.mood}.png"
-  end
-
-
-  # def custom_marker
-  #   @events.each do |event|
-  #     if event.mood == "Wild"
-  #       puts 'https://image.ibb.co/hUDz06/icons_apollo_black_07.png'
-  #     elsif event.mood == "Romantic"
-  #       puts 'https://image.ibb.co/cEtcnm/icons_apollo_black_08.png'
-  #     elsif event.mood == "Glamorous"
-  #       puts 'https://image.ibb.co/jp5ZYR/icons_apollo_black_11.png'
-  #     elsif event.mood == "Nerdy"
-  #       puts 'https://image.ibb.co/dyFe06/icons_apollo_black_10.png'
-  #     elsif event.mood == "Dramatic"
-  #       puts 'https://image.ibb.co/bMB2L6/icons_apollo_black_09.png'
-  #     end
-  #   end
+  # def fetch_moods(venue)
+  #   "/assets/icons-apollo-black-#{venue.events.first.mood}.png"
   # end
 
 end
