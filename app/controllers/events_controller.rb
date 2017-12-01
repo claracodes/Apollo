@@ -47,6 +47,16 @@ def index
     end
   end
 
+  def downvote
+    @event = set_event
+    @event.unliked_by current_user
+    authorize @event
+    respond_to do |format|
+      format.html { redirect_to "/" }
+      format.js # downvote.js.erb
+    end
+  end
+
   private
 
   # def host?
