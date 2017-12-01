@@ -98,3 +98,24 @@
     background-color: $red;
   }
 }
+
+
+// Julien's adds bellow <3
+
+.venue-box {
+  padding: 15px 20px;
+  background-color: white;
+  // margin-left: 50px;
+  height: 150px;
+  margin-top:30px;
+}
+
+.venue-box-info {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid $gray;
+  margin-bottom: 15px;
+  p {
+    margin-bottom: 3px;
+  }
+}
