@@ -31,7 +31,11 @@
           <div class="info">
             <div class="event-name-price">
               <h3><span><%= truncate("#{event.name}", length: 30, separator: /,?\.* +/) %></span></h3>
-              <p> <%= event.price %> € </p>
+              <% if event.price == 0 %>
+                <p> FREE </p>
+              <% else %>
+                <p> <%= event.price %> € </p>
+              <% end %>
             </div>
             <div class="detail-info">
               <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
@@ -53,15 +57,15 @@
             </div>
             <div class="friend-bookings">
               <% if user_signed_in? %>
-                <% current_user.friends.each do |friend| %>
-                  <% if friend.present? %>
-                    <% friend.bookings.each do |booking| %>
-                      <% if booking.present? && booking.event_id == event.id %>
-                      <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
+              <% current_user.friends.each do |friend| %>
+              <% if friend.present? %>
+              <% friend.bookings.each do |booking| %>
+              <% if booking.present? && booking.event_id == event.id %>
+              <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
+              <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
               <% end %>
             </div>
           </div>
