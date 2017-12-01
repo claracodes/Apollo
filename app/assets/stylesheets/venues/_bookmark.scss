@@ -1,0 +1,80 @@
+.bookmark-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70px);
+}
+
+.dashboard-btns {
+  flex: 0 0 auto;
+  display: flex;
+  padding: 10px 10px 10px 10px;
+  background-color: $gray;
+  margin-bottom: 15px;
+  border-radius: 0px 0px 10px 10px;
+  h3 {
+    margin-bottom: 0px;
+    text-decoration: none;
+  }
+}
+
+.dashboard-btns a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.booking-btn {
+  flex: 1 0 50%;
+  border-radius: 10px 0 0 10px;
+  background-color: #444040;
+  h3 {
+    color: white;
+  }
+}
+
+.bookmark-btn {
+  flex: 1 0 50%;
+  border-radius: 0 10px 10px 0;
+  background: $light-gray;
+  h3 {
+    color: $gray;
+  }
+}
+
+.bookmark-content {
+  flex: 1 0 auto;
+  display: flex;
+  height: 80vh;
+  margin-bottom: 10px;
+}
+
+.bookmark-events {
+  flex: 1 0 60%;
+  overflow: scroll;
+}
+
+.bookmark-venues {
+  flex: 1 0 40%;
+  overflow: scroll;
+}
+
+
+.bookmark-card {
+  display: flex;
+
+}
+
+.bookmark-name-category {
+  flex: 1 0 auto;
+}
+
+.bookmark-heart {
+  position: relative;
+  top: 10px;
+  right: 10px;
+}
+
+.bookmark-buy {
+  position: relative;
+  top: 10px;
+  right: 10px;
+}

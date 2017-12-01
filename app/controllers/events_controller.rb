@@ -47,6 +47,16 @@ def index
     end
   end
 
+  def downvote
+    @event = set_event
+    @event.unliked_by current_user
+    authorize @event
+    respond_to do |format|
+      format.html { redirect_to "/" }
+      format.js # downvote.js.erb
+    end
+  end
+
   private
 
   # def host?
@@ -74,7 +84,6 @@ def index
   def fetch_moods(venue)
     "/assets/icons-apollo-black-#{venue.events.first.mood}.png"
   end
-
 
 
   # def custom_marker
