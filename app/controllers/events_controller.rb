@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   @event = Event.find(params[:id])
   @venues = Venue.find(@event.venue_id)
   for_maps
+  @booking = Booking.new
   authorize @event
 end
 

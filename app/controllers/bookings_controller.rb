@@ -11,12 +11,11 @@ class BookingsController < ApplicationController
 
   def create
     @event = Event.find(params[:event_id])
-    @booking = Booking.new
-    @booking.event = @event
-    @booking.user = current_user
+    @booking = Booking.new(event: @event, amount: @event.price, state: 'pending', user: current_user)
 
     if @booking.save
-      redirect_to @booking
+      redirect_to new_event_booking_payment_path(@event, @booking)
+
     else
       flash[:notice] = "Sorry, try again!"
       redirect_to @event

@@ -17,6 +17,9 @@ class Event < ApplicationRecord
   has_many :bookings
   belongs_to :venue
 
+  # For monetize feature
+  monetize :price_cents
+
   # For the bookmark feature:
   acts_as_votable
 end
