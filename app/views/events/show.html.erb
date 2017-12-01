@@ -42,17 +42,18 @@
           <% end %>
         </div>
 
-
+        <div class="box-division">
+          </br>
+        </div>
 
         <div class="venue-box">
-          <% link_to "", venue_path(@event.venue) %>
+          <%= link_to venue_path(@event.venue) do %>
           <div class="venue-box-info">
             <p><%= @event.venue.name %></p>
-            <p>Hosting <strong><%= @event.venue.events.count %></strong> events</p>
+            <p>Hosting <strong><%= @event.venue.events.count %></strong> <%=  @event.venue.events.count < 2 ? "event" : "events" %></p>
           </div>
-
-          <div class="img-card" style="background-image: url('<%= cl_image_path(@event.venue.photo) %>');"></div>
-
+          <div class="venue-box-img" style="background-image: url('<%= cl_image_path(@event.venue.photo) %>');"></div>
+          <% end %>
         </div>
 
 
