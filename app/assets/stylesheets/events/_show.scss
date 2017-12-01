@@ -136,4 +136,10 @@
   background-size: cover;
   opacity: 0.7;
   filter: grayscale(100%);
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
