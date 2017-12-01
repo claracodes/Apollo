@@ -74,31 +74,50 @@
     <p class="title-home text-center"><span>Our latest discoveries</span></p>
     <% @events.each do |event| %>
       <div class='event-card'>
-        <%= link_to "", event_path(event) %>
-        <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
-        <div class="info">
-          <div class="event-name-price">
-            <h3><span><%= event.name %></span></h3>
-            <% if event.price == 0 %>
+
+        <%= link_to "", event_path(event), class: "card-link" %>
+          <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
+          <div class="info">
+            <div class="event-name-price">
+              <h3><span><%= truncate("#{event.name}", length: 30, separator: /,?\.* +/) %></span></h3>
+              <% if event.price == 0 %>
               <p> FREE </p>
             <% else %>
               <p> <%= event.price %> € </p>
             <% end %>
+            </div>
+            <div class="detail-info">
+              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
+              <p class="text-category"> <%= event.category %> </p>
+            </div>
+            <div class="desc-likes">
+              <p class="desc"><%= truncate("#{event.description}", length: 160, omission: '...') %></p>
+              <div class="likes">
+                <% if user_signed_in? %>
+                <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
+                <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
+                <% end %>
+                <% else %>
+                <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
+                <p class="glyphicon glyphicon-heart-empty"></p>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="friend-bookings">
+              <% if user_signed_in? %>
+                <% current_user.friends.each do |friend| %>
+                  <% if friend.present? %>
+                    <% friend.bookings.each do |booking| %>
+                      <% if booking.present? && booking.event_id == event.id %>
+                      <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-          <p class="event-date"> <%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
-          <p class="desc"><%= event.description %></p>
-
-          <% if user_signed_in? %>
-            <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
-            <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
-            <% end %>
-          <% else %>
-            <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
-            <p class="glyphicon glyphicon-heart-empty"></p>
-            <% end %>
-          <% end %>
-
-        </div>
       </div>
     <% end %>
   </div>

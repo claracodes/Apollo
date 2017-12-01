@@ -1,58 +1,60 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="bookmark-dashboard">
-        <div class="dashboard-btns">
-          <div class="booking-btn">
-            <%= link_to dashboard_path do %>
-            <h3>Calendar</h3>
-            <% end %>
-          </div>
-          <div class="bookmark-btn">
-            <%= link_to dashboard_bookmarks_path do %>
-            <h3>Bookmarks</h3>
-            <% end %>
-          </div>
-        </div>
-        <div class="bookmark-content">
-          <div class="bookmark-events">
+<div class="wrapper wrapper-tab">
+  <h1 class="dash-title text-center">Hello <span><%= current_user.first_name %></span></h1>
+  <div class="tabs text-center">
+    <%= link_to "CALENDAR", dashboard_path, class: "tab" %>
+    <%= link_to "BOOKMARKS", dashboard_bookmarks_path, class: "tab-active" %>
+  </div>
+
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="booking-list">
+            <h3 class="title-home"><span>EVENTS</span></h3>
             <!-- current_user.votes.for_type(Event) => could be current_user.events -->
             <% current_user.find_voted_items.each do |vote| %>
             <% if vote.class == Event %>
             <div class='event-list-item' id="bookmark-event-<%= vote.id %>">
               <%= link_to "", event_path(vote) %>
-              <div class="bookmark-card">
 
-                <div class="bookmark-name-category">
+              <div class="info info-dash">
+                <div class="event-name-price">
                   <h4><%= vote.name.upcase %></h4>
-                  <p><%= vote.category.capitalize %>   //   <%= vote.date.strftime('%d/%m/%y') %></p>
                 </div>
-
-                <div class="bookmark-heart">
-                  <%= link_to downvote_event_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
-                  <p class="glyphicon glyphicon-heart"></p>
-                  <% end %>
+                <div class="detail-info">
+                  <p class="event-date"><%= vote.date.strftime('%d/%m/%y') %></p>
+                  <p class="text-category"> <%= vote.name.upcase %> </p>
                 </div>
-
-                <div class="bookmark-buy">
-                  <%= link_to 'Book now', new_event_booking_path(vote) %>
+                <div class="action-btns">
+                  <div class="bookmark-heart">
+                    <%= link_to downvote_event_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
+                    <p class="glyphicon glyphicon-heart"></p>
+                    <% end %>
+                  </div>
+                  <div class="bookmark-buy">
+                    <%= link_to 'Book now', new_event_booking_path(vote) %>
+                  </div>
                 </div>
-
               </div>
             </div>
             <% end %>
             <% end %>
           </div>
+        </div>
 
-          <div class="bookmark-venues">
+        <div class="col-xs-12 col-sm-6">
+          <div class="booking-list">
+            <h3 class="title-home"><span>VENUES</span></h3>
             <% current_user.find_voted_items.each do |vote| %>
             <% if vote.class == Venue %>
-            <div class="bookmark-venue-card" id="bookmark-venue-<%= vote.id %>">
+            <div class="event-list-item" id="bookmark-venue-<%= vote.id %>">
               <%= link_to "", venue_path(vote) %>
-                <div>
-                <h4><%= vote.name.upcase %></h4>
+              <div class="info info-dash">
+                <div class="event-name-price">
+                  <h4><%= vote.name.upcase %></h4>
+                  <p>Hosting <strong><%= Event.where(venue: vote.id).count %> events</strong></p>
+                </div>
                 <p><%= vote.address %></p>
-                <p>Currently hosting <%= Event.where(venue: vote.id).count %> events</p>
                 <div class="bookmark-heart">
                   <%= link_to downvote_venue_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
                   <p class="glyphicon glyphicon-heart"></p>
@@ -63,11 +65,9 @@
             <% end %>
             <% end %>
           </div>
-
         </div>
+
       </div>
     </div>
   </div>
 </div>
-
-

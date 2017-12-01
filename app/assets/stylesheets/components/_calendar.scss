@@ -2,8 +2,9 @@
 
 #calendar{
   font-family: $body-font;
-  font-size: 16px;
+  font-size: 12px;
   color: $red;
+  text-transform: uppercase;
   background-color: white;
   padding: 20px;
 }
@@ -27,4 +28,15 @@
 
 .fc-state-hover {
   background-color: $red !important;
+  cursor: pointer;
+}
+.fc-left {
+  margin: 0;
+  color: $gray;
+  font-size: 27px !important;
+  font-weight: lighter !important;
+  span {
+    background-color: $red;
+    padding: 5px 10px;
+  }
 }
