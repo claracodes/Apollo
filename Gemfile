@@ -25,6 +25,7 @@ gem 'acts_as_votable', '~> 0.11.1'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem "koala"
+gem 'money-rails'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

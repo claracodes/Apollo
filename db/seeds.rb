@@ -94,7 +94,7 @@ sleep 3
         category: "exhibition",
         tags: ["Dramatic", "Romantic", "Modern", "Funny"].sample,
         date: @date,
-        price: @event_price,
+        price_cents: @event_price.to_i * 100,
         mood: ["Dramatic", "Romantic", "Glamorous", "Wild", "Nerdy"].sample,
         venue_id: Venue.find_by_name(@venue_name).id,
         city: 'Berlin',
@@ -106,6 +106,7 @@ sleep 3
  end
 sleep 3
 
+# price_cents:
 
 # Scraper for Categories Film, Theater and Concert
 
@@ -171,7 +172,7 @@ sleep 3
         category: cat[0],
         tags: ["Dramatic", "Romantic", "Modern", "Funny"].sample,
         date: @date,
-        price: @event_price,
+        price_cents: @event_price.to_i * 100,
         mood: ["Dramatic", "Romantic", "Glamorous", "Wild", "Nerdy"].sample,
         venue_id: Venue.find_by_name(@venue_name).id,
         city: 'Berlin',
