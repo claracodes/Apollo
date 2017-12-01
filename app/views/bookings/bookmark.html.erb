@@ -16,7 +16,6 @@
         </div>
         <div class="bookmark-content">
           <div class="bookmark-events">
-            <h4><%= current_user.votes.for_type(Event).size %> Events bookmarked</h4>
             <!-- current_user.votes.for_type(Event) => could be current_user.events -->
             <% current_user.find_voted_items.each do |vote| %>
             <% if vote.class == Event %>
@@ -46,18 +45,20 @@
           </div>
 
           <div class="bookmark-venues">
-            <h4><%= current_user.votes.for_type(Venue).size %> Venues bookmarked</h4>
             <% current_user.find_voted_items.each do |vote| %>
             <% if vote.class == Venue %>
-            <div class="bookmark-venue-card">
-
+            <div class="bookmark-venue-card" id="bookmark-venue-<%= vote.id %>">
+              <%= link_to "", venue_path(vote) %>
+                <div>
                 <h4><%= vote.name.upcase %></h4>
-
-
-
-
-
-
+                <p><%= vote.address %></p>
+                <p>Currently hosting <%= Event.where(venue: vote.id).count %> events</p>
+                <div class="bookmark-heart">
+                  <%= link_to downvote_venue_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
+                  <p class="glyphicon glyphicon-heart"></p>
+                  <% end %>
+                </div>
+              </div>
             </div>
             <% end %>
             <% end %>
