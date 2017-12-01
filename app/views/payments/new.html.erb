@@ -1,0 +1,16 @@
+<h1>Booking</h1>
+<%= form_tag event_booking_payments_path(@booking.event, @booking) do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
+    </label>
+  </article>
+
+ <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name="My Booking"
+    data-email="<%= current_user.email %>"
+    data-description="Description..."
+    data-amount="<%= @booking.amount_cents %>"
+    data-currency="<%= @booking.amount.currency %>"></script>
+<% end %>

@@ -15,10 +15,11 @@ Rails.application.routes.draw do
     member do
       put "upvote", to: "events#upvote"
     end
-    resources :bookings, only: [:new, :create] do
+    resources :bookings, only: [:new, :create, :show] do
       member do
         put '/payment', to: "bookings#payment", as: :payment
       end
+      resources :payments, only: [:new, :create]
     end
     collection do                       # collection => no restaurant id in URL (member has it)
       get '/search', to: "events#search"  # RestaurantsController#top
