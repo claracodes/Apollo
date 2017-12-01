@@ -26,7 +26,7 @@
       <div class="cards">
         <% @events.each do |event| %>
         <div class='event-card'>
-
+          <%= link_to "", event_path(event), class: "card-link" %>
           <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
           <div class="info">
             <div class="event-name-price">
@@ -52,19 +52,18 @@
               </div>
             </div>
             <div class="friend-bookings">
-
-              <% current_user.friends.last(1).each do |friend| %>
-              <% friend.bookings.each do |booking| %>
-              <% if booking.event_id == event.id %>
-
-              <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
-
+              <% if user_signed_in? %>
+                <% current_user.friends.each do |friend| %>
+                  <% if friend.present? %>
+                    <% friend.bookings.each do |booking| %>
+                      <% if booking.present? && booking.event_id == event.id %>
+                      <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
               <% end %>
-              <% end %>
-              <% end %>
-
             </div>
-            <%= link_to "", event_path(event) %>
           </div>
         </div>
         <% end %>
@@ -413,21 +412,17 @@ var styles = [
 ]
 
 
-var handler = Gmaps.build('Google', { markers: { clusterer: null } });
-
-handler.buildMap({ provider: {styles: styles}, internal: { id: 'map-search' } }, function() {
-
-markers = (<%= raw @hash.to_json %>)
-console.log(markers)
-
-Gmaps.store = {}
-Gmaps.store.markers = markers.map(function(m) {
-marker = handler.addMarker(m);
-marker.serviceObject.set('id', m.id);
-return marker;
-});
-handler.bounds.extendWith(Gmaps.store.markers);
+var handler = Gmaps.build('Google');
+handler.buildMap({ provider: {styles: styles},
+internal: { id: 'map-search' } }, function() {
+markers = handler.addMarkers(<%= raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
 handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
 });
 
 
