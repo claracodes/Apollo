@@ -1,5 +1,16 @@
-<h1>Booking</h1>
-<%= form_tag event_booking_payments_path(@booking.event, @booking) do %>
+<div class="wrapper wrapper-session">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4 log-in">
+        <h3>Booking details:</h3>
+        <div class="payment-details">
+        <h4><span><%= @event.name.upcase %></span> </h4>  <br>
+         <p><%= @event.date.day %>.<%= @event.date.month %>.<%= @event.date.year %> <br>
+         <%= @event.venue.name.capitalize %></p>
+         </div>
+         <div class="pay-bottom"><p class="pay"><%= @event.price %>€</p>  </div>
+
+         <%= form_tag event_booking_payments_path(@booking.event, @booking) do %>
   <article>
     <label class="amount">
       <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
@@ -14,3 +25,7 @@
     data-amount="<%= @booking.amount_cents %>"
     data-currency="<%= @booking.amount.currency %>"></script>
 <% end %>
+       </div>
+     </div>
+   </div>
+ </div>

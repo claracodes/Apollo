@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'dashboard/bookmarks', to: 'bookings#bookmark', as: 'dashboard_bookmarks'
   get "hostdashboard", to: 'events#hostdashboard' #we can get rid of that
   get "bookings/:id", to: 'bookings#show', as: :booking
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htmlx
   resources :events, only: [:show, :index, :new, :edit, :destroy] do
 
