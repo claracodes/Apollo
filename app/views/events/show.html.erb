@@ -29,7 +29,6 @@
         <div class="form-group">
           <%= link_to 'Book now', new_event_booking_path(@event), class: "btn btn-danger btn-block event-input" %>
         </div>
-
         <% if user_signed_in? %>
           <%= link_to upvote_event_path(@event), class: "heart-bookmark", method: :put, remote: true do %>
           <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(@event) ? '' : '-empty' %>" id="bookmark-<%= @event.id %>"></p>

@@ -31,6 +31,16 @@ class VenuesController < ApplicationController
     end
   end
 
+  def downvote
+    @venue = set_venue
+    @venue.unliked_by current_user
+    authorize @venue
+    respond_to do |format|
+      format.html { redirect_to "/" }
+      format.js # downvote.js.erb
+    end
+  end
+
   private
 
   def set_venue

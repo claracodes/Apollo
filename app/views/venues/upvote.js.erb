@@ -1,7 +1,4 @@
 const heart = document.getElementById("bookmark-<%= @venue.id %>");
-// If we want to add the number of upvotes:
-// const votes = "<%= @venue.get_upvotes.size %>"
-// bookmarked.querySelector(".badge").innerHTML = votes
 if (<%= current_user.liked? @venue %>) {
   heart.classList.remove("glyphicon-heart-empty");
   heart.classList.add("glyphicon-heart");

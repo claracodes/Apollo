@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   get "bookings/:id", to: 'bookings#show', as: :booking
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htmlx
   resources :events, only: [:show, :index, :new, :edit, :destroy] do
-    # Added for upvotes // I changed "put" for "get"
+
     member do
       put "upvote", to: "events#upvote"
+      put "downvote", to: "events#downvote"
     end
     resources :bookings, only: [:new, :create, :show] do
       member do
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   resources :venues, only: [:index, :edit, :show] do
     member do
         put "upvote", to: "venues#upvote"
+        put "downvote", to: "venues#downvote"
       end
     end
 
