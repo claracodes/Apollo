@@ -44,14 +44,12 @@
     }
     &:hover {
       background-color: #F1F2F6;
-      span {
-        color: $gray;
-        text-decoration: none;
-        background-color: $red;
-      }
-      .img-card {
-        opacity: 1;
-        filter: none;
+      h4 {
+        span {
+          color: $gray;
+          text-decoration: none;
+          background-color: $red;
+        }
       }
     }
   // }
@@ -76,9 +74,34 @@
     }
   }
 }
+.action-btns {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 90px;
+  height: 40px;
+  .bookmark-heart {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  .bookmark-buy {
+    width: 25px;
+    height: 25px;
+    i {
+      font-size: 23px;
+      color: #7F7F7F;
+    }
+  }
+}
 
 
-
+.detail-info-venue p {
+  margin-bottom: 0;
+  .hosting {
+    color: $red;
+  }
+}
 
 
 

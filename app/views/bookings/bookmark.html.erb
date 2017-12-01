@@ -20,20 +20,22 @@
               <div class="info info-dash">
                 <div class="event-name-price">
                   <h4><%= vote.name.upcase %></h4>
+                  <div class="action-btns">
+                    <div class="bookmark-heart">
+                      <%= link_to downvote_event_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
+                      <p class="glyphicon glyphicon-heart"></p>
+                      <% end %>
+                    </div>
+                    <div class="bookmark-buy">
+                      <%= link_to new_event_booking_path(vote) do %>
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                      <% end %>
+                    </div>
+                  </div>
                 </div>
                 <div class="detail-info">
                   <p class="event-date"><%= vote.date.strftime('%d/%m/%y') %></p>
-                  <p class="text-category"> <%= vote.name.upcase %> </p>
-                </div>
-                <div class="action-btns">
-                  <div class="bookmark-heart">
-                    <%= link_to downvote_event_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
-                    <p class="glyphicon glyphicon-heart"></p>
-                    <% end %>
-                  </div>
-                  <div class="bookmark-buy">
-                    <%= link_to 'Book now', new_event_booking_path(vote) %>
-                  </div>
+                  <p class="text-category"> <%= vote.category.upcase %> </p>
                 </div>
               </div>
             </div>
@@ -52,13 +54,17 @@
               <div class="info info-dash">
                 <div class="event-name-price">
                   <h4><%= vote.name.upcase %></h4>
-                  <p>Hosting <strong><%= Event.where(venue: vote.id).count %> events</strong></p>
+                  <div class="action-btns">
+                    <div class="bookmark-heart">
+                      <%= link_to downvote_venue_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
+                      <p class="glyphicon glyphicon-heart"></p>
+                      <% end %>
+                    </div>
+                  </div>
                 </div>
-                <p><%= vote.address %></p>
-                <div class="bookmark-heart">
-                  <%= link_to downvote_venue_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
-                  <p class="glyphicon glyphicon-heart"></p>
-                  <% end %>
+                <div class="detail-info detail-info-venue">
+                  <p><%= vote.address %></p>
+                  <p class="hosting">Hosting <strong><%= Event.where(venue: vote.id).count %> events</strong></p>
                 </div>
               </div>
             </div>
