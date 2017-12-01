@@ -41,7 +41,7 @@
           <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
           <div class="info">
             <div class="event-name-price">
-              <h3><span><%= event.name %></span></h3>
+              <h3><span><%= event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
               <p> <%= event.price %> € </p>
             </div>
             <div class="detail-info">
@@ -49,7 +49,7 @@
               <p class="text-category"> <%= event.category %> </p>
             </div>
             <div class="desc-likes">
-              <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
+              <p class="desc"><%= event.description.truncate(100, omission: '...', separator: /,?\.* +/) %></p>
               <div class="likes">
                 <% if user_signed_in? %>
                 <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
