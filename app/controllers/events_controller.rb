@@ -14,25 +14,25 @@ end
 def index
   @event_pages = true
 
-    # @query = params[:search]
-    session[:search_query] = params[:search] || params
-    @query = session[:search_query]
-    if params[:search]
+  # @query = params[:search]
+  session[:search_query] = params[:search] || params
+  @query = session[:search_query]
+  if params[:search]
 
-      @events = policy_scope(Event)
-      @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
-      @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
-      @events = @events.where(category: @query[:category]) if @query[:category].present?
-      @events = @events.where("events.price <= ?", @query[:price].to_i) if @query[:price].present?
-      # @events = @events.where(tag: @query[:tag]) if @query[:tag].present?
-      @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
-      # @events = @events.where(english: @query[:english]) if @query[:english].present?
-    else
-      @events = policy_scope(Event)
-    end
-    @venues = Venue.where(id: @events.map(&:venue_id))
-    for_maps
+    @events = policy_scope(Event)
+    @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
+    @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
+    @events = @events.where(category: @query[:category]) if @query[:category].present?
+    @events = @events.where("events.price_cents <= ?", @query[:price_cents].to_i) if @query[:price_cents].present?
+    # @events = @events.where(tag: @query[:tag]) if @query[:tag].present?
+    @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
+    # @events = @events.where(english: @query[:english]) if @query[:english].present?
+  else
+    @events = policy_scope(Event)
   end
+  @venues = Venue.where(id: @events.map(&:venue_id))
+  for_maps
+end
 
   def upvote
     @event = set_event

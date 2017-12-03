@@ -81,7 +81,7 @@
               <% if event.price == 0 %>
               <p> FREE </p>
             <% else %>
-              <p> <%= event.price %> € </p>
+              <p><%= humanized_money_with_symbol(event.price) %></p>
             <% end %>
             </div>
             <div class="detail-info">

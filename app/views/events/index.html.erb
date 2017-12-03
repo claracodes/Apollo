@@ -2,6 +2,9 @@
   <!-- Page container -->
   <div class="container container-search">
 
+
+
+
     <!-- Search bar -->
     <div class="search-form-bar">
       <div class="form-fields">
@@ -14,7 +17,8 @@
         <%= f.input :category, collection: Event::CATEGORY, label: false, class: "input-form form-control", prompt: " Category ", selected: @query[:category]%>
 
         <div id="price-slider" style="width: 100px; margin: 0; display: inline-block"></div>
-        <%= f.input :price,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, style: "background: transparent; border: none;
+        <!-- testing price_cents -->
+        <%= f.input :price_cents,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, style: "background: transparent; border: none;
           box-shadow: none; width: 70px; margin-left: 0;" }, class: "input-form form-control" %>
 
           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
@@ -33,7 +37,9 @@
               <% if event.price == 0 %>
                 <p> FREE </p>
               <% else %>
-                <p> <%= event.price %> € </p>
+                <p><%= humanized_money_with_symbol(event.price) %></p>
+
+
               <% end %>
             </div>
             <div class="detail-info">
