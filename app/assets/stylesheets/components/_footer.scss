@@ -31,3 +31,8 @@
 .small {
   height: 30px;
 }
+@media screen and (max-width: 768px) {
+  .footer-copyright {
+    display: none;
+  }
+}

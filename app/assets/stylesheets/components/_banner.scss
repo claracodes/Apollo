@@ -17,3 +17,11 @@
   width: 40px;
   margin-top: 70px;
 }
+@media screen and (max-width: 768px) {
+  .director img {
+    margin-top: 0;
+  }
+  .banner-content p {
+    margin-bottom: 0;
+  }
+}

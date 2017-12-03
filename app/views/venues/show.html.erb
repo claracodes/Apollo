@@ -45,7 +45,7 @@
               <p> <%= event.price %> € </p>
             </div>
             <div class="detail-info">
-              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
+              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(80, omission: '...', separator: /,?\.* +/) %></p>
               <p class="text-category"> <%= event.category %> </p>
             </div>
             <div class="desc-likes">
