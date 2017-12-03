@@ -10,7 +10,8 @@
         <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index" }, prompt: "Category ", selected: @query[:category]%>
 
         <div id="price-slider" style="width: 100px; margin: 0; display: inline-block"></div>
-        <%= f.input :price,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
+
+        <%= f.input :price_cents,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
 
           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
           <% end %>
@@ -33,7 +34,9 @@
               <% if event.price == 0 %>
                 <p> FREE </p>
               <% else %>
-                <p> <%= event.price %> € </p>
+                <p><%= humanized_money_with_symbol(event.price) %></p>
+
+
               <% end %>
             </div>
             <div class="detail-info">
@@ -84,14 +87,16 @@
   <%= javascript_tag do %>
 
   $( function() {
-  console.log("hello!");
+  console.log("<%= @query[:price_cents].to_i%>");
+
   $( "#price-slider" ).slider({
   range: "min",
-  value: parseInt(<%= @query[:price].try(:gsub, " €", "") || 60 %>),
+  value: parseInt(<%= @query[:price_cents].try(:gsub, " €", "") || 60 %>),
   min: 0,
   max: 60,
   slide: function(event, ui) {
   $( "#price-display").val( ui.value + " €");
+  <!-- ui.value/100 pour le display -->
 }
 });
 $( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");

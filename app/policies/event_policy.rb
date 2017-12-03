@@ -10,7 +10,6 @@ class EventPolicy < ApplicationPolicy
   end
 
   def index?
-    raise
     true
   end
 

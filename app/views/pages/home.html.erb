@@ -99,9 +99,11 @@
             <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
             <% end %>
             <% else %>
+
             <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
             <p class="glyphicon glyphicon-heart-empty"></p>
             <% end %>
+
             <% end %>
           </div>
         </div>
