@@ -17,13 +17,16 @@ def index
   # @query = params[:search]
   session[:search_query] = params[:search] || params
   @query = session[:search_query]
+
+  price_query = (@query[:price_cents].to_i)*100
+
   if params[:search]
 
     @events = policy_scope(Event)
     @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
     @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
     @events = @events.where(category: @query[:category]) if @query[:category].present?
-    @events = @events.where("events.price_cents <= ?", @query[:price_cents].to_i) if @query[:price_cents].present?
+    @events = @events.where("events.price_cents <= ?", price_query) if price_query.present?
     # @events = @events.where(tag: @query[:tag]) if @query[:tag].present?
     @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
     # @events = @events.where(english: @query[:english]) if @query[:english].present?
