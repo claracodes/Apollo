@@ -1,26 +1,26 @@
-<div class="wrapper wrapper-search">
-  <!-- Page container -->
-  <div class="container container-search">
-
-    <!-- Search bar -->
-    <div class="search-form-bar">
+  <!-- Search bar -->
+    <div class="search-form-bar search-form-">
       <div class="form-fields">
         <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline form-prevent-submit'} do |f| %>
-        <%= f.input :city, placeholder: "  City", label: false, class: "input-form form-control", input_html: { value: @query[:city], style: "width: 140px;" } %>
+        <%= f.input :city, placeholder: "City", label: false, input_html: { class: "input-form form-control input-form-index", value: @query[:city], style: "width: 140px;" } %>
 
-        <%= f.input :mood,  prompt: "Mood", label: false, class: "input-form form-control", selected: @query[:mood], collection: Event::MOOD %>
+        <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index" }, selected: @query[:mood], collection: Event::MOOD %>
 
-        <%= f.input :date, as: :string, input_html: { class: 'datepicker form-control', value: @query[:date], style: "width: 140px;" }, label: false, placeholder: "  Date" %>
-        <%= f.input :category, collection: Event::CATEGORY, label: false, class: "input-form form-control", prompt: " Category ", selected: @query[:category]%>
+        <%= f.input :date, as: :string, input_html: { class: "datepicker form-control input-form input-form-index", value: @query[:date], style: "width: 140px;" }, label: false, placeholder: "  Date" %>
+        <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index" }, prompt: "Category ", selected: @query[:category]%>
 
         <div id="price-slider" style="width: 100px; margin: 0; display: inline-block"></div>
-        <%= f.input :price,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, style: "background: transparent; border: none;
-          box-shadow: none; width: 70px; margin-left: 0;" }, class: "input-form form-control" %>
+        <%= f.input :price,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
 
           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
           <% end %>
         </div>
       </div>
+<div class="wrapper wrapper-search">
+
+
+  <!-- Page container -->
+  <div class="container container-search">
       <!-- Card container -->
       <div class="cards">
         <% @events.each do |event| %>
@@ -37,7 +37,7 @@
               <% end %>
             </div>
             <div class="detail-info">
-              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
+              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(80, omission: '...', separator: /,?\.* +/) %></p>
               <p class="text-category"> <%= event.category %> </p>
             </div>
             <div class="desc-likes">
