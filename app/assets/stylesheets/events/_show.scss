@@ -72,6 +72,7 @@
 }
 .event-input {
   margin: 0;
+  height: 39px;
 }
 #map {
   margin-top: 30px;
@@ -107,20 +108,16 @@
 }
 
 .venue-box-info {
-  display: flex;
-  justify-content: space-between;
   border-bottom: 0.5px solid $gray;
   margin-bottom: 15px;
   color: #656262;
   p {
     margin-bottom: 3px;
-  }
-  a {
-    text-decoration: none;
-    &:hover {
-      text-decoration: none;
-    }
-  }
+     }
+}
+
+.venue-box a:hover, a:focus {
+  text-decoration: none;
 }
 
 .box-division {
@@ -142,4 +139,25 @@
       text-decoration: none;
     }
   }
+}
+
+.title-checkout {
+  line-height: 30px;
+}
+
+.selector-list {
+  width: 60px;
+}
+
+.ticket-quantity-selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bookmark-container {
+  margin-top: 11px;
+}
+
+.bookmark-container a:hover, a:focus {
+  text-decoration: none;
 }
