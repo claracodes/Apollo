@@ -1,78 +1,31 @@
   <!-- Search bar -->
-    <div class="search-form-bar search-form-">
-      <div class="form-fields">
-        <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline form-prevent-submit'} do |f| %>
-        <%= f.input :city, placeholder: "City", label: false, input_html: { class: "input-form form-control input-form-index", value: @query[:city], style: "width: 140px;" } %>
+  <div class="search-form-bar search-form-">
+    <div class="form-fields">
+      <%= simple_form_for :search, url: events_path, html: {id: "search_form", method: "GET", :class => 'form-inline form-prevent-submit'}, remote: true do |f| %>
+      <%= f.input :city, placeholder: "City", label: false, input_html: { class: "input-form form-control input-form-index search-ajax", value: @query[:city], style: "width: 140px;" } %>
 
-        <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index" }, selected: @query[:mood], collection: Event::MOOD %>
+      <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index search-ajax"}, selected: @query[:mood], collection: Event::MOOD %>
 
-        <%= f.input :date, as: :string, input_html: { class: "datepicker form-control input-form input-form-index", value: @query[:date], style: "width: 140px;" }, label: false, placeholder: "  Date" %>
-        <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index" }, prompt: "Category ", selected: @query[:category]%>
+      <%= f.input :date, as: :string, input_html: { class: "datepicker form-control input-form input-form-index search-ajax", value: @query[:date], style: "width: 140px;" }, label: false, placeholder: "  Date" %>
+      <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index search-ajax" }, prompt: "Category ", selected: @query[:category]%>
 
-        <div id="price-slider" style="width: 100px; margin: 0; display: inline-block"></div>
+      <div id="price-slider" style="width: 100px; margin: 0; display: inline-block"></div>
 
-        <%= f.input :price_cents,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
+      <%= f.input :price_cents,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index search-ajax", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
 
-          <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
-          <% end %>
-        </div>
-      </div>
-<div class="wrapper wrapper-search">
+      <%= f.button :submit, class: "btn btn-danger", value: "Search", id: "submitSearch" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="wrapper wrapper-search">
 
 
-  <!-- Page container -->
-  <div class="container container-search">
+    <!-- Page container -->
+    <div class="container container-search">
       <!-- Card container -->
-      <div class="cards">
-        <% @events.each do |event| %>
-        <div class='event-card'>
-          <%= link_to "", event_path(event), class: "card-link" %>
-          <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
-          <div class="info">
-            <div class="event-name-price">
-              <h3><span><%= event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
-              <% if event.price == 0 %>
-                <p> FREE </p>
-              <% else %>
-                <p><%= humanized_money_with_symbol(event.price) %></p>
-
-
-              <% end %>
-            </div>
-            <div class="detail-info">
-              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(80, omission: '...', separator: /,?\.* +/) %></p>
-              <p class="text-category"> <%= event.category %> </p>
-            </div>
-            <div class="desc-likes">
-              <p class="desc"><%= event.description.truncate(100, omission: '...', separator: /,?\.* +/) %></p>
-              <div class="likes">
-                <% if user_signed_in? %>
-                <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
-                <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
-                <% end %>
-                <% else %>
-                <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
-                <p class="glyphicon glyphicon-heart-empty"></p>
-                <% end %>
-                <% end %>
-              </div>
-            </div>
-            <div class="friend-bookings">
-              <% if user_signed_in? %>
-              <% current_user.friends.each do |friend| %>
-              <% if friend.present? %>
-              <% friend.bookings.each do |booking| %>
-              <% if booking.present? && booking.event_id == event.id %>
-              <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
-              <% end %>
-              <% end %>
-              <% end %>
-              <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <% end %>
+      <div class="cards" id="cardsList">
+        <!-- PARTIAL -->
+        <%= render "card_list", events: @events %>
       </div>
     </div>
 
@@ -87,20 +40,20 @@
   <%= javascript_tag do %>
 
   $( function() {
-  console.log("<%= @query[:price_cents].to_i%>");
 
-  $( "#price-slider" ).slider({
-  range: "min",
-  value: parseInt(<%= @query[:price_cents].try(:gsub, " €", "") || 60 %>),
-  min: 0,
-  max: 60,
-  slide: function(event, ui) {
-  $( "#price-display").val( ui.value + " €");
-  <!-- ui.value/100 pour le display -->
-}
-});
-$( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");
-} );
+    $( "#price-slider" ).slider({
+    range: "min",
+    value: parseInt(<%= @query[:price_cents].try(:gsub, " €", "") || 60 %>),
+    min: 0,
+    max: 60,
+    slide: function(event, ui) {
+      $( "#price-display").val( ui.value + " €");
+      const form = document.getElementById("submitSearch");
+      form.click();
+    }
+  });
+  $( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");
+  } );
 <% end %>
 
 <%= javascript_tag do %>
