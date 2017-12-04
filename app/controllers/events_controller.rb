@@ -26,19 +26,26 @@ def index
     price_query = (@query[:price_cents].to_i)*100 if @query[:price_cents].present?
     @events = @events.where("events.price_cents <= ?", price_query) if price_query.present?
     @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
-
-    # # freestyle coding
-    # respond_to do |format|
-    #   format.html { redirect_to "/" }
-    #   format.js # index.js.erb ?????
-    # end
-
     # @events = @events.where(english: @query[:english]) if @query[:english].present?
   else
     @events = policy_scope(Event)
   end
   @venues = Venue.where(id: @events.map(&:venue_id))
   for_maps
+
+  # ajax call
+  if params[:search]
+    respond_to do |format|
+      format.html { redirect_to events_path }
+      format.js  # <-- will render `app/views/events/index.js.erb`
+    end
+  # else
+  #   respond_to do |format|
+  #     format.html { render 'events/index' }
+  #     format.js  # <-- idem
+  #   end
+  end
+
 end
 
   def upvote

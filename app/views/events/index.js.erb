@@ -1,30 +1,48 @@
-// document.getElementById('#mood-ajax');
+// selectionner l element cardsList
+// render la partial card_list (check js render)
+// ,mettre dans le html de cardsList
 
-// $(function() {
-//   $(document).on('change', '#mood-ajax', function() {
-//     console.log("it's working till here")
-//     alert('Changed filter');
+
+
+
+
+
+
+
+
+
+//. Old shit:
+
+// const mood_selector = document.getElementById("mood-ajax");
+// const mood_selector = document.getElementById("mood-ajax").value;
+// console.log(mood_selector)
+
+// mood_selector.addEventListener("change", function(e) {
+//   console.log(mood_selector.value)
+//   const mood_value = mood_selector.value
+//   console.log(mood_value)
 //   });
-// });
-
-
-var moodselector = document.getElementById("mood-ajax");
-moodselector.addEventListener("change", (event) => {
-  console.log(event);
-  console.log(event.currentTarget);
-});
-
-// $(function() {
-//   $(moodselector).on('change', 'mood-ajax', function() {
-//     console.log("it's working till here")
-//   });
-// });
 
 
 
-// where does the #search_mood come from? form_for? Can't I use this one for the eventListener?
-// Do i select my entire form or individual inputs in my form?
-// Same question for remote: true
-// Could I do that?
+//. QUESTIONS:
+
+// 1. where does the #search_mood come from? form_for? Should I use this one for the eventListener?
+// => yes use preset id
+// 2. wtf is that?
+//    $(document).ready(function() {
+//     });
+// => wait till the page is loaded to start JS
+// 3. Rather than eventListening individual inputs, wouldn't it be easier to listen to all form and submit when any change is listened to?
+// => not possible, has to select individual input
+// 4. I don't get the difference between having your JS on the index page or within a JS partial
+// => Loads with the page
+// => don't do it, its ugly
+// => Diff with js file => you can use erb
+// 5. Do i need render js in my controller index method? For each different search query?
+// => place 1 at the end of the method only
+// 6. Could I do that?
 // => https://stackoverflow.com/questions/10340229/rails-remote-form-submit-through-javascript
-// Do i need render js in my controller index method? For each different search query?
+
+
+
