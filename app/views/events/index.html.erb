@@ -1,10 +1,10 @@
   <!-- Search bar -->
     <div class="search-form-bar search-form-">
       <div class="form-fields">
-        <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline form-prevent-submit'} do |f| %>
+        <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline form-prevent-submit'}, remote: true do |f| %>
         <%= f.input :city, placeholder: "City", label: false, input_html: { class: "input-form form-control input-form-index", value: @query[:city], style: "width: 140px;" } %>
 
-        <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index" }, selected: @query[:mood], collection: Event::MOOD %>
+        <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index", id: "mood-ajax" }, selected: @query[:mood], collection: Event::MOOD %>
 
         <%= f.input :date, as: :string, input_html: { class: "datepicker form-control input-form input-form-index", value: @query[:date], style: "width: 140px;" }, label: false, placeholder: "  Date" %>
         <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index" }, prompt: "Category ", selected: @query[:category]%>
@@ -87,7 +87,6 @@
   <%= javascript_tag do %>
 
   $( function() {
-  console.log("<%= @query[:price_cents].to_i%>");
 
   $( "#price-slider" ).slider({
   range: "min",

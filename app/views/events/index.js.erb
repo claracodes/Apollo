@@ -1,0 +1,30 @@
+// document.getElementById('#mood-ajax');
+
+// $(function() {
+//   $(document).on('change', '#mood-ajax', function() {
+//     console.log("it's working till here")
+//     alert('Changed filter');
+//   });
+// });
+
+
+var moodselector = document.getElementById("mood-ajax");
+moodselector.addEventListener("change", (event) => {
+  console.log(event);
+  console.log(event.currentTarget);
+});
+
+// $(function() {
+//   $(moodselector).on('change', 'mood-ajax', function() {
+//     console.log("it's working till here")
+//   });
+// });
+
+
+
+// where does the #search_mood come from? form_for? Can't I use this one for the eventListener?
+// Do i select my entire form or individual inputs in my form?
+// Same question for remote: true
+// Could I do that?
+// => https://stackoverflow.com/questions/10340229/rails-remote-form-submit-through-javascript
+// Do i need render js in my controller index method? For each different search query?

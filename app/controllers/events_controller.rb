@@ -26,6 +26,13 @@ def index
     price_query = (@query[:price_cents].to_i)*100 if @query[:price_cents].present?
     @events = @events.where("events.price_cents <= ?", price_query) if price_query.present?
     @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
+
+    # # freestyle coding
+    # respond_to do |format|
+    #   format.html { redirect_to "/" }
+    #   format.js # index.js.erb ?????
+    # end
+
     # @events = @events.where(english: @query[:english]) if @query[:english].present?
   else
     @events = policy_scope(Event)
