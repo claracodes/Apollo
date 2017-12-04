@@ -8,4 +8,17 @@ class VenuePolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def index?
+    raise
+    true
+  end
+
+  def upvote?
+    true
+  end
+
+  def downvote?
+    true
+  end
 end

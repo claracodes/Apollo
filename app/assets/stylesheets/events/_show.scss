@@ -64,28 +64,18 @@
   width: 100%;
 }
 .box-event {
-  padding: 15px 20px;
+  // padding: 15px 20px;
   background-color: white;
   flex: 1;
   margin-left: 50px;
-  height: 150px;
+  // height: 150px;
 }
 .event-input {
   margin: 0;
 }
 #map {
-  margin-top: 50px;
+  margin-top: 30px;
 }
-
-
-@media screen and (max-width: 960px) {
-  .header-event {
-    position: relative;
-    left: 0;
-    top: 40px;
-  }
-}
-
 .link-back {
   color: $gray;
   text-decoration: none;
@@ -98,24 +88,56 @@
     background-color: $red;
   }
 }
+// Julien's adds bellow
+.venue-box {
+  background-color: white;
+  margin: 15px 30px;
+}
 
-.heart-bookmark {
+.venue-box-info {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid $gray;
+  margin-bottom: 15px;
+  color: #656262;
   p {
-    background-color: transparent;
-    padding: 0;
-    font-size: 30px;
-    border: 0;
-    color: $red;
-    position: relative;
-    left: 8px;
+    margin-bottom: 3px;
   }
-  span {
-    position: relative;
-    left: 12px;
-    bottom: 7px;
-    color: $red;
-    &:hover{
+  a {
+    text-decoration: none;
+    &:hover {
       text-decoration: none;
     }
+  }
+}
+
+.box-division {
+  background-color: $light-gray;
+}
+
+.booking-box {
+  margin: 15px 30px;
+}
+
+.venue-box-img {
+  height: 180px;
+  background-size: cover;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 960px) {
+  .header-event {
+    position: relative;
+    left: 0;
+    top: 40px;
   }
 }

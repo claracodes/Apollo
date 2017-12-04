@@ -1,44 +1,32 @@
-<h1>Hello <span><%= current_user.first_name %></span></h1>
-<div class="wrapper-tab">
-  <div class="tabs">
-    <%= link_to  dashboard_path, class: "tab" do %>
-    <h3>Calendar</h3>
-    <% end %>
-    <%= link_to dashboard_bookmarks_path, class: "tab" do %>
-    <h3>Bookmarks</h3>
-    <% end %>
-  </div>
-</div>
+<div class="wrapper wrapper-tab">
+    <h1 class="dash-title text-center">Hello <span><%= current_user.first_name %></span></h1>
+    <div class="tabs text-center">
+      <%= link_to "CALENDAR", dashboard_path, class: "tab-active" %>
+      <%= link_to "BOOKMARKS", dashboard_bookmarks_path, class: "tab" %>
+    </div>
 
-<div class="container">
-  <div class="row">
-
-    <div class="col-xs-12 col-sm-6">
-      <div class="booking-list">
-        <h3>Your bookings:</h3>
-        <% @bookings.each do |booking| %>
-        <div class='event-list-item'>
-          <%= link_to "", event_path(booking.event) %>
-          <div class="info">
-            <div class="event-name-price">
-              <h4><span><%= booking.event.name %></span></h4>
-              <p> Booked! </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="booking-list">
+          <h3 class="title-home"><span>Your bookings:</span></h3>
+          <% @bookings.each do |booking| %>
+          <div class='event-list-item'>
+            <%= link_to "", event_path(booking.event) %>
+            <div class="info info-dash">
+              <div class="event-name-price">
+                <h4><span><%= booking.event.name %></span></h4>
+                <p> Booked! </p>
+              </div>
+              <p class="list-event-date"><%= booking.event.date.day %> / <%= booking.event.date.month %> / <%= booking.event.date.year %></p>
             </div>
-            <p class="list-event-date"><%= booking.event.date.day %> / <%= booking.event.date.month %> / <%= booking.event.date.year %></p>
           </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-6">
-      <div id="calendar"></div>
-    </div>
-
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div id="map-dashboard"></div>
+      <div class="col-xs-12 col-sm-6">
+        <div id="calendar"></div>
+      </div>
     </div>
   </div>
 </div>

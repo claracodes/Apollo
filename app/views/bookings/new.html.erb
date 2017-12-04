@@ -1,20 +1,18 @@
 <div class="wrapper wrapper-session">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4 col-sm-offset-4 log-in">
-        <h3>Booking details:</h3>
-        <div class="payment-details">
-        <h4><span><%= @event.name.upcase %></span> </h4>  <br>
-         <p><%= @event.date.day %>.<%= @event.date.month %>.<%= @event.date.year %> <br>
-         <%= @event.venue.name.capitalize %></p>
-         </div>
-         <div class="pay-bottom"><p class="pay"><%= @event.price %>€</p>  </div>
+  <div class="container redirect">
+
          <%= simple_form_for [@event, @booking] do |f| %>
          <!-- number of persons and other stuff -->
 
-         <%= f.submit "Pay now", class: "btn btn-danger btn-block" %>
+         <input type="image" src="https://cdn.codemyui.com/wp-content/plugins/a3-lazy-load/assets/css/loading.gif" alt="Submit Form" id="loading-button"/>
+         <p>Proceeding to payment...</p>
          <% end %>
-       </div>
-     </div>
    </div>
  </div>
+
+<script>
+setTimeout(function() {
+  document.getElementById("loading-button").click();
+}, 2000);
+
+</script>

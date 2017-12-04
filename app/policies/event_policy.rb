@@ -10,11 +10,14 @@ class EventPolicy < ApplicationPolicy
   end
 
   def index?
-    raise
     true
   end
 
   def upvote?
+    true
+  end
+
+  def downvote?
     true
   end
 end

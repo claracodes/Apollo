@@ -1,4 +1,5 @@
 .footer {
+  font-size: 12px;
   position: sticky;
   background: $gray;
   display: flex;
@@ -24,5 +25,14 @@
   opacity: 1;
 }
 .footer .fa-heart {
-  color: #D23333;
+  color: $red;
+}
+
+.small {
+  height: 30px;
+}
+@media screen and (max-width: 768px) {
+  .footer-copyright {
+    display: none;
+  }
 }

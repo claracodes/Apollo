@@ -84,3 +84,11 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+@media screen and (max-width: 768px) {
+  .navbar-home {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+

@@ -8,3 +8,6 @@ public/assets
 
 # Ignore application configuration
 /config/application.yml
+/.bybug_history
+/lib/tasks/parse_exhibitions.rake
+/lib/tasks/parse_other.rake

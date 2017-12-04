@@ -22,3 +22,4 @@ $(".normal-search").click(function(e) {
   // submit the value to the whole simple_form
   $('#home-form').submit();
 });
+

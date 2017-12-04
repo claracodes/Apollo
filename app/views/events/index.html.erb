@@ -1,59 +1,85 @@
-<div class="wrapper wrapper-search">
-  <!-- Page container -->
-  <div class="container container-search">
-
-    <!-- Search bar -->
-    <div class="search-form-bar">
+  <!-- Search bar -->
+    <div class="search-form-bar search-form-">
       <div class="form-fields">
         <%= simple_form_for :search, url: events_path, html: {method: "GET", :class => 'form-inline form-prevent-submit'} do |f| %>
-        <%= f.input :city, placeholder: "  City", label: false, class: "input-form form-control", input_html: { value: @query[:city], style: "width: 140px;" } %>
-        <%= f.input :category, collection: Event::CATEGORY, label: false, class: "input-form form-control", prompt: " Category ", selected: @query[:category]%>
-        <%= f.input :date, as: :string, input_html: { class: 'datepicker form-control', value: @query[:date], style: "width: 140px;" }, label: false, placeholder: "  Date" %>
+        <%= f.input :city, placeholder: "City", label: false, input_html: { class: "input-form form-control input-form-index", value: @query[:city], style: "width: 140px;" } %>
+
+        <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index" }, selected: @query[:mood], collection: Event::MOOD %>
+
+        <%= f.input :date, as: :string, input_html: { class: "datepicker form-control input-form input-form-index", value: @query[:date], style: "width: 140px;" }, label: false, placeholder: "  Date" %>
+        <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index" }, prompt: "Category ", selected: @query[:category]%>
 
         <div id="price-slider" style="width: 100px; margin: 0; display: inline-block"></div>
-        <%= f.input :price,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, style: "background: transparent; border: none;
-          box-shadow: none; width: 70px; margin-left: 0;" }, class: "input-form form-control" %>
 
-        <%#= f.input :english, as: :radio_buttons, prompt: "English", class: "input-form form-control" %>
-
-          <%= f.input :tags,  prompt: "Tags", label: false, class: "input-form form-control", collection: Event::TAG %>
+        <%= f.input :price_cents,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
 
           <%= f.button :submit, class: "btn btn-danger", value: "Search" %>
           <% end %>
         </div>
       </div>
+<div class="wrapper wrapper-search">
 
 
+  <!-- Page container -->
+  <div class="container container-search">
       <!-- Card container -->
       <div class="cards">
         <% @events.each do |event| %>
         <div class='event-card'>
-          <%= link_to "", event_path(event) %>
+          <%= link_to "", event_path(event), class: "card-link" %>
           <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
           <div class="info">
             <div class="event-name-price">
-              <h3><span><%= event.name %></span></h3>
-              <p> <%= event.price %> € </p>
+              <h3><span><%= event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+              <% if event.price == 0 %>
+                <p> FREE </p>
+              <% else %>
+                <p><%= humanized_money_with_symbol(event.price) %></p>
+
+
+              <% end %>
             </div>
-            <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name %></p>
-            <p class="desc"><%= event.description.split.slice(0, 5).join(" ") %></p>
-            <% if user_signed_in? %>
-            <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
-            <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
-            <% end %>
-          <% else %>
-            <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
-            <p class="glyphicon glyphicon-heart-empty"></p>
-            <% end %>
-          <% end %>
+            <div class="detail-info">
+              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(80, omission: '...', separator: /,?\.* +/) %></p>
+              <p class="text-category"> <%= event.category %> </p>
+            </div>
+            <div class="desc-likes">
+              <p class="desc"><%= event.description.truncate(100, omission: '...', separator: /,?\.* +/) %></p>
+              <div class="likes">
+                <% if user_signed_in? %>
+                <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
+                <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
+                <% end %>
+                <% else %>
+                <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
+                <p class="glyphicon glyphicon-heart-empty"></p>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="friend-bookings">
+              <% if user_signed_in? %>
+              <% current_user.friends.each do |friend| %>
+              <% if friend.present? %>
+              <% friend.bookings.each do |booking| %>
+              <% if booking.present? && booking.event_id == event.id %>
+              <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
+              <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
         <% end %>
       </div>
     </div>
+
     <!-- Map container -->
     <div id="map-search" ></div>
   </div>
+
 
   <!-- javascript -->
   <% content_for(:after_js) do %>
@@ -61,14 +87,16 @@
   <%= javascript_tag do %>
 
   $( function() {
-  console.log("hello!");
+  console.log("<%= @query[:price_cents].to_i%>");
+
   $( "#price-slider" ).slider({
   range: "min",
-  value: parseInt(<%= @query[:price].try(:gsub, " €", "") || 60 %>),
+  value: parseInt(<%= @query[:price_cents].try(:gsub, " €", "") || 60 %>),
   min: 0,
   max: 60,
   slide: function(event, ui) {
   $( "#price-display").val( ui.value + " €");
+  <!-- ui.value/100 pour le display -->
 }
 });
 $( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");
@@ -77,336 +105,332 @@ $( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");
 
 <%= javascript_tag do %>
 var styles = [
-    {
-        "featureType": "all",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "saturation": 36
-            },
-            {
-                "color": "#333333"
-            },
-            {
-                "lightness": 40
-            },
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 16
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "lightness": 20
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#fefefe"
-            },
-            {
-                "lightness": 17
-            },
-            {
-                "weight": 1.2
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.province",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.locality",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.neighborhood",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.land_parcel",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#f5f5f5"
-            },
-            {
-                "lightness": 20
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#f4f4f4"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#f5f5f5"
-            },
-            {
-                "lightness": 21
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#f2f2f2"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#dedede"
-            },
-            {
-                "lightness": 21
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#edffeb"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 17
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 29
-            },
-            {
-                "weight": 0.2
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 18
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 16
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#f2f2f2"
-            },
-            {
-                "lightness": 19
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#e9e9e9"
-            },
-            {
-                "lightness": 17
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#dfeffa"
-            }
-        ]
-    }
+{
+  "featureType": "all",
+  "elementType": "all",
+  "stylers": [
+  {
+    "visibility": "on"
+  }
+  ]
+},
+{
+  "featureType": "all",
+  "elementType": "labels",
+  "stylers": [
+  {
+    "visibility": "on"
+  }
+  ]
+},
+{
+  "featureType": "all",
+  "elementType": "labels.text",
+  "stylers": [
+  {
+    "visibility": "on"
+  }
+  ]
+},
+{
+  "featureType": "all",
+  "elementType": "labels.text.fill",
+  "stylers": [
+  {
+    "saturation": 36
+  },
+  {
+    "color": "#333333"
+  },
+  {
+    "lightness": 40
+  },
+  {
+    "visibility": "off"
+  }
+  ]
+},
+{
+  "featureType": "all",
+  "elementType": "labels.text.stroke",
+  "stylers": [
+  {
+    "visibility": "on"
+  },
+  {
+    "color": "#ffffff"
+  },
+  {
+    "lightness": 16
+  }
+  ]
+},
+{
+  "featureType": "all",
+  "elementType": "labels.icon",
+  "stylers": [
+  {
+    "visibility": "off"
+  }
+  ]
+},
+{
+  "featureType": "administrative",
+  "elementType": "geometry.fill",
+  "stylers": [
+  {
+    "lightness": 20
+  }
+  ]
+},
+{
+  "featureType": "administrative",
+  "elementType": "geometry.stroke",
+  "stylers": [
+  {
+    "color": "#fefefe"
+  },
+  {
+    "lightness": 17
+  },
+  {
+    "weight": 1.2
+  }
+  ]
+},
+{
+  "featureType": "administrative",
+  "elementType": "labels.text",
+  "stylers": [
+  {
+    "visibility": "off"
+  }
+  ]
+},
+{
+  "featureType": "administrative.province",
+  "elementType": "geometry",
+  "stylers": [
+  {
+    "visibility": "on"
+  }
+  ]
+},
+{
+  "featureType": "administrative.locality",
+  "elementType": "all",
+  "stylers": [
+  {
+    "visibility": "on"
+  }
+  ]
+},
+{
+  "featureType": "administrative.neighborhood",
+  "elementType": "all",
+  "stylers": [
+  {
+    "visibility": "on"
+  }
+  ]
+},
+{
+  "featureType": "administrative.land_parcel",
+  "elementType": "all",
+  "stylers": [
+  {
+    "visibility": "on"
+  }
+  ]
+},
+{
+  "featureType": "landscape",
+  "elementType": "geometry",
+  "stylers": [
+  {
+    "color": "#f5f5f5"
+  },
+  {
+    "lightness": 20
+  }
+  ]
+},
+{
+  "featureType": "landscape",
+  "elementType": "labels.text",
+  "stylers": [
+  {
+    "visibility": "off"
+  }
+  ]
+},
+{
+  "featureType": "landscape.man_made",
+  "elementType": "geometry.fill",
+  "stylers": [
+  {
+    "color": "#f4f4f4"
+  }
+  ]
+},
+{
+  "featureType": "poi",
+  "elementType": "geometry",
+  "stylers": [
+  {
+    "color": "#f5f5f5"
+  },
+  {
+    "lightness": 21
+  }
+  ]
+},
+{
+  "featureType": "poi",
+  "elementType": "geometry.fill",
+  "stylers": [
+  {
+    "color": "#f2f2f2"
+  }
+  ]
+},
+{
+  "featureType": "poi",
+  "elementType": "labels.text",
+  "stylers": [
+  {
+    "visibility": "off"
+  }
+  ]
+},
+{
+  "featureType": "poi.park",
+  "elementType": "geometry",
+  "stylers": [
+  {
+    "color": "#dedede"
+  },
+  {
+    "lightness": 21
+  }
+  ]
+},
+{
+  "featureType": "poi.park",
+  "elementType": "geometry.fill",
+  "stylers": [
+  {
+    "color": "#edffeb"
+  }
+  ]
+},
+{
+  "featureType": "road",
+  "elementType": "labels.text",
+  "stylers": [
+  {
+    "visibility": "on"
+  }
+  ]
+},
+{
+  "featureType": "road.highway",
+  "elementType": "geometry.fill",
+  "stylers": [
+  {
+    "color": "#ffffff"
+  },
+  {
+    "lightness": 17
+  }
+  ]
+},
+{
+  "featureType": "road.highway",
+  "elementType": "geometry.stroke",
+  "stylers": [
+  {
+    "color": "#ffffff"
+  },
+  {
+    "lightness": 29
+  },
+  {
+    "weight": 0.2
+  }
+  ]
+},
+{
+  "featureType": "road.arterial",
+  "elementType": "geometry",
+  "stylers": [
+  {
+    "color": "#ffffff"
+  },
+  {
+    "lightness": 18
+  }
+  ]
+},
+{
+  "featureType": "road.local",
+  "elementType": "geometry",
+  "stylers": [
+  {
+    "color": "#ffffff"
+  },
+  {
+    "lightness": 16
+  }
+  ]
+},
+{
+  "featureType": "transit",
+  "elementType": "geometry",
+  "stylers": [
+  {
+    "color": "#f2f2f2"
+  },
+  {
+    "lightness": 19
+  }
+  ]
+},
+{
+  "featureType": "water",
+  "elementType": "geometry",
+  "stylers": [
+  {
+    "color": "#e9e9e9"
+  },
+  {
+    "lightness": 17
+  }
+  ]
+},
+{
+  "featureType": "water",
+  "elementType": "geometry.fill",
+  "stylers": [
+  {
+    "color": "#dfeffa"
+  }
+  ]
+}
 ]
 
 
-var handler = Gmaps.build('Google', { markers: { clusterer: null } });
-
-handler.buildMap({ provider: {styles: styles}, internal: { id: 'map-search' } }, function() {
-
-markers = (<%= raw @hash.to_json %>)
-console.log(markers)
-
-Gmaps.store = {}
-Gmaps.store.markers = markers.map(function(m) {
-  marker = handler.addMarker(m);
-  marker.serviceObject.set('id', m.id);
-  return marker;
-});
-handler.bounds.extendWith(Gmaps.store.markers);
+var handler = Gmaps.build('Google');
+handler.buildMap({ provider: {styles: styles},
+internal: { id: 'map-search' } }, function() {
+markers = handler.addMarkers(<%= raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
 handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
 });
 
 

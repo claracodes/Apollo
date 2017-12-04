@@ -1,44 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+namespace :parse  do
+  desc "Parsing of events based on Berlin events"
+  task :task_time_offset => :environment do
 
-require 'nokogiri'
-require 'open-uri'
-
-puts "Deleting all records from Database"
-Booking.destroy_all
-Event.destroy_all
-Venue.destroy_all
-User.destroy_all
-
-puts 'Creating 2 hosts'
-host1 = User.new(host: true, first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: "host1@web.de", password: "password")
-host1.save
-host2 = User.new(host: true, first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: "host2@web.de", password: "password")
-host2.save
-
-puts 'Creating 10 new users'
-10.times do |user|
-  user = User.new(first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: "password")
-  user.save!
-end
-
-#Scraper for Exhibitions
+date_offset = 10
 
 10.times do |d|
-@event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/en/exhibitions/?selected_date=2017-12-#{d + 1}"))
-@date = Date.parse("Dec #{d + 1} 2017")
+@event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/en/exhibitions/?selected_date=2017-12-#{d + date_offset}"))
+@date = Date.parse("Dec #{d + date_offset} 2017")
 p "Category: Exhibitions --> Date: #{@date}"
 
   # Venue Creator
@@ -114,8 +82,8 @@ available_categories = {theater: "theaterperformance", concert: "konzert", movie
 available_categories.each do |cat|
 
 10.times do |d|
-@event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/de/veranstaltungen/?selected_date=2017-12-#{d + 1}&category=#{cat[1]}"))
-@date = Date.parse("Dec #{d + 1} 2017")
+@event = Nokogiri::HTML(open("https://www.museumsportal-berlin.de/de/veranstaltungen/?selected_date=2017-12-#{d + date_offset}&category=#{cat[1]}"))
+@date = Date.parse("Dec #{d + date_offset} 2017")
 p "Category: #{cat[0].capitalize} --> Date: #{@date}"
 
   # Venue Creator
@@ -185,10 +153,5 @@ sleep 3
 sleep 3
 end
 
-#puts 'Creating 10 new bookings'
-#10.times do |booking|
-#  @event = Event.all.sample
-#  @user = User.all.sample
-#  booking = Booking.new(event: @event, user: @user)
-#  booking.save!
-#end
+end
+end

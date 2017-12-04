@@ -6,8 +6,9 @@
 .list-moods {
   margin-bottom: 0;
   width: 100%;
+  padding-left: 0;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
   li {
     background-size: cover;
     cursor: pointer;
@@ -17,8 +18,8 @@
     align-items: center;
     justify-content: space-around;
     border-radius: 50%;
-    min-height: 125px;
-    min-width: 125px;
+    height: 125px;
+    width: 125px;
     transition: all 0.3s ease;
     img {
       width: 70px;
@@ -83,11 +84,27 @@
   justify-content: space-around;
   align-items: center;
 }
-.title-home {
+.title-moods {
   padding: 22px 0 0 0;
   margin: 0;
   color: $gray;
   font-size: 24px;
   font-weight: lighter;
   text-transform: uppercase;
-  }
+}
+.col-half-offset{
+    margin-left:4.166666667%;
+}
+.col-first-offset {
+  margin-left: -4.166666667%;
+}
+
+@media (min-width: 978px) {
+    div.col-xs-7.five-three {
+    width: 60% !important;
+    }
+
+    div.col-xs-5.five-two {
+    width: 40% !important;
+    }
+}

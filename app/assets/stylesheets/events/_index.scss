@@ -12,8 +12,27 @@
 
 #map-search {
   position: sticky !important;
-  flex: 0 0 450px;
+  flex: 0 0 32%;
   height: 100vh;
   top: 0 !important;
   right: 0 !important;
+}
+#price-slider {
+  span {
+    background-color: $red;
+    &:focus {
+      outline-style: none;
+      border: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1065px) {
+  .wrapper-search {
+    display: block;
+  }
+  #map-search {
+    flex: 0;
+    position: absolute;
+  }
 }

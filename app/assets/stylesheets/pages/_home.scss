@@ -9,6 +9,7 @@
 }
 .banner-home {
   position: relative;
+  background-attachment: fixed;
   background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), url("https://images.unsplash.com/photo-1485518994577-6cd6324ade8f?auto=format&fit=crop&w=944&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
 }
 .be-inspired {
@@ -34,11 +35,24 @@
   }
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 880px) {
   #logo-home {
     width: 300px;
   }
 }
 .wrapper-home {
   height: 100vh;
+}
+.title-home {
+  padding: 30px auto;
+  margin: 0;
+  margin-bottom: 20px;
+  color: $gray;
+  font-size: 27px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  span {
+    background-color: $red;
+    padding: 5px 10px;
+  }
 }
