@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
+  :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   attr_reader :last_name
 
@@ -35,11 +35,15 @@ class User < ApplicationRecord
   acts_as_voter
 
   def friends
-    graph = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
-    friends = graph.get_connections(uid, "friends") || []
-    users = friends.map do |friend|
-      User.find_by(uid: friend['id'])
+    if uid
+      graph = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
+      friends = graph.get_connections(uid, "friends") || []
+      users = friends.map do |friend|
+        User.find_by(uid: friend['id'])
+      end
+      users
+    else
+      []
     end
-    users
   end
 end

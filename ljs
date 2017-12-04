@@ -1,0 +1,19 @@
+=> [32m#<Event:0x0000564d98aeac18[0m
+ id: [1;34m14[0m,
+ name: [31m[1;31m"[0m[31mIndigenous Australia[1;31m"[0m[31m[0m,
+ description:
+  [31m[1;31m"[0m[31m  The National Gallery of Australia (NGA) and me Collectors Room Berlin present a survey of significant traditional and modern art by Aboriginal and Torres Strait Islanders, providing an insight into one of the ‘oldest, richest and most complex’ cultures in the world (Franchesca Cubillo). ‘Indigenous Australia: Masterworks from the National Gallery of Australia’ opens in Berlin on 17 November.[1;31m"[0m[31m[0m,
+ category: [31m[1;31m"[0m[31mexhibition[1;31m"[0m[31m[0m,
+ tags: [31m[1;31m"[0m[31mModern[1;31m"[0m[31m[0m,
+ start_time: [1;36mnil[0m,
+ duration: [1;36mnil[0m,
+ created_at: [1;34;4mFri[0m, [1;34m01[0m [1;34;4mDec[0m [1;34m2017[0m [1;34m10[0m:[1;34m34[0m:[1;34m33[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ updated_at: [1;34;4mFri[0m, [1;34m01[0m [1;34;4mDec[0m [1;34m2017[0m [1;34m10[0m:[1;34m34[0m:[1;34m33[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ date: [1;34;4mFri[0m, [1;34m01[0m [1;34;4mDec[0m [1;34m2017[0m,
+ venue_id: [1;34m28[0m,
+ city: [31m[1;31m"[0m[31mBerlin[1;31m"[0m[31m[0m,
+ photo: [31m[1;31m"[0m[31mimage/upload/v1512124474/fd5pogfeuhloobmj4ap2.jpg[1;31m"[0m[31m[0m,
+ english: [1;36mnil[0m,
+ mood: [31m[1;31m"[0m[31mWild[1;31m"[0m[31m[0m,
+ end_time: [1;36mnil[0m,
+ price_cents: [1;34m800[0m[32m>[0m
