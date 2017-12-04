@@ -15,10 +15,12 @@ def index
   @event_pages = true
 
   # @query = params[:search]
-  session[:search_query] = params[:search] || params
-  @query = session[:search_query]
 
-  if params[:search]
+  session[:search_query] = search_params if params[:search].present?
+  session[:search_query] ||= params
+  @query = session[:search_query].with_indifferent_access
+
+  if @query
     @events = policy_scope(Event)
     @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
     @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
@@ -74,6 +76,10 @@ end
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def search_params
+    params.require(:search).permit(:city, :mood, :date, :category, :price_cents)
   end
 
   def event_params
