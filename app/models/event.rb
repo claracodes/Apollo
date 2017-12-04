@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   # validates :start_time, presence: true
   # validates :duration, presence: true
   validates :date, presence: true
-  validates :price, presence: true
+  validates :price_cents, presence: true
   validates :mood, presence: true, inclusion: { in: MOOD,
               message: "%{value} is not a valid mood" }
 

@@ -77,16 +77,6 @@
 #map {
   margin-top: 30px;
 }
-
-
-@media screen and (max-width: 960px) {
-  .header-event {
-    position: relative;
-    left: 0;
-    top: 40px;
-  }
-}
-
 .link-back {
   color: $gray;
   text-decoration: none;
@@ -99,8 +89,6 @@
     background-color: $red;
   }
 }
-
-
 // Julien's adds bellow
 .venue-box {
   background-color: white;
@@ -160,4 +148,11 @@
 
 .bookmark-container a:hover, a:focus {
   text-decoration: none;
+
+@media screen and (max-width: 960px) {
+  .header-event {
+    position: relative;
+    left: 0;
+    top: 40px;
+  }
 }
