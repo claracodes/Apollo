@@ -5,7 +5,7 @@ $(".be-inspired").click(function() {
 });
 
 
-$(".list-moods > li").click(function(e) {
+$(".list-moods .mood").click(function(e) {
   e.preventDefault();
   // fetch value of button (nerdy, ...)
   var mood = $(this).data("mood") // returns the value data-mood of the li

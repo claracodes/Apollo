@@ -1,25 +1,19 @@
-.container-moods {
-  height: calc(38vh - 115px);
-  display: flex;
-  justify-content: space-around;
-}
+
 .list-moods {
-  margin-bottom: 0;
-  width: 100%;
-  padding-left: 0;
-  display: flex;
-  align-items: center;
-  li {
+  color: white;
+  font-weight: bolder;
+  .mood {
     background-size: cover;
     cursor: pointer;
     filter: grayscale(100%);
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-around;
+    height: 130px;
+    width: 130px;
     border-radius: 50%;
-    height: 125px;
-    width: 125px;
+    flex: 0 0 20%;
     transition: all 0.3s ease;
     img {
       width: 70px;
@@ -44,7 +38,14 @@
     }
   }
 }
-
+.title-moods {
+  padding: 22px 0 0 0;
+  margin: 0;
+  color: $gray;
+  font-size: 24px;
+  font-weight: lighter;
+  text-transform: uppercase;
+}
 #romantic {
   background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('romantic.jpg');
   &:hover {
@@ -76,35 +77,14 @@
   }
 }
 
-.flex-list {
-  color: white;
-  font-weight: bolder;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.title-moods {
-  padding: 22px 0 0 0;
-  margin: 0;
-  color: $gray;
-  font-size: 24px;
-  font-weight: lighter;
-  text-transform: uppercase;
-}
-.col-half-offset{
-    margin-left:4.166666667%;
-}
-.col-first-offset {
-  margin-left: -4.166666667%;
-}
 
-@media (min-width: 978px) {
-    div.col-xs-7.five-three {
-    width: 60% !important;
-    }
 
-    div.col-xs-5.five-two {
-    width: 40% !important;
-    }
+@media screen and (max-width: 960px) {
+  .col-md-1 {
+    display: none;
+  }
+  .mood {
+    max-height: 80px;
+    max-width: 80px;
+  }
 }
