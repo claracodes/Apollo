@@ -1,48 +1,34 @@
-// selectionner l element cardsList
-// render la partial card_list (check js render)
-// ,mettre dans le html de cardsList
+// Select the cardList element:
+
+var cards_list = document.getElementById('cardsList')
+console.log(cards_list)
+
+// Render the cards list partial (using j render)
+
+const partial = "<%= j render 'card_list', events: @events %>"
+
+// Inject HTML to partial
+cards_list.innerHTML = partial
+
+// Render maps (copy/past from index)
+
+var handler = Gmaps.build('Google');
+handler.buildMap({
+    provider: {styles: styles},
+    internal: { id: 'map-search' }
+  }, function() {
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    if (markers.length == 0) {
+      handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+      handler.getMap().setZoom(14);
+    }
+  }
+);
 
 
-
-
-
-
-
-
-
-
-//. Old shit:
-
-// const mood_selector = document.getElementById("mood-ajax");
-// const mood_selector = document.getElementById("mood-ajax").value;
-// console.log(mood_selector)
-
-// mood_selector.addEventListener("change", function(e) {
-//   console.log(mood_selector.value)
-//   const mood_value = mood_selector.value
-//   console.log(mood_value)
-//   });
-
-
-
-//. QUESTIONS:
-
-// 1. where does the #search_mood come from? form_for? Should I use this one for the eventListener?
-// => yes use preset id
-// 2. wtf is that?
-//    $(document).ready(function() {
-//     });
-// => wait till the page is loaded to start JS
-// 3. Rather than eventListening individual inputs, wouldn't it be easier to listen to all form and submit when any change is listened to?
-// => not possible, has to select individual input
-// 4. I don't get the difference between having your JS on the index page or within a JS partial
-// => Loads with the page
-// => don't do it, its ugly
-// => Diff with js file => you can use erb
-// 5. Do i need render js in my controller index method? For each different search query?
-// => place 1 at the end of the method only
-// 6. Could I do that?
-// => https://stackoverflow.com/questions/10340229/rails-remote-form-submit-through-javascript
 
 
 

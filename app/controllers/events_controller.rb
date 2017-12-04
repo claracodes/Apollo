@@ -33,19 +33,13 @@ def index
   @venues = Venue.where(id: @events.map(&:venue_id))
   for_maps
 
-  # ajax call
+  # Ajax call
   if params[:search]
     respond_to do |format|
       format.html { redirect_to events_path }
       format.js  # <-- will render `app/views/events/index.js.erb`
     end
-  # else
-  #   respond_to do |format|
-  #     format.html { render 'events/index' }
-  #     format.js  # <-- idem
-  #   end
   end
-
 end
 
   def upvote
