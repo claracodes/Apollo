@@ -4,5 +4,6 @@ class Booking < ApplicationRecord
   monetize :amount_cents
 
   include PublicActivity::Model
-  tracked
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+
 end

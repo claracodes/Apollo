@@ -2,6 +2,17 @@
   background-color: black;
   color: white;
   padding: 0px 3px;
+  font-size: 14px;
+}
+
+.vertical {
+  width: 0;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.pink {
+  background-color: $red;
 }
 
 .grid {
@@ -53,7 +64,7 @@
 }
 
 .element4 {
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
   grid-column: 6 /span 2;
   border-left: 1px solid #E6E6E6;
 }
@@ -71,7 +82,7 @@
 
 .element7 {
   grid-row: 3 / span 2;
-  grid-column: 3 /span 2;
+  grid-column: 3 /span 3;
   border-top: 1px solid #E6E6E6;
   border-right: 1px solid #E6E6E6;
 }
@@ -109,6 +120,7 @@
     grid-column: 1 /span 1;
     border-bottom: 1px solid #E6E6E6;
     border-left: 0px;
+    text-align: right;
   }
 
   .element5 {

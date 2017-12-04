@@ -1,33 +1,48 @@
 <h1>Personal recommendations</h1>
 
-<!-- if more than 2 friends here -->
-
-<% @activities.each do |activity| %>
-  <div class="activity">
-    <%= render_activity activity %>
-  </div>
-<% end %>
-
+<!-- if more than 2 activities by friends here -->
 
 <div class="grid">
-  <div class="element element1">
+  <div class="element element1" style="background-image: url('<%= cl_image_path(@activities.last.trackable.event.photo) %>'); margin: 10px;">
     <p class="social-title">
       Your friend <%= @activities.last.trackable.user.first_name %> just booked
     </p>
-    <div class="event-name-price">
+
       <h3><span><%= @activities.last.trackable.event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
-    </div>
+
   </div>
 
-  <div class="element element2 venue">Test2</div>
-  <div class="element element4">Test4</div>
-  <div class="element element5 venue_by_us">Test5</div>
+  <div class="element element2 venue" style="background-image: url('<%= cl_image_path(@events.last.photo) %>'); margin: 10px;">
+
+    Curated by us for you: <br>
+    <%=  @events.last.name %>
+
+    </div>
+  <div class="element element4">
+
+    The latest event at
+     <%= @venues.last.name %>:
+
+     <h3 class="vertical"><div class="pink"><%=@venues.last.events.last.name.upcase.truncate(13, omission: '')  %></div></h3>
+
+
+  </div>
+  <div class="element element5" style="background-image: url('<%= cl_image_path(@bookmarks.first.photo) %>'); margin: 10px;">
+  <h3><span>
+    <%= @bookmarks.first.name %>  </span></h3>
+    <p class="social-title">
+    has recently been bookmarked by your friend
+
+    </p>
+
+  </div>
   <div class="element element6">
+
     <div class="element-header">
      <!--  if statement if no bookings -->
     </div>
   </div>
-  <div class="element element7">
+  <div class="element element7" style="background-image: url('<%= cl_image_path(@activities[-2].trackable.event.photo) %>'); margin: 10px;">
     <p class="social-title">
       Your friend <%= @activities[-2].trackable.user.first_name %>
       <% if @activities[-2].trackable.user.first_name == @activities.last.trackable.user.first_name %>
@@ -36,11 +51,13 @@
       <% end %>
       just booked
     </p>
-    <div class="event-name-price">
+
       <h3><span><%= @activities[-2].trackable.event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
-    </div>
+
   </div>
-  <div class="element element8">Test8</div>
+ <!--  <div class="element element8">
+    Most liked event?
+  </div> -->
 </div>
 
 <!-- if less than two friends -->
@@ -49,9 +66,11 @@
   <div class="element element1">Test  </div>
 
   <div class="element element2 venue">Test2</div>
-  <div class="element element4">Test4</div>
+  <div class="element element4">
+  Test 4
+  </div>
   <div class="element element5 venue_by_us">Test5</div>
-  <div class="element element6">
+  <div class="element element6"> Test 6
     <div class="element-header">
      <!--  if statement if no bookings -->
     </div>
