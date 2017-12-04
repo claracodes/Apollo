@@ -34,12 +34,17 @@ class User < ApplicationRecord
   # For the bookmark feature:
   acts_as_voter
 
+
   def friends
-    graph = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
-    friends = graph.get_connections(uid, "friends") || []
-    users = friends.map do |friend|
-      User.find_by(uid: friend['id'])
+    if uid
+      graph = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
+      friends = graph.get_connections(uid, "friends") || []
+      users = friends.map do |friend|
+        User.find_by(uid: friend['id'])
+      end
+      users
+    else
+      []
     end
-    users
   end
 end
