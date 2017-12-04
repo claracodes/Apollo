@@ -27,6 +27,7 @@ gem 'sidekiq-failures', '~> 1.0'
 gem "koala"
 gem 'money-rails'
 gem 'stripe'
+gem "algoliasearch-rails"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
