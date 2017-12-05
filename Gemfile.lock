@@ -323,8 +323,8 @@ DEPENDENCIES
   pry-rails
   puma
   pundit
-  rails-assets-underscore!
   rails (= 5.0.6)
+  rails-assets-underscore!
   redis
   sass-rails
   selectize-rails
