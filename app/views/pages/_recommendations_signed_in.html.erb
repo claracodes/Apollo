@@ -3,7 +3,7 @@
 <div class="grid">
 
   <div class="element element1">
-    <% if  %>
+    <% if @activites.any? %>
       <%= link_to (@activities.last.trackable.event) do %>
       <div class="social-img" style="background-image: url('<%= cl_image_path(@activities.last.trackable.event.photo) %>');">
       </div>
@@ -83,7 +83,7 @@
    </div>
 
    <div class="element element6">
-    <% if  %>
+    <% if @activites.any? %>
       <%= link_to (@activities[-2].trackable.event) do %>
       <div class="social-img" style="background-image: url('<%= cl_image_path(@activities[-2].trackable.event.photo) %>'); ">
       </div>
