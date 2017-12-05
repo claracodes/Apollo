@@ -13,4 +13,9 @@ class Venue < ApplicationRecord
 
   # For the bookmark feature:
   acts_as_votable
+
+  include AlgoliaSearch
+  algoliasearch do
+    attribute :name
+  end
 end
