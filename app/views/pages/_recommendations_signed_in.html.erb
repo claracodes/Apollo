@@ -8,9 +8,8 @@
         </div>
         <div class="social-info">
           <p class="social-title">
-            Your friend <%= #@activities.last.trackable.user.first_name %> just booked
+            Your friend just booked
           </p>
-          <h3><span><%= #@activities.last.trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
         </div>
       <% end %>
     </div>
