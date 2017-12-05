@@ -41,7 +41,7 @@ $width: 550px; // Change Me
 }
 .overlay {
   input {
-    margin: 0 0;
+    margin: 0;
   }
   position: fixed;
   top: 0;
@@ -60,6 +60,9 @@ $width: 550px; // Change Me
 .help-block {
   font-size: 12px !important;
   color: $red;
+  a {
+    color: $red !important;
+  }
 }
 .label-login {
   width: 100%;
@@ -71,6 +74,7 @@ $width: 550px; // Change Me
     color: $gray;
     text-transform: uppercase;
     font-weight: lighter;
+    margin-bottom: 20px;
   }
   overflow: hidden;
   margin: 70px auto;

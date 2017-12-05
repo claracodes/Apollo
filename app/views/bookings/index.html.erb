@@ -15,7 +15,7 @@
             <%= link_to "", event_path(booking.event) %>
             <div class="info info-dash">
               <div class="event-name-price">
-                <h4><span><%= booking.event.name %></span></h4>
+                <h4><span><%= booking.event.name.truncate(45, omission: '', separator: /,?\.* +/) %></span></h4>
                 <p> <%= booking.quantity %>x</p>
               </div>
               <p class="list-event-date"><%= booking.event.date.day %> / <%= booking.event.date.month %> / <%= booking.event.date.year %></p>

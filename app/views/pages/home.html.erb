@@ -22,12 +22,11 @@
             <div class="form-group email optional user_email">
               <label class="control-label email optional label-login" for="user_email">Email</label>
               <input class="form-control string email optional input-form-index input-form-home" autofocus="autofocus" placeholder="E-mail" type="email" value="" name="user[email]" id="user_email" />
-              <div class="bar"></div>
             </div>
             <div class="form-group password optional user_password">
               <label class="control-label password optional label-login" for="user_password">Password</label>
               <input class="form-control password optional input-form-index input-form-home" placeholder="Password" type="password" name="user[password]" id="user_password" />
-              <div class="bar"></div>
+              <p class="help-block"><a href="/users/password/new">Forgot your password?</a></p>
             </div>
             <div class="form-group boolean optional user_remember_me">
               <div class="checkbox">
@@ -42,9 +41,10 @@
               <input type="submit" name="commit" value="Log in" class="btn btn-default btn btn-danger btn-block" data-disable-with="Log in" />
             </div>
           </form>
-          <p>Don't have an account?</p> <a href="/users/sign_up">Sign up</a><br />
-          <a href="/users/password/new">Forgot your password?</a><br />
-          <a href="/users/auth/facebook">Sign in with Facebook</a><br />
+          <div class="buttons-links">
+            <p>Don't have an account? <strong><a href="#signup-form">Sign up</a></strong></p>
+            <p>Or <strong><a href="/users/auth/facebook">Sign in with Facebook</a></strong></p>
+          </div>
         </div>
       </div>
 
@@ -61,14 +61,11 @@
 
                 <input class="form-control string email required input-form-index input-form-home" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email" />
                 <label class="control-label email required" id="mail-label" for="user_email">EMAIL</label>
-
-                <div class="bar"></div>
               </div>
               <div class="form-group password required user_password">
                 <label class="control-label password required label-login" for="user_password">
                   <abbr title="required">*</abbr> Password</label>
                   <input class="form-control password required input-form-index input-form-home" required="required" aria-required="true" type="password" name="user[password]" id="user_password" />
-                  <div class="bar"></div>
                   <p class="help-block">6 characters minimum</p>
                 </div>
                 <div class="form-group password required user_password_confirmation">
@@ -76,7 +73,6 @@
                     <abbr title="required">*</abbr> Password confirmation</label>
                     <input class="form-control password required input-form-index input-form-home" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
                   </div>
-                  <div class="bar"></div>
                 </div>
 
                 <div class="form-actions">
@@ -85,7 +81,7 @@
               </form>
               <div class="buttons-links">
                 <p>Already a fan? <strong><a href="#login-form">Log in</a></strong></p>
-                <p>Or <strong><a href="/users/auth/facebook">Sign in with Facebook</a></strong></p>
+                <p>Or <strong><a href="/users/auth/facebook">Sign up with Facebook</a></strong></p>
               </div>
             </div>
           </div>
