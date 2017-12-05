@@ -8,39 +8,37 @@
       Your friend <%= @activities.last.trackable.user.first_name %> just booked
     </p>
 
-      <h3><span><%= @activities.last.trackable.event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+      <h3><span><%= @activities.last.trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
 
   </div>
 
   <div class="element element2 venue" style="background-image: url('<%= cl_image_path(@events.last.photo) %>'); margin: 10px;">
-
-    Curated by us for you: <br>
-    <%=  @events.last.name %>
-
-    </div>
-  <div class="element element4">
-
-    The latest event at
-     <%= @venues.last.name %>:
-
-     <h3 class="vertical"><div class="pink"><%=@venues.last.events.last.name.upcase.truncate(13, omission: '')  %></div></h3>
-
-
+     <p class="social-title">
+      Curated by us for you: <br>
+      <%=  @events.last.name.upcase %>
+    </p>
   </div>
-  <div class="element element5" style="background-image: url('<%= cl_image_path(@bookmarks.first.photo) %>'); margin: 10px;">
-  <h3><span>
-    <%= @bookmarks.first.name %>  </span></h3>
+  <div class="element element4">
     <p class="social-title">
-    has recently been bookmarked by your friend
+    The latest event at <br>
+     <%= @liked_venues.last.name %>:</p>
 
+     <h3><span><%=@liked_venues.last.events.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %></span></h3>
+  </div>
+  <div class="element element5" style="background-image: url('<%= cl_image_path(@bookmarks.first.photo) %>'); margin: 10px; width: 300px;">
+    <div class="title-at-end"><h3><span>
+      <%= @bookmarks.first.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %>  </span></h3>
+    </div>
+    <p class="social-title at-end">
+      has recently been bookmarked by your friend
     </p>
 
   </div>
   <div class="element element6">
+    <p class="social-title">
+      Most liked event
+    </p>
 
-    <div class="element-header">
-     <!--  if statement if no bookings -->
-    </div>
   </div>
   <div class="element element7" style="background-image: url('<%= cl_image_path(@activities[-2].trackable.event.photo) %>'); margin: 10px;">
     <p class="social-title">
@@ -52,7 +50,7 @@
       just booked
     </p>
 
-      <h3><span><%= @activities[-2].trackable.event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+      <h3><span><%= @activities[-2].trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
 
   </div>
  <!--  <div class="element element8">
@@ -66,8 +64,14 @@
   <div class="element element1">Test  </div>
 
   <div class="element element2 venue">Test2</div>
-  <div class="element element4">
-  Test 4
+  <div class="element element4" style="background-image: url('<%= cl_image_path(@venues.last.events.last.photo) %>');">
+    <p class="social-title">
+      The latest event at <br>
+
+         <%= @venues.last.name %>:</p>
+         <h3><span><%= @venues.last.events.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %></span></h3>
+
+
   </div>
   <div class="element element5 venue_by_us">Test5</div>
   <div class="element element6"> Test 6

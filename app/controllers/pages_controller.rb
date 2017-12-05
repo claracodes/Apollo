@@ -2,12 +2,13 @@ class PagesController < ApplicationController
 
   def home
     @event = Event.new
-    @events = Event.last(3)
+    @events = Event.last(7)
     @activities = policy_scope(PublicActivity::Activity).order('created_at desc').where(trackable_type: "Booking").where(owner_id: current_user.friends_ids, owner_type:"User") #
+    @venues = Venue.first(3)
 
-    @venues = []
+    @liked_venues = []
     current_user.find_voted_items.each do |item|
-      @venues << item if item.class == Venue
+      @liked_venues << item if item.class == Venue
     end
 
     @bookmarks = []
