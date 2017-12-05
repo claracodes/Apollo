@@ -101,7 +101,7 @@
   color: #656262;
   p {
     margin-bottom: 3px;
-     }
+  }
 }
 
 .venue-box a:hover, a:focus {
@@ -143,6 +143,7 @@
 }
 
 .bookmark-container {
+  position: relative;
   margin-top: 11px;
 }
 
@@ -157,3 +158,20 @@
     top: 40px;
   }
 }
+
+.share-container {
+ /* filter: grayscale(100%); */
+}
+
+.share-twitter {
+  position: absolute;
+  top: 0px;
+  left: 28px
+}
+
+.share-facebook {
+  position: absolute !important ;
+  top: -5px;
+  left: 92px;
+}
+
