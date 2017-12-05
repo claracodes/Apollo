@@ -1,3 +1,12 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="wrapper">
   <div class="row">
     <div class="col-md-7 image-event"  style="background-image: url('<%= cl_image_path(@event.photo) %>'); background-size: cover">
@@ -6,7 +15,7 @@
     <div class="col-md-5">
       <div class="header-event">
         <p class="date-event"> <%= @event.date.strftime("%d %B") %> </p>
-        <h1><span><%= @event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h1>
+        <h1><span><%= @event.name.truncate(40, omission: '', separator: /,?\.* +/) %></span></h1>
         <p class="event-category"><span> <%= @event.category %></span> </p>
       </div>
     </div>
@@ -19,7 +28,12 @@
       <div class="event-desc">
         <h4>ABOUT</h4>
         <p><%= @event.description %></p>
+        <div class="d-inline-block">
+
+        </div>
         <%= link_to '< Go back', events_path(search: session[:search_query]), class: 'link-back' %>
+        <%#= link_to 'Back', 'javascript:history.back()' %>
+
       </div>
       <div class="box-event">
         <div class="booking-box">
@@ -27,40 +41,53 @@
             <p>Price</p>
             <p> <%= @event.price %> € </p>
           </div>
-          <div class="form-group">
-            <%= link_to 'Book now', new_event_booking_path(@event), class: "btn btn-danger btn-block event-input" %>
+          <%= simple_form_for [@event, @booking] do |f| %>
+          <div class="ticket-quantity-selector">
+            <p>Quanitity: </p>
+            <%= f.input :quantity, collection: [1, 2, 3, 4, 5], default: 1, input_html: {class: 'selector-list'} %>
           </div>
-          <% if user_signed_in? %>
-          <%= link_to upvote_event_path(@event), class: "heart-bookmark", method: :put, remote: true do %>
-          <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(@event) ? '' : '-empty' %>" id="bookmark-<%= @event.id %>"></p>
-          <span>Bookmark</span>
+          <%= f.submit 'Book now', class: "btn btn-danger btn-block event-input" %>
           <% end %>
-          <% else %>
-          <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
-          <p class="glyphicon glyphicon-heart-empty"></p>
-          <% end %>
-          <% end %>
+
+          <div class="bookmark-container">
+            <% if user_signed_in? %>
+            <%= link_to upvote_event_path(@event), class: "heart-bookmark", method: :put, remote: true do %>
+            <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(@event) ? '' : '-empty' %>" id="bookmark-<%= @event.id %>"></p>
+            <span>Bookmark</span>
+            <% end %>
+            <% else %>
+            <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
+            <p class="glyphicon glyphicon-heart-empty"></p>
+            <% end %>
+            <% end %>
+
+            <div class="share-container">
+              <div class="share-twitter"> <%= twitter_button %> </div>
+              <div class="share-facebook fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+            </div>
+          </div>
         </div>
+
 
         <div class="box-division">
-          </br>
-        </div>
-
-        <div class="venue-box">
-          <%= link_to venue_path(@event.venue) do %>
-          <div class="venue-box-info">
-            <p><%= @event.venue.name %></p>
-            <p>Hosting <strong><%= @event.venue.events.count %></strong> <%=  @event.venue.events.count < 2 ? "event" : "events" %></p>
-          </div>
-
-          <div class="venue-box-img" style="background-image: url('https://static.pexels.com/photos/36474/dresden-semper-opera-house-historically-at-night.jpg');"></div>
-          <% end %>
-        </div>
-
-
+        </br>
       </div>
+
+      <div class="venue-box">
+        <%= link_to venue_path(@event.venue) do %>
+        <div class="venue-box-info">
+          <p>Venue: <strong><%= @event.venue.name %></strong></p>
+          <p>Hosting: <strong><%= @event.venue.events.count %></strong> <%=  @event.venue.events.count < 2 ? "event" : "events" %></p>
+        </div>
+
+        <div class="venue-box-img" style="background-image: url('https://static.pexels.com/photos/36474/dresden-semper-opera-house-historically-at-night.jpg');"></div>
+        <% end %>
+      </div>
+
+
     </div>
   </div>
+</div>
 
 
 </div>

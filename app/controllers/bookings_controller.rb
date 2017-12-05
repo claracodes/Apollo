@@ -11,7 +11,8 @@ class BookingsController < ApplicationController
 
   def create
     @event = Event.find(params[:event_id])
-    @booking = Booking.new(event: @event, amount: @event.price, state: 'pending', user: current_user)
+    total_price = @event.price * params[:booking][:quantity].to_i
+    @booking = Booking.new(event: @event, amount: total_price, state: 'pending', user: current_user, quantity: params[:booking][:quantity].to_i)
 
     if @booking.save
       redirect_to new_event_booking_payment_path(@event, @booking)

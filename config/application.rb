@@ -18,6 +18,7 @@ Bundler.require(*Rails.groups)
 
 module Apollo
   class Application < Rails::Application
+    config.action_view.embed_authenticity_token_in_remote_forms = true
     config.generators do |generate|
       generate.assets false
       generate.helper false
@@ -29,3 +30,5 @@ module Apollo
   config.active_job.queue_adapter = :sidekiq
   end
 end
+
+

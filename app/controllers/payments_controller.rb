@@ -4,6 +4,7 @@ class PaymentsController < ApplicationController
   def new
     #...
     @event = Event.find(params[:event_id])
+    @booking = Booking.find(params[:booking_id])
   end
 
   def create
