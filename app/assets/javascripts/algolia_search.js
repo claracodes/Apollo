@@ -57,5 +57,3 @@ autocomplete('#aa-search-input', {}, [
       }
     }
 ]);
-
-
