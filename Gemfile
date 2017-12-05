@@ -28,6 +28,7 @@ gem "koala"
 gem 'money-rails'
 gem 'stripe'
 gem 'magnific-popup-rails', '~> 1.1.0'
+gem 'shareable'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
