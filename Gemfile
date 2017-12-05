@@ -29,9 +29,9 @@ gem 'money-rails'
 gem 'stripe'
 gem 'magnific-popup-rails', '~> 1.1.0'
 
-# source 'https://rails-assets.org' do
-#   gem "rails-assets-underscore"
-# end
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
