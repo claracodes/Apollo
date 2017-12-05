@@ -1,3 +1,9 @@
+$main-color: #F44336;
+$secondary-color: white;
+$main-color: #333;
+$secondary-color: #2196f3;
+$width: 550px; // Change Me
+
 .input-form {
   background-color: none;
   border-bottom: 2px solid white;
@@ -20,16 +26,122 @@
   }
 }
 .input-form-index {
+  border: 0;
+  box-shadow: none;
+  border-bottom: 1px solid $gray;
   &:focus {
     border-bottom: 3px solid $red;
+    -webkit-box-shadow: none;
   }
 }
 .search-form-bar {
-  border-radius: 2px;
   padding: 12px 0 14px 0;
   width: 100%;
   margin: 0 auto;
 }
+.overlay {
+  input {
+    margin: 0 0;
+  }
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  &:target {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.help-block {
+  font-size: 12px !important;
+  color: $red;
+}
+.label-login {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.popup {
+  h2 {
+    color: $gray;
+    text-transform: uppercase;
+    font-weight: lighter;
+  }
+  overflow: hidden;
+  margin: 70px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    &:hover {
+      color: $red;
+      opacity: 1;
+    }
+  }
+  .form-content {
+    max-height: 30%;
+    overflow: auto;
+  }
+}
+.input-form-home {
+  margin-left: 0;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  // border-bottom: solid $width/150 rgba(white, .5);
+  transition: .3s ease;
+  &:valid {
+    // border-bottom-color: rgba(white, .5);
+    #mail-label {
+      top: 0;
+      font: 700 $width/25 Roboto;
+      color: $gray;
+    }
+  }
+  &:focus {
+    outline: none;
+    // border-bottom-color: $secondary-color;
+    #mail-label {
+      top: 0;
+      font: 700 $width/25 Roboto;
+      color: $secondary-color;
+    }
+  }
+
+  // Stop Chrome's hideous pale yellow background on auto-fill
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: $gray !important;
+    // border-bottom-color: rgba(white, .5);
+  }
+}
+#mail-label {
+  letter-spacing: 1px;
+  display: block;
+  position: absolute;
+  top: 10px;
+  color: $gray;
+  cursor: text;
+  transition: .25s ease;
+}
+
 input {
   margin: 0 10px;
 }
@@ -46,5 +158,22 @@ label{
   }
   .form-group {
     margin-bottom: 0 !important;
+  }
+}
+.buttons-links {
+  margin-top: 20px;
+  p {
+    font-size: 16px;
+    color: #7F7F7F;
+    margin-bottom: 2px;
+  }
+  a {
+    text-decoration: none;
+    color: $gray;
+    font-weight: bolder;
+    padding: 3px 4px;
+    &:hover {
+      background-color: $red;
+    }
   }
 }
