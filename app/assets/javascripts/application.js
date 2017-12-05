@@ -4,10 +4,11 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require selectize
+
 //= require gmaps/google
 //= require moment
 //= require fullcalendar
-
+//= require algolia/v3/algoliasearch.min
 
 //= require_tree .
 

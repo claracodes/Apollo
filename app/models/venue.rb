@@ -15,8 +15,24 @@ class Venue < ApplicationRecord
   acts_as_votable
 
   include AlgoliaSearch
-  algoliasearch do
-    attribute :name, :id
+  algoliasearch auto_index: true, auto_remove: true do
+    attribute :name
     searchableAttributes ['name']
+
+    add_index "dev_event_and_venue", id: :algolia_id do
+      attribute :name
+      searchableAttributes [:name]
+
+      attribute :type do
+        "Venue"
+      end
+    end
+  end
+
+  private
+
+  def algolia_id
+    "venue_#{id}"
   end
 end
+
