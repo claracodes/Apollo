@@ -6,7 +6,7 @@
     <div class="venue-infos">
       <h1><span><%= @venue.name %></span></h1>
       <p class="address"><%= @venue.address %></p>
-      <p><i class="fa fa-phone" aria-hidden="true"></i> <%= @venue.phone %> -
+      <p><i class="fa fa-phone" aria-hidden="true"></i> <%= @venue.phone %> &nbsp;
         <i class="fa fa-envelope" aria-hidden="true"></i> <%= @venue.email %></p>
 
         <div class="bookmark-container">
@@ -40,7 +40,7 @@
           <% @unique_events.each do |unique_event| %>
           <% event = @venue.events.find_by_name(unique_event)%>
           <div class='event-card'>
-            <%= link_to "", event_path(event) %>
+
             <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
             <div class="info">
               <div class="event-name-price">
@@ -48,7 +48,7 @@
                 <p> <%= event.price %> € </p>
               </div>
               <div class="detail-info">
-                <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(80, omission: '...', separator: /,?\.* +/) %></p>
+                <p class="event-date"><%= event.venue.name.truncate(80, omission: '...', senameparator: /,?\.* +/) %></p>
                 <p class="text-category"> <%= event.category %> </p>
               </div>
               <div class="desc-likes">
@@ -65,7 +65,17 @@
                   <% end %>
                 </div>
               </div>
-              <p> Dates: <%= @venue.events.where(name: event.name).pluck(:date).uniq.join(",  ") %></p>
+
+              <!-- dates generator -->
+              <div class="dates-container">
+                <% all_dates = @venue.events.where(name: event.name).pluck(:date, :id).uniq %>
+                <p> Dates: &nbsp;
+               <% all_dates.each do |event|  %>
+                   <%= link_to event[0], event_path(Event.find(event[1])) %> &nbsp;
+                  <% end %>
+                </p>
+              </div>
+
             </div>
           </div>
           <% end %>
