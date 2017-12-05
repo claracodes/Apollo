@@ -33,6 +33,10 @@ $width: 550px; // Change Me
     border-bottom: 3px solid $red;
     -webkit-box-shadow: none;
   }
+  &:valid {
+    border-bottom: 3px solid $red;
+    -webkit-box-shadow: none;
+  }
 }
 .search-form-bar {
   padding: 12px 0 14px 0;
@@ -40,6 +44,7 @@ $width: 550px; // Change Me
   margin: 0 auto;
 }
 .overlay {
+  z-index: 1000;
   input {
     margin: 0;
   }
@@ -64,17 +69,12 @@ $width: 550px; // Change Me
     color: $red !important;
   }
 }
-.label-login {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
 .popup {
   h2 {
     color: $gray;
     text-transform: uppercase;
     font-weight: lighter;
-    margin-bottom: 20px;
+    margin-bottom: 38px;
   }
   overflow: hidden;
   margin: 70px auto;
@@ -110,23 +110,15 @@ $width: 550px; // Change Me
   font-size: 18px;
   // border-bottom: solid $width/150 rgba(white, .5);
   transition: .3s ease;
-  &:valid {
-    // border-bottom-color: rgba(white, .5);
-    #mail-label {
-      top: 0;
-      font: 700 $width/25 Roboto;
-      color: $gray;
-    }
-  }
-  &:focus {
-    outline: none;
-    // border-bottom-color: $secondary-color;
-    #mail-label {
-      top: 0;
-      font: 700 $width/25 Roboto;
-      color: $secondary-color;
-    }
-  }
+  // &:valid {
+  //   // border-bottom-color: rgba(white, .5);
+  //   #mail-label {
+  //     top: 0;
+  //     font: 700 $width/25 Roboto;
+  //     color: $gray;
+  //   }
+  // }
+// }
 
   // Stop Chrome's hideous pale yellow background on auto-fill
 
@@ -136,14 +128,36 @@ $width: 550px; // Change Me
     // border-bottom-color: rgba(white, .5);
   }
 }
-#mail-label {
+.div-form-home {
+  position: relative;
+  margin-bottom: 30px;
+}
+.label-login {
+  opacity: 0.7;
+  overflow: hidden;
   letter-spacing: 1px;
   display: block;
   position: absolute;
-  top: 10px;
+  top: 8px;
+  text-transform: uppercase;
   color: $gray;
   cursor: text;
   transition: .25s ease;
+}
+.label-confirmation {
+  font-size: 15px;
+}
+.input-form-home:focus ~ label {
+  height: 80px;
+  top: -15px;
+  font-size: 14px;
+  opacity: 1;
+}
+.input-form-home:valid ~ label {
+  height: 80px;
+  top: -15px;
+  font-size: 14px;
+  opacity: 1;
 }
 
 input {
