@@ -209,6 +209,7 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.0.6)
       sprockets-rails (>= 2.0.0)
+      rails-assets-underscore (1.8.3)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -322,6 +323,7 @@ DEPENDENCIES
   pry-rails
   puma
   pundit
+  rails-assets-underscore!
   rails (= 5.0.6)
   redis
   sass-rails
