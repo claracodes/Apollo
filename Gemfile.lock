@@ -207,9 +207,11 @@ GEM
       activerecord (= 5.0.6)
       activesupport (= 5.0.6)
       bundler (>= 1.3.0)
+      rails-assets-underscore (= 1.8.3)
       railties (= 5.0.6)
       sprockets-rails (>= 2.0.0)
-      rails-assets-underscore (1.8.3)
+    rails-assets-algolia-autocomplete.js (0.29.0)
+    rails-assets-underscore (1.8.3)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -327,7 +329,7 @@ DEPENDENCIES
   puma
   pundit
   rails (= 5.0.6)
-  rails-assets-underscore!
+  rails-assets-algolia-autocomplete.js!
   redis
   sass-rails
   selectize-rails
