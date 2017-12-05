@@ -1,86 +1,92 @@
 <h1>Personal recommendations</h1>
 
-<!-- if more than 2 activities by friends here -->
-
 <div class="grid">
-  <div class="element element1" style="background-image: url('<%= cl_image_path(@activities.last.trackable.event.photo) %>'); margin: 10px;">
-    <p class="social-title">
-      Your friend <%= @activities.last.trackable.user.first_name %> just booked
-    </p>
 
-      <h3><span><%= @activities.last.trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
-
-  </div>
-
-  <div class="element element2 venue" style="background-image: url('<%= cl_image_path(@events.last.photo) %>'); margin: 10px;">
-     <p class="social-title">
-      Curated by us for you: <br>
-      <%=  @events.last.name.upcase %>
-    </p>
-  </div>
-  <div class="element element4">
-    <p class="social-title">
-    The latest event at <br>
-     <%= @liked_venues.last.name %>:</p>
-
-     <h3><span><%=@liked_venues.last.events.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %></span></h3>
-  </div>
-  <div class="element element5" style="background-image: url('<%= cl_image_path(@bookmarks.first.photo) %>'); margin: 10px; width: 300px;">
-    <div class="title-at-end"><h3><span>
-      <%= @bookmarks.first.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %>  </span></h3>
-    </div>
-    <p class="social-title at-end">
-      has recently been bookmarked by your friend
-    </p>
-
-  </div>
-  <div class="element element6">
-    <p class="social-title">
-      Most liked event
-    </p>
-
-  </div>
-  <div class="element element7" style="background-image: url('<%= cl_image_path(@activities[-2].trackable.event.photo) %>'); margin: 10px;">
-    <p class="social-title">
-      Your friend <%= @activities[-2].trackable.user.first_name %>
-      <% if @activities[-2].trackable.user.first_name == @activities.last.trackable.user.first_name %>
-      also
-      <% else %>
+    <div class="element element1">
+      <%= link_to (@activities.last.trackable.event) do %>
+        <div class="social-img" style="background-image: url('<%= cl_image_path(@activities.last.trackable.event.photo) %>');">
+        </div>
+        <div class="social-info">
+          <p class="social-title">
+            Your friend <%= @activities.last.trackable.user.first_name %> just booked
+          </p>
+          <h3><span><%= @activities.last.trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+        </div>
       <% end %>
-      just booked
-    </p>
-
-      <h3><span><%= @activities[-2].trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
-
-  </div>
- <!--  <div class="element element8">
-    Most liked event?
-  </div> -->
-</div>
-
-<!-- if less than two friends -->
-
-<div class="grid">
-  <div class="element element1">Test  </div>
-
-  <div class="element element2 venue">Test2</div>
-  <div class="element element4" style="background-image: url('<%= cl_image_path(@venues.last.events.last.photo) %>');">
-    <p class="social-title">
-      The latest event at <br>
-
-         <%= @venues.last.name %>:</p>
-         <h3><span><%= @venues.last.events.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %></span></h3>
-
-
-  </div>
-  <div class="element element5 venue_by_us">Test5</div>
-  <div class="element element6"> Test 6
-    <div class="element-header">
-     <!--  if statement if no bookings -->
     </div>
+
+  <div class="element element2">
+    <%= link_to (@events.last) do %>
+      <div class="social-img" style="background-image: url('<%= cl_image_path(@events.last.photo) %>');">
+      </div>
+      <div class="social-info">
+        <p class="social-title">
+          SURPRISE <br>
+        </p>
+      </div>
+    <% end %>
   </div>
-  <div class="element element7">Test7</div>
-  <div class="element element8">Test8</div>
+
+  <div class="element element3">
+    <%= link_to (@liked_venues.last) do %>
+      <div class="social-info">
+        <p class="social-title">
+          The latest event at <br>
+          <%= @liked_venues.last.name %>:</p>
+
+          <h3><span><%=@liked_venues.last.events.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %></span></h3>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="element element4">
+      <%= link_to (@bookmarks.first) do %>
+        <div class="social-img" style="background-image: url('<%= cl_image_path(@bookmarks.first.photo) %>');">
+        </div>
+        <div class="social-info">
+          <h3><span>
+            <%= @bookmarks.first.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %>
+          </span></h3>
+          <p class="social-title at-end">
+            has recently been bookmarked by your friend
+          </p>
+        </div>
+      <% end %>
+    </div>
+
+      <div class="element element5">
+        <%= link_to (@most_liked.last) do %>
+          <div class="social-img" style="background-image: url('<%= cl_image_path(@most_liked.last.photo) %>');max-width: 100%;">
+          </div>
+          <div class="social-info">
+            <p class="social-title">
+              A favorite on Apollo:
+            </p>
+            <h3><span>
+             <%= @most_liked.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/)  %>
+           </span></h3>
+          </div>
+        <% end %>
+     </div>
+
+     <div class="element element6">
+      <%= link_to (@activities[-2].trackable.event) do %>
+        <div class="social-img" style="background-image: url('<%= cl_image_path(@activities[-2].trackable.event.photo) %>'); ">
+        </div>
+        <div class="social-info">
+          <p class="social-title">
+            Your friend <%= @activities[-2].trackable.user.first_name %>
+            <% if @activities[-2].trackable.user.first_name == @activities.last.trackable.user.first_name %>
+            also
+            <% else %>
+            <% end %>
+            just booked
+          </p>
+
+          <h3><span><%= @activities[-2].trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+        </div>
+      <% end %>
+    </div>
 </div>
 
 

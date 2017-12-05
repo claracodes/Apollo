@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204102255) do
+ActiveRecord::Schema.define(version: 20171205095034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20171204102255) do
     t.string   "tags"
     t.date     "start_time"
     t.date     "duration"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.date     "date"
     t.integer  "venue_id"
     t.string   "city"
@@ -59,7 +59,9 @@ ActiveRecord::Schema.define(version: 20171204102255) do
     t.boolean  "english"
     t.string   "mood"
     t.date     "end_time"
-    t.integer  "price_cents", default: 0, null: false
+    t.integer  "price_cents",        default: 0, null: false
+    t.integer  "cached_votes_total", default: 0
+    t.index ["cached_votes_total"], name: "index_events_on_cached_votes_total", using: :btree
     t.index ["venue_id"], name: "index_events_on_venue_id", using: :btree
   end
 

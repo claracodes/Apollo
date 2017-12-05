@@ -2,29 +2,22 @@ class PagesController < ApplicationController
 
   def home
     @event = Event.new
-    @events = Event.last(7)
-    @activities = policy_scope(PublicActivity::Activity).order('created_at desc').where(trackable_type: "Booking").where(owner_id: current_user.friends_ids, owner_type:"User") #
+    @events = Event.first(5)
     @venues = Venue.first(3)
 
-    @liked_venues = []
-    current_user.find_voted_items.each do |item|
-      @liked_venues << item if item.class == Venue
+    if user_signed_in?
+      @activities = policy_scope(PublicActivity::Activity).order('created_at desc').where(trackable_type: "Booking").where(owner_id: current_user.friends_ids, owner_type:"User") #
+      @liked_venues = []
+      current_user.find_voted_items.each do |item|
+        @liked_venues << item if item.class == Venue
+      end
+
+      @bookmarks = []
+      current_user.find_voted_items.each do |item|
+        @bookmarks << item if item.class == Event
+      end
     end
 
-    @bookmarks = []
-    current_user.find_voted_items.each do |item|
-      @bookmarks << item if item.class == Event
-    end
-
-    #@upvoted = Event.where('get_upvotes').count().oder(:desc)
-
-    # @bookmarked = {}
-    # current_user.friends.each do |friend|
-    #   bookmarked_events = []
-    #   friend.find_voted_items.each do |item|
-    #     bookmarked_events << item if item.class == Event
-    #   end
-    #   @bookmarked = {"#{friend.first_name}": bookmarked_events}
-    # end
+    @most_liked = Event.order(cached_votes_total: :desc).limit(3)
   end
 end
