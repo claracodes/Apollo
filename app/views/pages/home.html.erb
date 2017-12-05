@@ -4,128 +4,216 @@
       <% if user_signed_in? %>
       <%= link_to "Dashboard", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <!--       <%#= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link popup-with-form" %> -->
+      <!--       <%#= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %> -->
+      <a class="navbar-wagon-item navbar-wagon-link popup-with-form" href="#login-form">Login</a>
+      <a class="navbar-wagon-item navbar-wagon-link popup-with-form" href="#signup-form">Sign up</a>
       <% end %>
     </div>
 
-    <div class="container text-center">
-      <div class="banner-content">
-        <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
-        <p>Discover cultural experiences in your city</p>
 
-        <!-- class="form-inline" -->
-        <div class="search-form-bar">
-          <div class="form-fields">
-            <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
-            <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
-            <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "When?" %>
-            <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
-            <% f.button :submit, as: :hidden, value: "Search", input_html: { id: "hidden-search"} %>
-            <% end %>
-          </div>
+    <!-- Login form -->
+    <div id="login-form" class="overlay">
+      <div class="popup">
+        <h2>Log in</h2>
+        <a class="close" href="#">×</a>
+        <form novalidate="novalidate" class="simple_form new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="2cfhEkghsLxNyREvi0br19HWx/LRoLvy999D/5tlx570RyNSLDkXnf71ok7Pyl3zqowcTMRvTUbwYD8l7/n1VA==" />
+          <div class="form-inputs">
+            <div class="form-group email optional user_email">
+              <label class="control-label email optional label-login" for="user_email">Email</label>
+              <input class="form-control string email optional input-form-index input-form-home" autofocus="autofocus" placeholder="E-mail" type="email" value="" name="user[email]" id="user_email" />
+              <div class="bar"></div>
+            </div>
+            <div class="form-group password optional user_password">
+              <label class="control-label password optional label-login" for="user_password">Password</label>
+              <input class="form-control password optional input-form-index input-form-home" placeholder="Password" type="password" name="user[password]" id="user_password" />
+              <div class="bar"></div>
+            </div>
+            <div class="form-group boolean optional user_remember_me">
+              <div class="checkbox">
+                <input value="0" type="hidden" name="user[remember_me]" />
+                <label class="boolean optional" for="user_remember_me">
+                  <input class="boolean optional" type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />Remember me</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <input type="submit" name="commit" value="Log in" class="btn btn-default btn btn-danger btn-block" data-disable-with="Log in" />
+            </div>
+          </form>
+          <p>Don't have an account?</p> <a href="/users/sign_up">Sign up</a><br />
+          <a href="/users/password/new">Forgot your password?</a><br />
+          <a href="/users/auth/facebook">Sign in with Facebook</a><br />
         </div>
       </div>
-      <a href="#inspiration-card" class="be-inspired">
-        <div class="text-center">
-          <div class="director"><%= image_tag "bar-04.png" %> </div>
-        </div>
-      </a>
-    </div>
-  </div>
 
-  <!-- moods -->
-  <p class="text-center title-moods">WHAT DO YOU FEEL LIKE?</p>
-  <div class="container container-moods">
-    <div class="flex-list">
-      <ul class="list-inline text-center list-moods">
-        <li id="romantic" data-mood="Romantic" class="mood">
-          <%= image_tag "icons-apollo-02.png" %>
-          <p>ROMANTIC</p>
-        </li>
-        <li id="wild" data-mood="Wild" class="mood">
-          <%= image_tag "icons-apollo-01.png" %>
-          <p>WILD</p>
-        </li>
-        <li id="nerdy" data-mood="Nerdy" class="mood">
-          <%= image_tag "icons-apollo-04.png" %>
-          <p>NERDY</p>
-        </li>
-        <li id="glamorous" data-mood="Glamorous" class="mood">
-          <%= image_tag "icons-apollo-05.png" %>
-          <p>GLAMOROUS</p>
-        </li>
-        <li id="dramatic" data-mood="Dramatic" class="mood">
-          <%= image_tag "icons-apollo-03.png" %>
-          <p>DRAMATIC</p>
-        </li>
-      </ul>
-    </div>
-  </div>
+      <!-- Signup form -->
+      <div id="signup-form" class="overlay">
+        <div class="popup">
+          <h2>Sign up</h2>
+          <a class="close" href="#">×</a>
+          <form novalidate="novalidate" class="simple_form new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="authenticity_token" value="EZtBqw6ILw2AX48RVMecIdg6Ch7AC4qxzd2VTTVVX9w8G4PrapCILDNjPHAQSyoFo2DRoNXEfAXKYumXQcltFg==" />
+            <div class="form-inputs">
+              <div class="form-group email required user_email label-login">
 
-</div>
+                <input class="form-control string email required input-form-index input-form-home" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email" />
+                <label class="control-label email required" id="mail-label" for="user_email">EMAIL</label>
 
-<p data-search="Search" class="normal-search text-center">or Search without moods</p>
-</div>
+                <div class="bar"></div>
+              </div>
+              <div class="form-group password required user_password">
+                <label class="control-label password required label-login" for="user_password">
+                  <abbr title="required">*</abbr> Password</label>
+                  <input class="form-control password required input-form-index input-form-home" required="required" aria-required="true" type="password" name="user[password]" id="user_password" />
+                  <div class="bar"></div>
+                  <p class="help-block">6 characters minimum</p>
+                </div>
+                <div class="form-group password required user_password_confirmation">
+                  <label class="control-label password required label-login" for="user_password_confirmation">
+                    <abbr title="required">*</abbr> Password confirmation</label>
+                    <input class="form-control password required input-form-index input-form-home" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
+                  </div>
+                  <div class="bar"></div>
+                </div>
 
-<!-- cards -->
-<div class='wrapper-card' id="inspiration-card">
-  <div class="container container-card">
-   <div class="cards cards-home">
-    <p class="title-home text-center"><span>Our latest discoveries</span></p>
-    <% @events.each do |event| %>
-    <div class='event-card'>
+                <div class="form-actions">
+                  <input type="submit" name="commit" value="Sign up" class="btn btn-default btn btn-danger btn-block" data-disable-with="Sign up" />
+                </div>
+              </form>
+              <div class="buttons-links">
+                <p>Already a fan? <strong><a href="#login-form">Log in</a></strong></p>
+                <p>Or <strong><a href="/users/auth/facebook">Sign in with Facebook</a></strong></p>
+              </div>
+            </div>
+          </div>
 
-      <%= link_to "", event_path(event), class: "card-link" %>
-      <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
-      <div class="info">
-        <div class="event-name-price">
-          <h3><span><%= event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
-          <% if event.price == 0 %>
-          <p> FREE </p>
-          <% else %>
-          <p> <%= event.price %> € </p>
-          <% end %>
-        </div>
-        <div class="detail-info">
-          <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(40, omission: '', separator: /,?\.* +/) %></p>
-          <p class="text-category"> <%= event.category %> </p>
-        </div>
-        <div class="desc-likes">
-          <p class="desc"><%= event.description.truncate(100, omission: '...', separator: /,?\.* +/) %></p>
-          <div class="likes">
-            <% if user_signed_in? %>
-            <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
-            <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
-            <% end %>
-            <% else %>
 
-            <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
-            <p class="glyphicon glyphicon-heart-empty"></p>
-            <% end %>
 
-            <% end %>
+          <!-- Banner content -->
+          <div class="container text-center">
+            <div class="banner-content">
+              <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
+              <p>Discover cultural experiences in your city</p>
+
+              <!-- class="form-inline" -->
+              <div class="search-form-bar">
+                <div class="form-fields">
+                  <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
+                  <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
+                  <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "When?" %>
+                  <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
+                  <% f.button :submit, as: :hidden, value: "Search", input_html: { id: "hidden-search"} %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <a href="#inspiration-card" class="be-inspired">
+              <div class="text-center">
+                <div class="director"><%= image_tag "bar-04.png" %> </div>
+              </div>
+            </a>
           </div>
         </div>
-        <div class="friend-bookings">
-          <% if user_signed_in? %>
-          <% current_user.friends.each do |friend| %>
-          <% if friend.present? %>
-          <% friend.bookings.each do |booking| %>
-          <% if booking.present? && booking.event_id == event.id %>
-          <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
-          <% end %>
-          <% end %>
-          <% end %>
-          <% end %>
-          <% end %>
+
+        <!-- moods -->
+        <p class="text-center title-moods">WHAT DO YOU FEEL LIKE?</p>
+        <div class="container container-moods">
+          <div class="flex-list">
+            <ul class="list-inline text-center list-moods">
+              <li id="romantic" data-mood="Romantic" class="mood">
+                <%= image_tag "icons-apollo-02.png" %>
+                <p>ROMANTIC</p>
+              </li>
+              <li id="wild" data-mood="Wild" class="mood">
+                <%= image_tag "icons-apollo-01.png" %>
+                <p>WILD</p>
+              </li>
+              <li id="nerdy" data-mood="Nerdy" class="mood">
+                <%= image_tag "icons-apollo-04.png" %>
+                <p>NERDY</p>
+              </li>
+              <li id="glamorous" data-mood="Glamorous" class="mood">
+                <%= image_tag "icons-apollo-05.png" %>
+                <p>GLAMOROUS</p>
+              </li>
+              <li id="dramatic" data-mood="Dramatic" class="mood">
+                <%= image_tag "icons-apollo-03.png" %>
+                <p>DRAMATIC</p>
+              </li>
+            </ul>
+          </div>
         </div>
+        <p data-search="Search" class="normal-search text-center">or Search without moods</p>
+      </div>
+
+
+    </div>
+
+    <!-- cards -->
+    <div class='wrapper-card' id="inspiration-card">
+      <div class="container container-card">
+       <div class="cards cards-home">
+        <p class="title-home text-center"><span>Our latest discoveries</span></p>
+        <% @events.each do |event| %>
+        <div class='event-card'>
+
+          <%= link_to "", event_path(event), class: "card-link" %>
+          <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
+          <div class="info">
+            <div class="event-name-price">
+              <h3><span><%= event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+              <% if event.price == 0 %>
+              <p> FREE </p>
+              <% else %>
+              <p> <%= event.price %> € </p>
+              <% end %>
+            </div>
+            <div class="detail-info">
+              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(40, omission: '', separator: /,?\.* +/) %></p>
+              <p class="text-category"> <%= event.category %> </p>
+            </div>
+            <div class="desc-likes">
+              <p class="desc"><%= event.description.truncate(100, omission: '...', separator: /,?\.* +/) %></p>
+              <div class="likes">
+                <% if user_signed_in? %>
+                <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
+                <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
+                <% end %>
+                <% else %>
+
+                <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
+                <p class="glyphicon glyphicon-heart-empty"></p>
+                <% end %>
+
+                <% end %>
+              </div>
+            </div>
+            <div class="friend-bookings">
+              <% if user_signed_in? %>
+              <% current_user.friends.each do |friend| %>
+              <% if friend.present? %>
+              <% friend.bookings.each do |booking| %>
+              <% if booking.present? && booking.event_id == event.id %>
+              <%= image_tag(friend.facebook_picture_url, class: "fb-user", title: friend.first_name, data: { title: friend.first_name, toggle: "tooltip", placement: "top" } ) %>
+              <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
   </div>
-</div>
-</div>
+  <% content_for(:after_js) do %>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="magnific-popup/jquery.magnific-popup.js"></script>
+  <% end %>
 
 
 
