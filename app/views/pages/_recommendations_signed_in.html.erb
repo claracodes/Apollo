@@ -1,0 +1,159 @@
+<p class="title-home text-center"><span>Personal recommendations</span></p>
+
+<div class="grid">
+
+  <div class="element element1">
+    <% if @activities.any? %>
+      <%= link_to (@activities.last.trackable.event) do %>
+      <div class="social-img" style="background-image: url('<%= cl_image_path(@activities.last.trackable.event.photo) %>');">
+      </div>
+      <div class="social-info">
+        <p class="social-title">
+          Your friend <%= @activities.last.trackable.user.first_name %> just booked
+        </p>
+        <h3><span><%= @activities.last.trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+      </div>
+      <% end %>
+    <% else %> <!-- for when there is no trackable stuff -->
+      <%= link_to (@events[-2]) do %>
+      <div class="social-img" style="background-image: url('<%= cl_image_path(@events[-2]) %>');">
+      </div>
+      <div class="social-info">
+        <p class="social-title">
+          Curated by us for you
+        </p>
+         <h3><span><%= @events[-2].name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="element element2">
+    <%= link_to (@events.last) do %>
+    <div class="social-img" style="background-image: url('<%= cl_image_path(@events.last.photo) %>');">
+    </div>
+    <div class="social-info">
+      <p class="social-title">
+        SURPRISE <br>
+      </p>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="element element3">
+    <% if @liked_venues.any? %>
+      <%= link_to (@liked_venues.last) do %>
+      <div class="social-info">
+        <p class="social-title">
+          The latest event at <br>
+          <%= @liked_venues.last.name %>:</p>
+
+          <h3><span><%=@liked_venues.last.events.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %></span></h3>
+          <% end %>
+        </div>
+       <% else %>
+         <%= link_to (@events[-3]) do %>
+          <div class="social-img" style="background-image: url('<%= cl_image_path(@events[-3]) %>');">
+          </div>
+          <div class="social-info">
+            <p class="social-title">
+              Curated by us for you
+            </p>
+             <h3><span><%= @events[-3].name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="element element4">
+      <% if @bookmarks.any? %>
+
+        <%= link_to (@bookmarks.first) do %>
+        <div class="social-img" style="background-image: url('<%= cl_image_path(@bookmarks.first.photo) %>');">
+        </div>
+        <div class="social-info">
+          <h3><span>
+            <%= @bookmarks.first.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %>
+          </span></h3>
+          <p class="social-title at-end">
+            has recently been bookmarked by your friend
+          </p>
+        </div>
+        <% end %>
+      <% else %>
+      <%= link_to (@events[-4]) do %>
+          <div class="social-img" style="background-image: url('<%= cl_image_path(@events[-4]) %>');">
+          </div>
+          <div class="social-info">
+            <p class="social-title">
+              Curated by us for you
+            </p>
+             <h3><span><%= @events[-4].name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="element element5">
+      <% if @most_liked.any? %>
+        <%= link_to (@most_liked.last) do %>
+        <div class="social-img" style="background-image: url('<%= cl_image_path(@most_liked.last.photo) %>');max-width: 100%;">
+        </div>
+        <div class="social-info">
+          <p class="social-title">
+            A favorite on Apollo:
+          </p>
+          <h3><span>
+           <%= @most_liked.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/)  %>
+         </span></h3>
+       </div>
+      <% end %>
+     <% else %>
+      <%= link_to (@events[-5]) do %>
+          <div class="social-img" style="background-image: url('<%= cl_image_path(@events[-5]) %>');">
+          </div>
+          <div class="social-info">
+            <p class="social-title">
+              Curated by us for you
+            </p>
+             <h3><span><%= @events[-5].name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+          </div>
+        <% end %>
+     <% end %>
+   </div>
+
+   <div class="element element6">
+    <% if @activities.any? %>
+      <%= link_to (@activities[-2].trackable.event) do %>
+      <div class="social-img" style="background-image: url('<%= cl_image_path(@activities[-2].trackable.event.photo) %>'); ">
+      </div>
+      <div class="social-info">
+        <p class="social-title">
+          Your friend <%= @activities[-2].trackable.user.first_name %>
+          <% if @activities[-2].trackable.user.first_name == @activities.last.trackable.user.first_name %>
+          also
+          <% else %>
+          <% end %>
+          just booked
+        </p>
+
+        <h3><span><%= @activities[-2].trackable.event.name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+      </div>
+      <% end %>
+    <% else %> <!-- for when there is no trackable stuff -->
+      <%= link_to (@events[-3]) do %>
+      <div class="social-img" style="background-image: url('<%= cl_image_path(@events[-3]) %>');">
+      </div>
+      <div class="social-info">
+        <p class="social-title">
+          Curated by us for you
+        </p>
+         <h3><span><%= @events[-3].name.upcase.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
