@@ -25,12 +25,12 @@ class Event < ApplicationRecord
 
   include AlgoliaSearch
   algoliasearch auto_index: true, auto_remove: true do
-    attribute :name
-    searchableAttributes ['name']
+    attribute :name, :category
+    searchableAttributes ['name', 'category']
 
     add_index "dev_event_and_venue", id: :algolia_id do
-      attribute :name
-      searchableAttributes [:name]
+      attribute :name, :category
+      searchableAttributes [:name, :category]
 
       attribute :type do
         "Event"
