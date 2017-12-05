@@ -4,7 +4,7 @@ var cards_list = document.getElementById('cardsList')
 
 // Render the cards list partial (using j render)
 
-const partial = "<%= j render 'card_list', events: @events %>"
+var partial = "<%= j render 'card_list', events: @events %>"
 
 // Inject HTML to partial
 cards_list.innerHTML = partial
