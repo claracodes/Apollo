@@ -37,7 +37,8 @@ autocomplete('#aa-search-input', {}, [
       templates: {
         header: '<div class="aa-suggestions-category">Events</div>',
         suggestion: function(suggestion) {
-          return `<a href="${window.location.origin}/events/${suggestion.objectID}"><span>` +
+          // return `<a href="${window.location.origin}/events/${suggestion.objectID}"><span>` +
+          return '<a href=\"' + window.location.origin + '/events/' + suggestion.objectID +'\"><span>' +
             suggestion._highlightResult.name.value + '</span> - <span>'
               + suggestion._highlightResult.category.value + '</span></a>';
         }
@@ -49,7 +50,8 @@ autocomplete('#aa-search-input', {}, [
       templates: {
         header: '<div class="aa-suggestions-category">Venues</div>',
         suggestion: function(suggestion) {
-          return `<a href="${window.location.origin}/venues/${suggestion.objectID}"><span>` +
+          // return `<a href="${window.location.origin}/venues/${suggestion.objectID}"><span>` +
+          return '<a href=\"' + window.location.origin + '/venues/' + suggestion.objectID +'\"><span>' +
             suggestion._highlightResult.name.value + '</span> - <span>'
               + suggestion._highlightResult.city.value + '</span></a>';
         }
