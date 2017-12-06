@@ -15,7 +15,7 @@ class Event < ApplicationRecord
   has_many :bookings
   belongs_to :venue
 
-  self.per_page = 5
+  self.per_page = 10
 
   mount_uploader :photo, PhotoUploader
 
