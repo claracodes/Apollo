@@ -1,15 +1,19 @@
-<p class="title-home text-center"><span>Personal recommendations</span></p>
+<div class="social">
+<div class="social-header">
+  <p class="title-home text-center social-extra"><span>Personal recommendations</span></p>
+</div>
 
 <div class="grid">
 
     <div class="element element1">
       <%= link_to (@activities.last.trackable.event) do %>
-        <div class="social-img" >
+        <div class="social-img" style="background-image: url('<%= cl_image_path(@activities.last.trackable.event.photo) %>');">
         </div>
         <div class="social-info">
           <p class="social-title">
-            Your friend just booked
+            Your friend <%= @activities.last.trackable.user.first_name %> just booked
           </p>
+          <h3><span><%=@activities.last.trackable.event.name.upcase.truncate(15, omission: '', separator: /,?\.* +/) %></span></h3>
         </div>
       <% end %>
     </div>
@@ -28,27 +32,29 @@
 
   <div class="element element3">
     <%= link_to (@liked_venues.last) do %>
+      <div class="social-img">
+      </div>
       <div class="social-info">
         <p class="social-title">
           The latest event at <br>
           <%= @liked_venues.last.name %>:</p>
-
-          <h3><span><%=@liked_venues.last.events.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %></span></h3>
-          <% end %>
+        <h3><span><%=@liked_venues.last.events.last.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %></span></h3>
       </div>
-    </div>
+    <% end %>
+
+  </div>
 
     <div class="element element4">
       <%= link_to (@bookmarks.first) do %>
         <div class="social-img" style="background-image: url('<%= cl_image_path(@bookmarks.first.photo) %>');">
         </div>
-        <div class="social-info">
+        <div class="social-info-right">
+          <p class="social-title at-end">
+            Bookmarked
+          </p>
           <h3><span>
             <%= @bookmarks.first.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %>
           </span></h3>
-          <p class="social-title at-end">
-            has recently been bookmarked by your friend
-          </p>
         </div>
       <% end %>
     </div>
@@ -86,6 +92,7 @@
         </div>
       <% end %>
     </div>
+</div>
 </div>
 
 
