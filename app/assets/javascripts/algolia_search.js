@@ -1,3 +1,9 @@
+
+
+$(function () {
+//all the code that you showed me goes here - Jad
+
+
 // Algolia front search box JS, some of the remaining JS is in application.html.erb
 
 // 1. Using only 1 index:
@@ -62,3 +68,5 @@ autocomplete('#aa-search-input', {}, [
 
 // Interpolation or I store the results in a var and play with the id selector
 // <a href="http://www.apollo-cultu.re/events/${Event.objectID}">            </a>
+
+});
