@@ -16,7 +16,6 @@
 //   templates: {
 //       //'suggestion' templating function used to render a single suggestion
 //       suggestion: function(suggestion) {
-//         console.log(suggestion)
 //         return '<span>' +
 //         suggestion._highlightResult.name.value + '</span> - <span>' +
 //         suggestion._highlightResult.category.value + '</span>';
@@ -38,9 +37,9 @@ autocomplete('#aa-search-input', {}, [
       templates: {
         header: '<div class="aa-suggestions-category">Events</div>',
         suggestion: function(suggestion) {
-          return '<span>' +
+          return `<a href="${window.location.origin}/events/${suggestion.objectID}"><span>` +
             suggestion._highlightResult.name.value + '</span> - <span>'
-              + suggestion._highlightResult.category.value + '</span>';
+              + suggestion._highlightResult.category.value + '</span></a>';
         }
       }
     },
@@ -50,10 +49,14 @@ autocomplete('#aa-search-input', {}, [
       templates: {
         header: '<div class="aa-suggestions-category">Venues</div>',
         suggestion: function(suggestion) {
-          return '<span>' +
+          return `<a href="${window.location.origin}/venues/${suggestion.objectID}"><span>` +
             suggestion._highlightResult.name.value + '</span> - <span>'
-              + suggestion._highlightResult.city.value + '</span>';
+              + suggestion._highlightResult.city.value + '</span></a>';
         }
       }
     }
 ]);
+
+
+// Interpolation or I store the results in a var and play with the id selector
+// <a href="http://www.apollo-cultu.re/events/${Event.objectID}">            </a>

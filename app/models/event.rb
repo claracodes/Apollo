@@ -35,6 +35,10 @@ class Event < ApplicationRecord
       attribute :type do
         "Event"
       end
+
+      attribute :event_url do
+        root_path
+      end
     end
   end
 
