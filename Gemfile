@@ -27,9 +27,13 @@ gem 'sidekiq-failures', '~> 1.0'
 gem "koala"
 gem 'money-rails'
 gem 'stripe'
+gem 'public_activity' #for the social activity tracker
+gem "algoliasearch-rails"
+gem 'shareable'
+gem 'rails-assets-algolia-autocomplete.js', source: 'https://rails-assets.org'
 
 source 'https://rails-assets.org' do
-  gem "rails-assets-underscore"
+ gem "rails-assets-underscore"
 end
 
 gem 'autoprefixer-rails'

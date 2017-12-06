@@ -41,7 +41,15 @@ class User < ApplicationRecord
       users = friends.map do |friend|
         User.find_by(uid: friend['id'])
       end
-      users
+      users.compact
+    else
+      []
+    end
+  end
+
+  def friends_ids
+    if uid
+      friends.map(&:id)
     else
       []
     end

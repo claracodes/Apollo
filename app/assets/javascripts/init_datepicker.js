@@ -3,7 +3,7 @@ $('.datepicker').datepicker({
   todayBtn: true,
   clearBtn: true,
 }).on('changeDate', function(ev){
-  const form = document.getElementById("submitSearch");
+  var form = document.getElementById("submitSearch");
   form.click();
 });
 

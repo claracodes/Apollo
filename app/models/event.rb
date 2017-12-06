@@ -22,4 +22,29 @@ class Event < ApplicationRecord
 
   # For the bookmark feature:
   acts_as_votable
+
+  include AlgoliaSearch
+  algoliasearch auto_index: true, auto_remove: true do
+    attribute :name, :category
+    searchableAttributes ['name', 'category']
+
+    add_index "dev_event_and_venue", id: :algolia_id do
+      attribute :name, :category
+      searchableAttributes [:name, :category]
+
+      attribute :type do
+        "Event"
+      end
+
+      attribute :event_url do
+        root_path
+      end
+    end
+  end
+
+  private
+
+  def algolia_id
+    "event_#{id}"
+  end
 end

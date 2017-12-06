@@ -1,0 +1,147 @@
+.social-title {
+  background-color: black;
+  color: white;
+  padding: 0px 3px;
+  font-size: 14px;
+}
+
+.social-img {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  max-width: 100%;
+  filter: grayscale(100%);
+  &:hover {
+    filter: grayscale(0%);
+    background: $gray;
+  }
+}
+
+.social-info {
+  position: absolute;
+  top: 20px;
+  filter: grayscale(0%);
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; // 7 columns
+  grid-template-rows: 30vh 30vh 30vh;
+  margin: 30px 100px;
+  padding: 20px;
+  background-color: white
+}
+
+.element {
+  position: relative;
+  padding: 0px 0px 5px 0px;
+  background-color: white;
+  margin: 10px;
+  transition: all 0.2s ease;
+  &:hover {
+    background-color: $light-gray;
+    text-decoration: none;
+    // span {
+    //   color: $gray;
+    //   text-decoration: none;
+    //   background-color: $red;
+    // }
+  }
+  span {
+      color: $gray;
+      text-decoration: none;
+      background-color: $red;
+      padding-left: 5px;
+      padding-right: 5px;
+  }
+}
+
+.crop {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    img {
+    width: 400px;
+    height: 300px;
+    margin: -200px 0 0 -100px;
+}
+}
+
+.element1 {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 3;
+}
+
+.element2 {
+  grid-row: 1 / span 1;
+  grid-column: 4 /span 2;
+}
+
+.element3 {
+  grid-row: 1 / span 3;
+  grid-column: 6 /span 2;
+}
+
+.element4 {
+  grid-row: 2 / span 2;
+  grid-column: 1 /span 2;
+  min-width: 2fr;
+}
+
+.element5 {
+  grid-row: 2 / span 1;
+  grid-column: 3 /span 3;
+}
+
+.element6 {
+  grid-row: 3 / span 2;
+  grid-column: 3 /span 3;
+  min-width: 2fr;
+}
+
+
+// for mobile phones:
+@media(max-width: 720px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr; // 7 columns
+    grid-template-rows: 200px 200px 200px 200px 200px 200px ;
+    padding: 5px;
+    background-color: white
+    }
+  .element1 {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+  }
+
+  .element2 {
+    grid-row: 2 / span 1;
+    grid-column: 1 /span 1;
+  }
+
+  .element3 {
+    grid-row: 3 / span 1;
+    grid-column: 1 /span 1;
+    text-align: right;
+  }
+
+  .element4 {
+    grid-row: 4 / span 1;
+    grid-column: 1 /span 1;
+  }
+
+  .element5 {
+    grid-row: 5 / span 1;
+    grid-column: 1 /span 1;
+  }
+
+  .element6 {
+    grid-row: 6 / span 1;
+    grid-column: 1 /span 1;
+  }
+}

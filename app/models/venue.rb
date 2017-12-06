@@ -13,4 +13,26 @@ class Venue < ApplicationRecord
 
   # For the bookmark feature:
   acts_as_votable
+
+  include AlgoliaSearch
+  algoliasearch auto_index: true, auto_remove: true do
+    attribute :name, :city
+    searchableAttributes ['name', 'city']
+
+    add_index "dev_event_and_venue", id: :algolia_id do
+      attribute :name, :city
+      searchableAttributes [:name, :city]
+
+      attribute :type do
+        "Venue"
+      end
+    end
+  end
+
+  private
+
+  def algolia_id
+    "venue_#{id}"
+  end
 end
+

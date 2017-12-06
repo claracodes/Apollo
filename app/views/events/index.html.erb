@@ -48,7 +48,7 @@
     max: 60,
     slide: function(event, ui) {
       $( "#price-display").val( ui.value + " €");
-      const form = document.getElementById("submitSearch");
+      var form = document.getElementById("submitSearch");
       form.click();
     }
   });

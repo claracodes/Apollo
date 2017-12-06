@@ -1,10 +1,10 @@
 // Ajax for mood (version 1)
 
-// const mood = document.getElementById("search_mood");
+// var mood = document.getElementById("search_mood");
 // console.log(mood)
 
 // mood.addEventListener("change", function(e) {
-//   const form = document.getElementById("submitSearch");
+//   var form = document.getElementById("submitSearch");
 //   form.click();
 // });
 
