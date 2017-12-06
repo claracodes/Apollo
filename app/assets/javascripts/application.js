@@ -4,7 +4,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require selectize
-
+//= require underscore
 //= require gmaps/google
 //= require moment
 //= require fullcalendar
