@@ -34,9 +34,9 @@ gem 'shareable'
 gem 'rails-assets-algolia-autocomplete.js', source: 'https://rails-assets.org'
 
 
-# source 'https://rails-assets.org' do
-#   gem "rails-assets-underscore"
-# end
+source 'https://rails-assets.org' do
+ gem "rails-assets-underscore"
+end
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
