@@ -100,10 +100,10 @@
 
               <!-- class="form-inline" -->
               <div class="search-form-bar">
-                <div class="form-fields">
+                <div class="form-fields-home">
                   <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
-                  <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form form-control" }, label: false %>
-                  <%= f.input :date, as: :string, input_html: { class: "datepicker input-form form-control" }, label: false, placeholder: "When?" %>
+                  <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form-banner form-control" }, label: false %>
+                  <%= f.input :date, as: :string, input_html: { class: "datepicker input-form-banner form-control" }, label: false, placeholder: "When?" %>
                   <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
                   <% f.button :submit, as: :hidden, value: "Search", input_html: { id: "hidden-search"} %>
                   <% end %>
