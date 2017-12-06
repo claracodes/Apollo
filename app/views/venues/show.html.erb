@@ -69,22 +69,24 @@
 
               <!-- dates generator -->
               <div class="dates-container">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select a date
+                </button>
                 <% all_dates = @venue.events.where(name: event.name).pluck(:date, :id).uniq %>
-                <p> Dates: &nbsp;
-               <% all_dates.each do |event|  %>
-                   <%= link_to event[0], event_path(Event.find(event[1])) %> &nbsp;
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <% all_dates.each do |event|  %>
+                    <%= link_to event[0], event_path(Event.find(event[1])), class: "dropdown-item" %> <br>
                   <% end %>
-                </p>
+                </div>
               </div>
-
-            </div>
-          </div>
-          <% end %>
-        </div>
-      </div>
-      <div id="map-search" ></div>
-    </div>
-  </div>
+           </div>
+         </div>
+         <% end %>
+       </div>
+     </div>
+     <div id="map-search" ></div>
+   </div>
+ </div>
 </div>
 
 

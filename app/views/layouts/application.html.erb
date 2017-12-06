@@ -9,19 +9,12 @@
   <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <link rel="icon" href="https://image.ibb.co/bUGspb/apollo_logo_favicon_06.png">
-  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500" rel="stylesheet">
 </head>
 
 <body>
 
-  <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.11';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
+
 
 
   <%= render 'shared/navbar' if @event_pages %>
@@ -38,11 +31,12 @@
   <%= javascript_include_tag "https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" %>
   <%= javascript_include_tag "https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" %>
 
-  <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
 
   <%= render 'shared/footer' %>
   <%= yield(:after_js) %>
+  <%= javascript_include_tag 'application' %>
+  <%= render 'shared/fb_js_code' %>
 
 </body>
 </html>

@@ -1,15 +1,15 @@
   <!-- Search bar -->
-  <div class="search-form-bar search-form-">
-    <div class="form-fields">
+  <div class="search-form-bar search-form-index">
+    <div class="form-fields-index">
       <%= simple_form_for :search, url: events_path, html: {id: "search_form", method: "GET", :class => 'form-inline form-prevent-submit'}, remote: true do |f| %>
-      <%= f.input :city, placeholder: "City", label: false, input_html: { class: "input-form form-control input-form-index search-ajax", value: @query[:city], style: "width: 140px;" } %>
+      <%= f.input :city, placeholder: "City", label: false, input_html: { class: "input-form form-control input-form-index search-ajax", value: @query[:city], style: "width: 160px;" } %>
 
-      <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index search-ajax"}, selected: @query[:mood], collection: Event::MOOD %>
+      <%= f.input :date, as: :string, input_html: { class: "datepicker form-control input-form input-form-index search-ajax", value: @query[:date], style: "width: 160px;" }, label: false, placeholder: "  Date" %>
+      <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index search-ajax", id: "cusSelectbox2"}, selected: @query[:mood], collection: Event::MOOD %>
 
-      <%= f.input :date, as: :string, input_html: { class: "datepicker form-control input-form input-form-index search-ajax", value: @query[:date], style: "width: 140px;" }, label: false, placeholder: "  Date" %>
-      <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index search-ajax" }, prompt: "Category ", selected: @query[:category]%>
+      <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index search-ajax", id: "cusSelectbox1" }, prompt: "Category", selected: @query[:category]%>
 
-      <div id="price-slider" style="width: 100px; margin: 0; display: inline-block"></div>
+      <div id="price-slider" style="width: 140px; margin: 0; display: inline-block"></div>
 
       <%= f.input :price_cents,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index search-ajax", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
 

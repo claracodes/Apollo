@@ -18,8 +18,8 @@
               <%= link_to "", event_path(vote) %>
 
               <div class="info info-dash">
-                <div class="event-name-price">
-                  <h4><%= vote.name.upcase %></h4>
+                <div class="event-name-price align-items-end">
+                  <h4><%= vote.name.upcase.truncate(45, omission: '', separator: /,?\.* +/) %></h4>
                   <div class="action-btns">
                     <div class="bookmark-heart">
                       <%= link_to downvote_event_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
@@ -52,9 +52,9 @@
             <div class="event-list-item" id="bookmark-venue-<%= vote.id %>">
               <%= link_to "", venue_path(vote) %>
               <div class="info info-dash">
-                <div class="event-name-price">
+                <div class="event-name-price align-items-end">
                   <h4><%= vote.name.upcase %></h4>
-                  <div class="action-btns">
+                  <div class="action-btns venue-btn">
                     <div class="bookmark-heart">
                       <%= link_to downvote_venue_path(vote), class: "heart-bookmark", method: :put, remote: true do %>
                       <p class="glyphicon glyphicon-heart"></p>

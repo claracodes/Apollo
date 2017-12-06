@@ -2,15 +2,24 @@
   background-color: white;
   border-radius: 3px;
   box-shadow: 3px 3px 6px gray;
-  padding: 10px 50px;
-  text-align: center;
+  padding: 10px 30px;
+  text-align: left;
 }
 .wrapper-session {
-  height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
+  h2 {
+    color: $gray;
+    text-transform: uppercase;
+    font-weight: lighter;
+    margin-bottom: 38px;
+  }
   input {
     margin-left: 0;
   }
+}
+.logo-login {
+  width: 200px;
 }
