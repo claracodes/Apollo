@@ -1,3 +1,13 @@
+.social:hover {
+  .element {
+    margin: 10px;
+    transition: all 0.5s ease;
+  }
+}
+
+.social {
+  margin: 0px 100px;
+}
 
 .social-title {
   background-color: black;
@@ -14,9 +24,11 @@
   left: 0px;
   max-width: 100%;
   filter: grayscale(100%);
+  opacity: 0.7;
   &:hover {
     filter: grayscale(0%);
     background: $gray;
+    opacity: 1;
   }
 }
 
@@ -24,6 +36,7 @@
   position: absolute;
   top: 20px;
   filter: grayscale(0%);
+  hyphens: auto;
   &:hover{
     text-decoration: none;
   }
@@ -39,9 +52,8 @@
   }
 }
 
-.social {
+.social-header {
   background-color: white;
-  margin: 0px 100px;
   padding-top: 30px;
 }
 
@@ -55,8 +67,6 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; // 7 columns
   grid-template-rows: 30vh 30vh 30vh;
   margin-bottom: 30px;
-  margin-left: 100px;
-  margin-right: 100px;
   margin-top: 0px;
   padding: 20px;
   background-color: white
@@ -66,7 +76,7 @@
   position: relative;
   padding: 0px 0px 5px 0px;
   background-color: white;
-  margin: 10px;
+  margin: 4px;
   transition: all 0.2s ease;
   &:hover {
     background-color: $light-gray;
