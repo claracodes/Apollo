@@ -7,9 +7,10 @@
       <!--       <%#= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link popup-with-form" %> -->
       <!--       <%#= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %> -->
 
-
-      <!-- Algolia test -->
-
+      <!-- Algolia search bar -->
+      <div class="algolia-search">
+        <%= render 'shared/algolia_search' %>
+      </div>
 
       <a class="navbar-wagon-item navbar-wagon-link popup-with-form" href="#login-form">Login</a>
       <a class="navbar-wagon-item navbar-wagon-link popup-with-form" href="#signup-form">Sign up</a>
@@ -160,9 +161,7 @@
     <%= render 'recommendations_signed_in' %>
     <% else %>
     <%= render 'recommendations_not_signed_in' %>
-
-    <!-- cards -->
-
-
   <% end %>
+
+
 

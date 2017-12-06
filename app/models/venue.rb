@@ -16,12 +16,12 @@ class Venue < ApplicationRecord
 
   include AlgoliaSearch
   algoliasearch auto_index: true, auto_remove: true do
-    attribute :name
-    searchableAttributes ['name']
+    attribute :name, :city
+    searchableAttributes ['name', 'city']
 
     add_index "dev_event_and_venue", id: :algolia_id do
-      attribute :name
-      searchableAttributes [:name]
+      attribute :name, :city
+      searchableAttributes [:name, :city]
 
       attribute :type do
         "Venue"
