@@ -334,7 +334,8 @@ DEPENDENCIES
   public_activity
   puma
   pundit
-  rails (= 5.0.6)
+  rails (= 5.0.6) 
+  rails-assets-underscore!
   rails-assets-algolia-autocomplete.js!
   redis
   sass-rails
