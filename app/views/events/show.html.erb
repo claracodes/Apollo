@@ -1,12 +1,3 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.11';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 <div class="wrapper">
   <div class="row">
     <div class="col-md-7 image-event"  style="background-image: url('<%= cl_image_path(@event.photo) %>'); background-size: cover">
@@ -79,7 +70,7 @@
           <p>Hosting: <strong><%= @event.venue.events.count %></strong> <%=  @event.venue.events.count < 2 ? "event" : "events" %></p>
         </div>
 
-        <div class="venue-box-img" style="background-image: url('https://static.pexels.com/photos/36474/dresden-semper-opera-house-historically-at-night.jpg');"></div>
+        <div class="venue-box-img" style="background-image: url(<%= asset_path "venue-#{@event.category}.jpg" %>);"></div>
         <% end %>
       </div>
 
