@@ -78,7 +78,14 @@
 .dates-container a {
   color: #656262;
   text-decoration: none;
-  position: initial;
+
+}
+
+.dates-container {
+  position: relative;
 }
 
 
+.dropdown-menu {
+  position: absolute;
+}
