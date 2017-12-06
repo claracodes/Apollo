@@ -149,7 +149,6 @@
     </div>
     <p data-search="Search" class="normal-search text-center">or Search without moods</p>
   </div>
-
 </div>
 
 <% if user_signed_in? && @activities.any? && @bookmarks.any? && @most_liked.any? && @liked_venues.any? %>
@@ -158,6 +157,50 @@
 <%= render 'recommendations_not_signed_in' %>
 <% end %>
 
+<div class="wrapper">
+  <div class="container-team">
+
+    <div class="team-boxes text-center">
+      <div class="row">
+        <div class="team-back-box col-md-6"></div>
+        <div class="col-md-6 team-faces">
+          <div class="title-home title-team">
+            <p><span>MEET THE TEAM</span></p>
+            <h6>of superheroes</h4>
+            </div>
+            <div class="row">
+              <div class="team-box col-md-6">
+                <a href="https://www.facebook.com/clara.morgeneyer" target="_blank"></a>
+                <%= image_tag "team-clara.jpeg", class: "team-img" %>
+                <h4><span>CLARA MORGEN</span></h4>
+                <p>Caribbean mermaid</p>
+              </div>
+              <div class="team-box col-md-6">
+                <a href="https://www.facebook.com/julien.schmit.9" target="_blank"></a>
+                <%= image_tag "team-julien.jpeg", class: "team-img" %>
+                <h4><span>JULIEN SCHMIT</span></h4>
+                <p>Shearch boss</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="team-box col-md-6">
+                <a href="https://www.facebook.com/angelica.vunny" target="_blank"></a>
+                <%= image_tag "team-angelica.png", class: "team-img" %>
+                <h4><span>ANGELICA VANNI</span></h4>
+                <p>Ciao bella</p>
+              </div>
+              <div class="team-box col-md-6">
+                <a href="https://www.facebook.com/oisakov" target="_blank"></a>
+                <%= image_tag "team-oleg.jpeg", class: "team-img" %>
+                <h4><span>OLEG ISAKOV</span></h4>
+                <p>Proud scraper</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
