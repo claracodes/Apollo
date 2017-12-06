@@ -28,11 +28,25 @@
   }
 }
 
+.social {
+  background-color: white;
+  margin: 0px 100px;
+  padding-top: 30px;
+}
+
+.social-extra {
+  margin-bottom: 0px !important;
+}
+
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; // 7 columns
   grid-template-rows: 30vh 30vh 30vh;
-  margin: 30px 100px;
+  margin-bottom: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 0px;
   padding: 20px;
   background-color: white
 }
