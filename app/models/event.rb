@@ -12,10 +12,12 @@ class Event < ApplicationRecord
   validates :price_cents, presence: true
   validates :mood, presence: true, inclusion: { in: MOOD,
               message: "%{value} is not a valid mood" }
-
-  mount_uploader :photo, PhotoUploader
   has_many :bookings
   belongs_to :venue
+
+  self.per_page = 5
+
+  mount_uploader :photo, PhotoUploader
 
   # For monetize feature
   monetize :price_cents

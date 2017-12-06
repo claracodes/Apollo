@@ -31,6 +31,7 @@ gem 'public_activity' #for the social activity tracker
 gem "algoliasearch-rails"
 gem 'shareable'
 gem 'rails-assets-algolia-autocomplete.js', source: 'https://rails-assets.org'
+gem 'will_paginate'
 
 source 'https://rails-assets.org' do
  gem "rails-assets-underscore"

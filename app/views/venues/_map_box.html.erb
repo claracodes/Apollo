@@ -5,9 +5,7 @@
   <p> <%= venue.description.split.slice(0, 35).join(" ") %></p>
   <br>
 
-  <!-- <h6>Current events at <%= venue.name %></h6> -->
   <% venue.events.take(2).each do |event| %>
-  <!-- can use .recent(3)/random(3) -->
   <%= link_to "", event_path(event) %>
   <div class="map-card">
     <h6><%= event.name %></h6>

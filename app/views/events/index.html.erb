@@ -27,12 +27,12 @@
         <!-- PARTIAL -->
         <%= render "card_list", events: @events %>
       </div>
+      <%= paginate @events %>
     </div>
 
     <!-- Map container -->
     <div id="map-search" ></div>
   </div>
-
 
   <!-- javascript -->
   <% content_for(:after_js) do %>

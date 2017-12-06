@@ -23,7 +23,7 @@ def index
   @query = session[:search_query].with_indifferent_access
 
   if @query
-    @events = Event.includes(:venue)
+    @events = Event.includes(:venue).paginate(page: params[:page])
     @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
     @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
     @events = @events.where(category: @query[:category]) if @query[:category].present?
@@ -32,20 +32,25 @@ def index
     @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
     # @events = @events.where(english: @query[:english]) if @query[:english].present?
   else
-    @events = Event.includes(:venue)
+    @events = Event.includes(:venue).paginate(page: params[:page])
   end
-
 
   @venues = Venue.where(id: @events.pluck(:venue_id))
   for_maps
 
+
+    # respond_to do |format|
+    #   format.html { redirect_to events_path }
+    #   format.js  # <-- will render `app/views/events/index.js.erb`
+    # end
+
   # Ajax call
-  if params[:search]
-    respond_to do |format|
-      format.html { redirect_to events_path }
-      format.js  # <-- will render `app/views/events/index.js.erb`
-    end
-  end
+  # if params[:search]
+  #   respond_to do |format|
+  #     format.html { redirect_to events_path }
+  #     format.js  # <-- will render `app/views/events/index.js.erb`
+  #   end
+  # end
 
 end
 
@@ -97,7 +102,7 @@ end
       marker.lng venue.longitude
       # marker.json({ :id => venue.id })
       marker.picture({url: 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-32.png', width: 32, height: 32})
-      marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
+      # marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
     end
   end
 

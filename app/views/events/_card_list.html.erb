@@ -1,4 +1,5 @@
         <% events.each do |event| %>
+        <h1><%= event.id %></h1>
         <div class='event-card'>
           <%= link_to "", event_path(event), class: "card-link" %>
           <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>

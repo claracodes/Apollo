@@ -1,15 +1,6 @@
 // Select the cardList element:
+$("#cardsList").html("<%= j render 'card_list', events: @events %>");
 
-var cards_list = document.getElementById('cardsList')
-
-// Render the cards list partial (using j render)
-
-var partial = "<%= j render 'card_list', events: @events %>"
-
-// Inject HTML to partial
-cards_list.innerHTML = partial
-
-// Render maps (copy/past from index)
 
 var handler = Gmaps.build('Google');
 handler.buildMap({
@@ -26,7 +17,6 @@ handler.buildMap({
     }
   }
 );
-
 
 
 
