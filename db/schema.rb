@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205095034) do
+ActiveRecord::Schema.define(version: 20171206165308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20171205095034) do
     t.string   "tags"
     t.date     "start_time"
     t.date     "duration"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.date     "date"
     t.integer  "venue_id"
     t.string   "city"
@@ -60,9 +60,21 @@ ActiveRecord::Schema.define(version: 20171205095034) do
     t.boolean  "english"
     t.string   "mood"
     t.date     "end_time"
-    t.integer  "price_cents",        default: 0, null: false
-    t.integer  "cached_votes_total", default: 0
+    t.integer  "price_cents",             default: 0,   null: false
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.index ["cached_votes_down"], name: "index_events_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_events_on_cached_votes_score", using: :btree
     t.index ["cached_votes_total"], name: "index_events_on_cached_votes_total", using: :btree
+    t.index ["cached_votes_up"], name: "index_events_on_cached_votes_up", using: :btree
+    t.index ["cached_weighted_average"], name: "index_events_on_cached_weighted_average", using: :btree
+    t.index ["cached_weighted_score"], name: "index_events_on_cached_weighted_score", using: :btree
+    t.index ["cached_weighted_total"], name: "index_events_on_cached_weighted_total", using: :btree
     t.index ["venue_id"], name: "index_events_on_venue_id", using: :btree
   end
 
@@ -96,8 +108,8 @@ ActiveRecord::Schema.define(version: 20171205095034) do
     t.string   "address"
     t.text     "description"
     t.date     "opening_hours"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "phone"
     t.string   "email"
     t.string   "city"
@@ -105,6 +117,20 @@ ActiveRecord::Schema.define(version: 20171205095034) do
     t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.index ["cached_votes_down"], name: "index_venues_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_venues_on_cached_votes_score", using: :btree
+    t.index ["cached_votes_total"], name: "index_venues_on_cached_votes_total", using: :btree
+    t.index ["cached_votes_up"], name: "index_venues_on_cached_votes_up", using: :btree
+    t.index ["cached_weighted_average"], name: "index_venues_on_cached_weighted_average", using: :btree
+    t.index ["cached_weighted_score"], name: "index_venues_on_cached_weighted_score", using: :btree
+    t.index ["cached_weighted_total"], name: "index_venues_on_cached_weighted_total", using: :btree
     t.index ["user_id"], name: "index_venues_on_user_id", using: :btree
   end
 

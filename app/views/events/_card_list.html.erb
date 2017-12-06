@@ -20,7 +20,7 @@
               <div class="likes">
                 <% if user_signed_in? %>
                 <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>
-                <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event) ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
+                <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(event, vote_scope: 'event') ? '' : '-empty' %>" id="bookmark-<%= event.id %>"></p>
                 <% end %>
                 <% else %>
                 <%= link_to new_user_registration_path, class: "heart-bookmark" do %>

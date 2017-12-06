@@ -44,7 +44,9 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 
+
 group :development, :test do
+  gem 'bullet'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'
