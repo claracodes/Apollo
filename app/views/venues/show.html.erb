@@ -75,7 +75,7 @@
                 <% all_dates = @venue.events.where(name: event.name).pluck(:date, :id).uniq %>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <% all_dates.each do |event|  %>
-                    <a class="dropdown-item" href="event_path(Event.find(event[1])) %>"><%= link_to event[0] %></a> <br>
+                    <%= link_to event[0], event_path(Event.find(event[1])), class: "dropdown-item" %> <br>
                   <% end %>
                 </div>
               </div>
