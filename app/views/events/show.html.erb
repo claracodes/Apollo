@@ -34,7 +34,7 @@
           </div>
           <%= simple_form_for [@event, @booking] do |f| %>
           <div class="ticket-quantity-selector">
-            <p>Quanitity: </p>
+            <p>Quantity: </p>
             <%= f.input :quantity, collection: [1, 2, 3, 4, 5], default: 1, input_html: {class: 'selector-list'} %>
           </div>
           <%= f.submit 'Book now', class: "btn btn-danger btn-block event-input" %>
