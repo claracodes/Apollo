@@ -2,7 +2,7 @@
   background-color: white;
   border-radius: 3px;
   box-shadow: 3px 3px 6px gray;
-  padding: 10px 0px;
+  padding: 10px 30px;
   text-align: left;
 }
 .wrapper-session {
@@ -19,4 +19,7 @@
   input {
     margin-left: 0;
   }
+}
+.logo-login {
+  width: 200px;
 }
