@@ -47,13 +47,13 @@
       <%= link_to (@bookmarks.first) do %>
         <div class="social-img" style="background-image: url('<%= cl_image_path(@bookmarks.first.photo) %>');">
         </div>
-        <div class="social-info">
+        <div class="social-info-right">
+          <p class="social-title at-end">
+            Bookmarked
+          </p>
           <h3><span>
             <%= @bookmarks.first.name.upcase.truncate(13, omission: '', separator: /,?\.* +/) %>
           </span></h3>
-          <p class="social-title at-end">
-            has recently been bookmarked by your friend
-          </p>
         </div>
       <% end %>
     </div>

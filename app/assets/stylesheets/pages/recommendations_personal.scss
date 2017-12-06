@@ -28,6 +28,16 @@
   }
 }
 
+.social-info-right {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  filter: grayscale(0%);
+  &:hover{
+    text-decoration: none;
+  }
+}
+
 .social {
   background-color: white;
   margin: 0px 100px;
@@ -104,7 +114,6 @@
 .element4 {
   grid-row: 2 / span 2;
   grid-column: 1 /span 2;
-  min-width: 2fr;
 }
 
 .element5 {
@@ -115,7 +124,6 @@
 .element6 {
   grid-row: 3 / span 2;
   grid-column: 3 /span 3;
-  min-width: 2fr;
 }
 
 
