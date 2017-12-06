@@ -2,18 +2,11 @@
   <div class="banner banner-home">
     <div class="navbar-home">
       <!-- Algolia search bar -->
-      <div class="algolia-search">
-        <%= render 'shared/algolia_search' %>
-      </div>
       <% if user_signed_in? %>
       <%= link_to "Dashboard", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
       <!--       <%#= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link popup-with-form" %> -->
       <!--       <%#= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %> -->
-
-
-
-
       <a class="navbar-wagon-item navbar-wagon-link popup-with-form" href="#login-form">Login</a>
       <a class="navbar-wagon-item navbar-wagon-link popup-with-form" href="#signup-form">Sign up</a>
       <% end %>
@@ -76,94 +69,94 @@
               </div>
 
               <div class="form-group password required user_password div-form-home">
-                  <input class="form-control password required input-form-index input-form-home" required="required" aria-required="true" type="password" name="user[password]" id="user_password" />
-                  <label class="control-label password required label-login" for="user_password">Password</label>
-                  <p class="help-block">6 characters minimum</p>
-                </div>
+                <input class="form-control password required input-form-index input-form-home" required="required" aria-required="true" type="password" name="user[password]" id="user_password" />
+                <label class="control-label password required label-login" for="user_password">Password</label>
+                <p class="help-block">6 characters minimum</p>
+              </div>
 
-                <div class="form-group password required user_password_confirmation div-form-home">
-                    <input class="form-control password required input-form-index input-form-home" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
-                    <label class="control-label password required label-login label-confirmation" for="user_password_confirmation"> Password confirmation</label>
-                  </div>
-                </div>
-
-                <div class="form-actions">
-                  <input type="submit" name="commit" value="Sign up" class="btn btn-default btn btn-danger btn-block" data-disable-with="Sign up" />
-                </div>
-              </form>
-              <div class="buttons-links">
-                <p>Already a fan? <strong><a href="#login-form">Log in</a></strong></p>
-                <p>Or <strong><a href="/users/auth/facebook">Sign up with Facebook</a></strong></p>
+              <div class="form-group password required user_password_confirmation div-form-home">
+                <input class="form-control password required input-form-index input-form-home" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
+                <label class="control-label password required label-login label-confirmation" for="user_password_confirmation"> Password confirmation</label>
               </div>
             </div>
-          </div>
 
-
-
-          <!-- Banner content -->
-          <div class="container text-center">
-            <div class="banner-content">
-              <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
-              <p>Discover cultural experiences in your city</p>
-
-              <!-- class="form-inline" -->
-              <div class="search-form-bar">
-                <div class="form-fields-home">
-                  <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
-                  <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form-banner form-control" }, label: false %>
-                  <%= f.input :date, as: :string, input_html: { class: "datepicker input-form-banner form-control" }, label: false, placeholder: "When?" %>
-                  <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
-                  <% f.button :submit, as: :hidden, value: "Search", input_html: { id: "hidden-search" } %>
-                  <% end %>
-                </div>
-              </div>
+            <div class="form-actions">
+              <input type="submit" name="commit" value="Sign up" class="btn btn-default btn btn-danger btn-block" data-disable-with="Sign up" />
             </div>
-            <a href="#inspiration-card" class="be-inspired">
-              <div class="text-center">
-                <div class="director"><%= image_tag "bar-04.png" %> </div>
-              </div>
-            </a>
+          </form>
+          <div class="buttons-links">
+            <p>Already a fan? <strong><a href="#login-form">Log in</a></strong></p>
+            <p>Or <strong><a href="/users/auth/facebook">Sign up with Facebook</a></strong></p>
           </div>
         </div>
-
-        <!-- moods -->
-        <p class="text-center title-moods">WHAT DO YOU FEEL LIKE?</p>
-        <div class="container container-moods">
-          <div class="flex-list">
-            <ul class="list-inline text-center list-moods">
-              <li id="romantic" data-mood="Romantic" class="mood">
-                <%= image_tag "icons-apollo-02.png" %>
-                <p>ROMANTIC</p>
-              </li>
-              <li id="wild" data-mood="Wild" class="mood">
-                <%= image_tag "icons-apollo-01.png" %>
-                <p>WILD</p>
-              </li>
-              <li id="nerdy" data-mood="Nerdy" class="mood">
-                <%= image_tag "icons-apollo-04.png" %>
-                <p>NERDY</p>
-              </li>
-              <li id="glamorous" data-mood="Glamorous" class="mood">
-                <%= image_tag "icons-apollo-05.png" %>
-                <p>GLAMOROUS</p>
-              </li>
-              <li id="dramatic" data-mood="Dramatic" class="mood">
-                <%= image_tag "icons-apollo-03.png" %>
-                <p>DRAMATIC</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p data-search="Search" class="normal-search text-center">or Search without moods</p>
       </div>
 
+
+
+      <!-- Banner content -->
+      <div class="container text-center">
+        <div class="banner-content">
+          <%= image_tag "apollo_logo_fascia-02.png", id: "logo-home" %>
+          <p>Discover cultural experiences in your city</p>
+
+          <!-- class="form-inline" -->
+          <div class="search-form-bar">
+            <div class="form-fields-home">
+              <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
+              <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form-banner form-control" }, label: false %>
+              <%= f.input :date, as: :string, input_html: { class: "datepicker input-form-banner form-control" }, label: false, placeholder: "When?" %>
+              <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
+              <% f.button :submit, as: :hidden, value: "Search", input_html: { id: "hidden-search" } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <a href="#inspiration-card" class="be-inspired">
+          <div class="text-center">
+            <div class="director"><%= image_tag "bar-04.png" %> </div>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <% if user_signed_in? && @activities.any? && @bookmarks.any? && @most_liked.any? && @liked_venues.any? %>
-    <%= render 'recommendations_signed_in'  %>
-    <% else %>
-    <%= render 'recommendations_not_signed_in' %>
-    <% end %>
+    <!-- moods -->
+    <p class="text-center title-moods">WHAT DO YOU FEEL LIKE?</p>
+    <div class="container container-moods">
+      <div class="flex-list">
+        <ul class="list-inline text-center list-moods">
+          <li id="romantic" data-mood="Romantic" class="mood">
+            <%= image_tag "icons-apollo-02.png" %>
+            <p>ROMANTIC</p>
+          </li>
+          <li id="wild" data-mood="Wild" class="mood">
+            <%= image_tag "icons-apollo-01.png" %>
+            <p>WILD</p>
+          </li>
+          <li id="nerdy" data-mood="Nerdy" class="mood">
+            <%= image_tag "icons-apollo-04.png" %>
+            <p>NERDY</p>
+          </li>
+          <li id="glamorous" data-mood="Glamorous" class="mood">
+            <%= image_tag "icons-apollo-05.png" %>
+            <p>GLAMOROUS</p>
+          </li>
+          <li id="dramatic" data-mood="Dramatic" class="mood">
+            <%= image_tag "icons-apollo-03.png" %>
+            <p>DRAMATIC</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p data-search="Search" class="normal-search text-center">or Search without moods</p>
+  </div>
+
+</div>
+
+<% if user_signed_in? && @activities.any? && @bookmarks.any? && @most_liked.any? && @liked_venues.any? %>
+<%= render 'recommendations_signed_in'  %>
+<% else %>
+<%= render 'recommendations_not_signed_in' %>
+<% end %>
 
 
 
