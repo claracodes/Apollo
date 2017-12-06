@@ -1,3 +1,6 @@
+.wrapper-tab {
+  min-height: 100vh;
+}
 .dash-title {
   color: $gray;
   font-size: 60px;
@@ -75,11 +78,13 @@
   }
 }
 .action-btns {
+  flex: none;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 90px;
   height: 40px;
+  margin-bottom: 12px;
   .bookmark-heart {
     width: 20px;
     height: 20px;
@@ -94,13 +99,17 @@
     }
   }
 }
-
-
 .detail-info-venue p {
   margin-bottom: 0;
-  .hosting {
-    color: $red;
+}
+.hosting {
+    margin-right: 5px;
   }
+.align-items-end {
+  align-items: flex-end !important;
+}
+.venue-btn {
+  width: 20px;
 }
 
 
@@ -113,10 +122,6 @@
 
 
 
-
-.wrapper-tab {
-  height: 100vh;
-}
 
 #map-dashboard {
   width: 100%;
@@ -157,6 +162,7 @@ h1{
   .booking-list{
     background-color: white;
     padding-top: 20px;
+    margin-bottom: 40px;
     h3 {
       padding-left: 25px;
     }

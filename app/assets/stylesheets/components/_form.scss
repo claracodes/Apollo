@@ -1,18 +1,18 @@
-$main-color: #F44336;
-$secondary-color: white;
-$main-color: #333;
-$secondary-color: #2196f3;
+input {
+  margin: 0 10px;
+}
+label{
+  display: none;
+}
 $width: 550px; // Change Me
 
-.input-form {
-  background-color: none;
-  border-bottom: 2px solid white;
+.input-form-banner {
+  background-color: transparent;
+  border-bottom: 2px solid white !important;
   display: inline-block;
   border-radius: 0px !important;
   border: 0;
   outline: 0;
-  background: transparent;
-  border-bottom: 2px solid white;
   color: white !important;
   max-width: 300px !important;
   font-size: 26px;
@@ -29,9 +29,15 @@ $width: 550px; // Change Me
   border: 0;
   box-shadow: none;
   border-bottom: 1px solid $gray;
+  background-color: transparent;
+  color: $gray;
   &:focus {
     border-bottom: 3px solid $red;
-    -webkit-box-shadow: none;
+    outline: none;
+  }
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: $gray !important;
   }
 }
 .search-form-bar {
@@ -39,9 +45,164 @@ $width: 550px; // Change Me
   width: 100%;
   margin: 0 auto;
 }
+.help-block {
+  font-size: 12px !important;
+  color: $red;
+  a {
+    color: $red !important;
+  }
+}
+
+
+// INDEX FILTER BAR //
+.search-form-index {
+
+}
+.form-fields-index {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .btn {
+    display: none;
+  }
+  .search-ajax {
+    margin: 10px 20px 10px 0;
+    border-radius: 0 !important;
+  }
+  select {
+    background-color: white;
+    border-radius: 0;
+  }
+}
+#cusSelectbox1,
+#cusSelectbox2,
+ {
+  height: 100%;
+  width: 100%;
+}
+.cusSelBlock1,
+.cusSelBlock2 {
+  height: 50px;
+  min-width: 250px;
+  z-index: 10;
+  margin-right: 20px;
+  display: inline-block;
+  position: relative;
+  -webkit-perspective: 800px;
+  perspective: 800px;
+}
+.selectLabel1,
+.selectLabel2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  background-color: #F4F4F4;
+  border-bottom: 0.5px solid $gray;
+  color: $gray;
+  cursor: pointer;
+  display: block;
+  height: 45px;
+  width: 100%;
+  line-height: 45px;
+  padding: 0 50px 0 20px;
+  text-align: left;
+  // -webkit-transform-style: preserve-3d;
+  // transform-style: preserve-3d;
+  // -webkit-transform-origin: 50% 0%;
+  // transform-origin: 50% 0%;
+  // -webkit-transition: -webkit-transform 300ms;
+  // transition: -webkit-transform 300ms;
+  // transition: transform 300ms;
+  // transition: transform 300ms, -webkit-transform 300ms;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.selectLabel1:after,
+.selectLabel2:after {
+  content: "\25BC";
+  border-left: 1px solid #333;
+  color: $red;
+  font-size: 12px;
+  line-height: 15px;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  right: 0px;
+  top: 15%;
+  height: 70%;
+  width: 50px;
+}
+.selectLabel1:active,
+.selectLabel2:active {
+  -webkit-transform: rotateX(30deg);
+  transform: rotateX(30deg);
+}
+.selectLabel1:active:after,
+.selectLabel2:active:after {
+  color: $gray;
+  content: "\25B2";
+}
+.selectLabel1.active:after,
+.selectLabel2.active:after {
+  color: $gray;
+  content: "\25B2";
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.options1,
+.options2 {
+  position: absolute;
+  top: 50px;
+  height: 1px;
+  width: 100%;
+}
+.options1 li,
+.options2 li {
+  background-color: white;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  display: block;
+  line-height: 45px;
+  list-style: none;
+  opacity: 1;
+  padding: 0 50px 0 20px;
+  text-align: left;
+  // -webkit-transition: -webkit-transform 300ms ease;
+  // transition: -webkit-transform 300ms ease;
+  // transition: transform 300ms ease;
+  // transition: transform 300ms ease, -webkit-transform 300ms ease;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  z-index: 0;
+  height: 45px;
+  width: 100%;
+}
+.options1 li:hover,
+.options1 li.active,
+.options2 li:hover,
+.options2 li.active, {
+  background-color: $red;
+  color: $gray;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.s-hidden {
+  visibility: hidden;
+}
+
+// POP-UP HOME //
 .overlay {
+  z-index: 1000;
   input {
-    margin: 0 0;
+    margin: 0;
   }
   position: fixed;
   top: 0;
@@ -57,20 +218,12 @@ $width: 550px; // Change Me
     opacity: 1;
   }
 }
-.help-block {
-  font-size: 12px !important;
-  color: $red;
-}
-.label-login {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
 .popup {
   h2 {
     color: $gray;
     text-transform: uppercase;
     font-weight: lighter;
+    margin-bottom: 38px;
   }
   overflow: hidden;
   margin: 70px auto;
@@ -104,51 +257,55 @@ $width: 550px; // Change Me
   display: block;
   width: 100%;
   font-size: 18px;
-  // border-bottom: solid $width/150 rgba(white, .5);
   transition: .3s ease;
-  &:valid {
-    // border-bottom-color: rgba(white, .5);
-    #mail-label {
-      top: 0;
-      font: 700 $width/25 Roboto;
-      color: $gray;
-    }
-  }
   &:focus {
-    outline: none;
-    // border-bottom-color: $secondary-color;
-    #mail-label {
-      top: 0;
-      font: 700 $width/25 Roboto;
-      color: $secondary-color;
-    }
+    border-bottom: 3px solid $red;
+    -webkit-box-shadow: none;
+  }
+  &:valid {
+    border-bottom: 3px solid $red;
+    -webkit-box-shadow: none;
   }
 
   // Stop Chrome's hideous pale yellow background on auto-fill
-
   &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
     -webkit-text-fill-color: $gray !important;
-    // border-bottom-color: rgba(white, .5);
   }
 }
-#mail-label {
+.div-form-home {
+  position: relative;
+  margin-bottom: 30px;
+}
+.label-login {
+  opacity: 0.7;
+  overflow: hidden;
   letter-spacing: 1px;
   display: block;
   position: absolute;
-  top: 10px;
+  top: 8px;
+  text-transform: uppercase;
   color: $gray;
   cursor: text;
   transition: .25s ease;
 }
-
-input {
-  margin: 0 10px;
+.label-confirmation {
+  font-size: 15px;
 }
-label{
-  display: none;
+.input-form-home:focus ~ label {
+  height: 80px;
+  top: -15px;
+  font-size: 14px;
+  opacity: 1;
+}
+.input-form-home:valid ~ label {
+  height: 80px;
+  top: -15px;
+  font-size: 14px;
+  opacity: 1;
 }
 
+// RESPONSIVE CSS //
 @media screen and (max-width: 760px) {
   .input-form {
     width: 250px !important;
