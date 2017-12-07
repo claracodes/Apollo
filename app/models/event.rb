@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  CATEGORY = ["theater", "exhibition", "movie", "concert", "Theater", "Exhibition", "Movie", "Concert"]
+  CATEGORY = ["Theater", "Exhibition", "Movie", "Concert"]
   MOOD = ["Dramatic", "Romantic", "Glamorous", "Wild", "Nerdy"]
   TAG = ["Dramatic", "Romantic", "Modern", "Funny"]
   validates :name, presence: true
