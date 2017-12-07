@@ -7,19 +7,19 @@
     <div class="venue-infos">
       <h1><span><%= @venue.name %></span></h1>
       <p class="address"><%= @venue.address %></p>
-      <p><i class="fa fa-phone" aria-hidden="true"></i> <%= @venue.phone %> &nbsp;
-        <i class="fa fa-envelope" aria-hidden="true"></i> <%= @venue.email %></p>
+      <!-- <p><i class="fa fa-phone" aria-hidden="true"></i> <%= @venue.phone %> &nbsp;
+        <i class="fa fa-envelope" aria-hidden="true"></i> <%= @venue.email %></p> -->
 
       <div class="bookmark-container">
         <% if user_signed_in? %>
           <%= link_to upvote_venue_path(@venue), class: "heart-bookmark", method: :put, remote: true do %>
             <p class="glyphicon glyphicon-heart<%= current_user.voted_for?(@venue) ? '' : '-empty' %>" id="bookmark-<%= @venue.id %>"></p>
-            <span>Bookmark</span>
+            <!-- <span>Bookmark</span> -->
           <% end %>
         <% else %>
           <%= link_to new_user_registration_path, class: "heart-bookmark" do %>
             <p class="glyphicon glyphicon-heart-empty"></p>
-            <span>Bookmark</span>
+            <!-- <span>Bookmark</span> -->
           <% end %>
         <% end %>
       </div>
@@ -42,7 +42,7 @@
           <% @unique_events.each do |unique_event| %>
           <% event = @venue.events.find_by_name(unique_event)%>
           <div class='event-card'>
-
+            <%= link_to "", event_path(event), class: "card-link" %>
             <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
             <div class="info">
               <div class="event-name-price">
