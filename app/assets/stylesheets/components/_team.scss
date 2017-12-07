@@ -1,0 +1,69 @@
+.container-team {
+  margin: 80px auto;
+}
+.team-img {
+  width: 170px;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  border-radius: 50%;
+}
+.team-boxes {
+  color: $gray;
+  margin: 30px auto;
+}
+.team-team {
+  margin-bottom: 80px;
+}
+.team-back-box {
+  background-image: url("home.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
+  height: 70vh;
+  width: 50vw;
+  overflow: hidden;
+}
+.team-box {
+  position: relative;
+  margin-bottom: 60px;
+  a {
+    transition: all 0.3s ease;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    &:hover {
+
+    }
+  }
+  h4 {
+    display: none;
+    position: absolute;
+    bottom: -24px;
+    right: 0;
+    left: 0;
+    span {
+      padding: 2px 6px;
+    }
+  }
+  p {
+    position: absolute;
+    bottom: -55px;
+    right: 0;
+    left: 0;
+    display: none;
+  }
+  &:hover {
+    h4, p {
+      display: block;
+    }
+    span {
+      background-color: $red;
+    }
+    .team-img {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+  }
+}
