@@ -79,3 +79,33 @@
     }
   }
 }
+@media screen and (max-width: 960px) {
+  .team-back-box {
+    display: none;
+  }
+  .title-team {
+    left: 0;
+    right: 0;
+  }
+  .team-box-up {
+    margin-top: 30px;
+  }
+  .team-box-up-media {
+    margin-top: 200px;
+  }
+  .team-box {
+    h4 {
+      display: block;
+      span {
+        background-color: $red;
+      }
+    }
+    p {
+      display: block;
+    }
+    .team-img {
+      opacity: 1;
+      filter: grayscale(0%)
+    }
+  }
+}
