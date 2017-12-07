@@ -2,13 +2,11 @@
     before_action :set_booking
 
     def new
-    #...
     @event = Event.find(params[:event_id])
     @booking = Booking.find(params[:booking_id])
   end
 
   def create
-    # ...
     customer = Stripe::Customer.create(
       source: params[:stripeToken],
       email:  params[:stripeEmail]
