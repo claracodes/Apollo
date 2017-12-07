@@ -111,6 +111,36 @@
             </div>
           </div>
         </div>
+
+        <!-- moods new -->
+        <div class="container container-moods">
+      <div class="flex-list">
+        <ul class="list-inline text-center list-moods">
+          <li id="romantic" data-mood="Romantic" class="mood">
+            <%= image_tag "icons-apollo-18.png", class: "mood-icon" %>
+            <p>ROMANTIC</p>
+          </li>
+          <li id="wild" data-mood="Wild" class="mood">
+            <%= image_tag "icons-apollo-17.png", class: "mood-icon" %>
+            <p>WILD</p>
+          </li>
+          <li id="nerdy" data-mood="Nerdy" class="mood">
+            <%= image_tag "icons-apollo-20.png", class: "mood-icon" %>
+            <p>NERDY</p>
+          </li>
+          <li id="glamorous" data-mood="Glamorous" class="mood">
+            <%= image_tag "icons-apollo-21.png", class: "mood-icon" %>
+            <p>GLAMOROUS</p>
+          </li>
+          <li id="dramatic" data-mood="Dramatic" class="mood">
+            <%= image_tag "icons-apollo-19.png", class: "mood-icon" %>
+            <p>DRAMATIC</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p data-search="Search" class="normal-search text-center"><span>Search</span></p>
+
         <a href="#inspiration-card" class="be-inspired">
           <div class="text-center">
             <div class="director"><%= image_tag "bar-04.png" %> </div>
@@ -119,35 +149,9 @@
       </div>
     </div>
 
-    <!-- moods -->
-    <p class="text-center title-moods">WHAT DO YOU FEEL LIKE?</p>
-    <div class="container container-moods">
-      <div class="flex-list">
-        <ul class="list-inline text-center list-moods">
-          <li id="romantic" data-mood="Romantic" class="mood">
-            <%= image_tag "icons-apollo-02.png" %>
-            <p>ROMANTIC</p>
-          </li>
-          <li id="wild" data-mood="Wild" class="mood">
-            <%= image_tag "icons-apollo-01.png" %>
-            <p>WILD</p>
-          </li>
-          <li id="nerdy" data-mood="Nerdy" class="mood">
-            <%= image_tag "icons-apollo-04.png" %>
-            <p>NERDY</p>
-          </li>
-          <li id="glamorous" data-mood="Glamorous" class="mood">
-            <%= image_tag "icons-apollo-05.png" %>
-            <p>GLAMOROUS</p>
-          </li>
-          <li id="dramatic" data-mood="Dramatic" class="mood">
-            <%= image_tag "icons-apollo-03.png" %>
-            <p>DRAMATIC</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <p data-search="Search" class="normal-search text-center">or Search without moods</p>
+    <!-- <p class="text-center title-moods">WHAT DO YOU FEEL LIKE?</p> -->
+
+
   </div>
 </div>
 
@@ -161,7 +165,7 @@
   <div class="container-team">
 
     <div class="team-boxes text-center">
-      <div class="row">
+      <div class="row row-adjustment">
         <div class="team-back-box col-md-6 col-xs-12"></div>
         <div class="col-md-6 col-xs-12 team-faces">
           <div class="title-home title-team">
@@ -187,7 +191,7 @@
                 <a href="https://www.facebook.com/angelica.vunny" target="_blank"></a>
                 <%= image_tag "team-angelica.png", class: "team-img" %>
                 <h4><span>ANGELICA VANNI</span></h4>
-                <p>Ciao bella</p>
+                <p>Pizza</p>
               </div>
               <div class="team-box col-md-6">
                 <a href="https://www.facebook.com/oisakov" target="_blank"></a>

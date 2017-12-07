@@ -158,7 +158,7 @@
 }
 .aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button,
 .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
-    display: none;
+  display: none;
 }
 .aa-input-icon {
   cursor: pointer;
@@ -168,7 +168,7 @@
   top: 50%;
   right: 16px;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   fill: #e4e4e4;
 }
 .aa-dropdown-menu {
@@ -212,11 +212,15 @@
 .search-ajax {
   background: transparent;
   border: none;
-  box-shadow: none;
+  box-shadow: none !important;
   width: 70px;
   margin-left: 0;
-  &:focus {
-    outline: none !important;
-    box-shadow: none;
-  }
 }
+
+input[type="text"],
+input[type="text"]:focus,
+input[type="text"]:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+

@@ -2,20 +2,27 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 62vh;
+  height: 100vh;
   background-position: center;
   background-size: cover;
   color: white;
   font-family: "Fira Sans", sans-serif;
+  position: relative;
   p {
     font-size: 22px;
     font-weight: lighter;
     margin-bottom: 20px;
   }
 }
-.director img {
+.director {
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  left: 0;
+ img {
   width: 40px;
-  margin-top: 40px;
+  margin-top: 50px;
+}
 }
 @media screen and (max-width: 768px) {
   .director img {
