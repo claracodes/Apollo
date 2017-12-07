@@ -72,7 +72,7 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Select a date
                 </button>
-                <% all_dates = @venue.events.where(name: event.name).pluck(:date, :id).uniq %>
+                <% all_dates = @venue.events.where(name: event.name).pluck(:date, :id).uniq.sort %>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <% all_dates.each do |event|  %>
                     <%= link_to event[0], event_path(Event.find(event[1])), class: "dropdown-item" %> <br>
