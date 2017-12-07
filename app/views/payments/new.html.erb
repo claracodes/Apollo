@@ -12,13 +12,16 @@
           <p> Quantity: <%= @booking.quantity %>x</p>
           <p class="pay"><%= @booking.amount_cents. / 100 %>€</p>
         </div>
+        <% if @booking.amount_cents == 0 %>
+          <%= link_to 'Book for free', @booking, class: "btn btn-danger btn-block event-input" %>
+        <% else %>
+          <%= form_tag event_booking_payments_path(@booking.event, @booking) do %>
+          <article>
+            <label class="amount">
+              <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
+            </label>
+          </article>
 
-        <%= form_tag event_booking_payments_path(@booking.event, @booking) do %>
-        <article>
-          <label class="amount">
-            <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
-          </label>
-        </article>
 
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -27,6 +30,7 @@
         data-description= "<%= @event.description %>"
         data-amount="<%= @booking.amount_cents %>"
         data-currency="<%= @booking.amount.currency %>"></script>
+        <% end %>
         <% end %>
       </div>
     </div>
