@@ -27,6 +27,7 @@
         <!-- PARTIAL -->
         <%= render "card_list", events: @events %>
       </div>
+      <%= will_paginate @events, class: "flickr_pagination"  %>
     </div>
 
     <!-- Map container -->
