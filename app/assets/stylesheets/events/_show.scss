@@ -3,6 +3,11 @@
   height: 100%;
   background-position:  center;
 }
+.share-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .header-event {
   position: absolute;
   text-transform: uppercase;
@@ -12,6 +17,7 @@
   top: 200px;
 
   h1 {
+    hyphens: auto;
     position: relative;
     margin: 0;
     text-align: left;
@@ -63,6 +69,11 @@
   justify-content: space-between;
   width: 100%;
 }
+.box-events {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
 .box-event {
   // padding: 15px 20px;
   background-color: white;
@@ -91,19 +102,40 @@
 }
 // Julien's adds bellow
 .venue-box {
+  margin-top: 30px;
+  margin-left: 50px;
+  padding: 20px 30px;
   background-color: white;
-  margin: 15px 30px;
-}
-
-.venue-box-info {
-  border-bottom: 0.5px solid $gray;
-  margin-bottom: 15px;
-  color: #656262;
-  p {
-    margin-bottom: 3px;
+  color: $gray;
+  position: relative;
+  a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  &:hover {
+    .venue-box-img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    // background-color: #F1F2F6;
   }
 }
-
+.venue-name-event-page {
+  color: $gray;
+  margin-bottom: 12px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.venue-box-info {
+  margin-bottom: 15px;
+}
+.venue-hosting-event-page {
+  color: $red;
+  font-size: 14px;
+  margin-top: 15px;
+}
 .venue-box a:hover, a:focus {
   text-decoration: none;
 }
@@ -113,7 +145,7 @@
 }
 
 .booking-box {
-  margin: 15px 30px;
+  padding: 20px 30px;
 }
 
 .venue-box-img {
@@ -121,20 +153,26 @@
   background-size: cover;
   opacity: 0.7;
   filter: grayscale(100%);
-  a {
-    text-decoration: none;
-    &:hover {
-      text-decoration: none;
-    }
-  }
 }
-
+.row-adjustment {
+  margin-right: 0 !important;
+}
+.col-adjustment {
+  width: 40.4% !important;
+}
 .title-checkout {
   line-height: 30px;
 }
 
 .selector-list {
   width: 60px;
+  box-shadow: none;
+  border-radius: 0 !important;
+  &:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: $red;
+  }
 }
 
 .ticket-quantity-selector {
@@ -145,10 +183,17 @@
 .bookmark-container {
   position: relative;
   margin-top: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .bookmark-container a:hover, a:focus {
   text-decoration: none;
+}
+.title-venue {
+  font-size: 20px;
+  max-width: 250px;
 }
 
 @media screen and (max-width: 960px) {

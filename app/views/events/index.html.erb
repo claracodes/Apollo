@@ -11,7 +11,7 @@
 
       <div id="price-slider" style="width: 140px; margin: 0; display: inline-block"></div>
 
-      <%= f.input :price_cents,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index search-ajax", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
+      <%= f.input :price_cents,  input_html: { id: "price-display", label: "Maximum Price", value: 25, min: 5, max: 50, readonly: true, class: "form-control input-form input-form-index search-slider-value", style: "background: transparent; border: none; box-shadow: none; width: 70px; margin-left: 0;" } %>
 
       <%= f.button :submit, class: "btn btn-danger", value: "Search", id: "submitSearch" %>
       <% end %>
