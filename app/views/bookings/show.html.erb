@@ -3,7 +3,7 @@
     <div class="booking-text text-center" >
       <div class="text-booking">
         <h1>CONGRATULATIONS!</h1>
-        <h1>You are going to <span> <%= @booking.event.name %> </span></h1>
+        <h1>You are going to <span> <%= @booking.event.name.truncate(30, omission: '', separator: /,?\.* +/) %> </span></h1>
         <br>
         <%= link_to 'See all your bookings', dashboard_path, class: "small-link" %>
       </div>
