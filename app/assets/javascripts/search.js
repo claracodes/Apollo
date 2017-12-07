@@ -12,8 +12,8 @@
 var filters = document.querySelectorAll(".search-ajax");
 
 filters.forEach(function(element) {
-
   addEventListener("change", function(e) {
+    console.log("this is a change");
     var form = document.getElementById("submitSearch");
     form.click();
   });
@@ -38,7 +38,7 @@ $(function () {
   defaultselectbox.after('<div class="selectLabel1"></div>');
 
   // getting default select box selected value
-  $('.selectLabel1').text(defaultselectbox.children('option').eq(0).text());
+  $('.selectLabel1').text(defaultselectbox.children('option:selected').text());
 
   // appending options to custom un-ordered list tag
   var cusList = $('<ul/>', { 'class': 'options1 select required'} ).insertAfter($('.selectLabel1'));
@@ -88,6 +88,9 @@ $(function () {
     $('.selectLabel1').removeClass('active');
     $('.selectLabel1').text($(this).text());
     defaultselectbox.val($(this).text());
+
+    var form = document.getElementById("submitSearch");
+    form.click();
     // $('.selected-item p span').text($('.selectLabel').text());
   });
 
@@ -131,7 +134,8 @@ $(function () {
   defaultselectbox.after('<div class="selectLabel2"></div>');
 
   // getting default select box selected value
-  $('.selectLabel2').text(defaultselectbox.children('option').eq(0).text());
+  $('.selectLabel2').text(defaultselectbox.children('option:selected').text());
+
 
   // appending options to custom un-ordered list tag
   var cusList = $('<ul/>', { 'class': 'options2 select required'} ).insertAfter($('.selectLabel2'));

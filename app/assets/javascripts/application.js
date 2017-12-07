@@ -14,6 +14,8 @@
 
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip({container: 'body'})
+  if ($('[data-toggle="tooltip"]').length != 0) {
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'})
+  }
 })
 
