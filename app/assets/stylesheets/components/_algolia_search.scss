@@ -209,3 +209,14 @@
     }
   }
 }
+.search-ajax {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  width: 70px;
+  margin-left: 0;
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+  }
+}
