@@ -1,0 +1,5 @@
+meta_product_name: "Apollo"
+meta_title: "Apollo - Discover cultural experiences in your city"
+meta_description: "Apollo is a web platform that aggregates and curates the best cultural activities in your city. It let's you find events that are relevant to you."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards

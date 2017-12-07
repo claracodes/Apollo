@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  CATEGORY = ["theater", "exhibition", "movie", "concert"]
+  CATEGORY = ["Theater", "Exhibition", "Movie", "Concert"]
   MOOD = ["Dramatic", "Romantic", "Glamorous", "Wild", "Nerdy"]
   TAG = ["Dramatic", "Romantic", "Modern", "Funny"]
   validates :name, presence: true
@@ -34,10 +34,6 @@ class Event < ApplicationRecord
 
       attribute :type do
         "Event"
-      end
-
-      attribute :event_url do
-        root_path
       end
     end
   end
