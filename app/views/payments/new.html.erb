@@ -22,7 +22,6 @@
             </label>
           </article>
 
-        <% end %>
 
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -31,6 +30,7 @@
         data-description= "<%= @event.description %>"
         data-amount="<%= @booking.amount_cents %>"
         data-currency="<%= @booking.amount.currency %>"></script>
+        <% end %>
         <% end %>
       </div>
     </div>
