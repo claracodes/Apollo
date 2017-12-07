@@ -6,6 +6,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 45px auto;
   .mood {
     background-size: cover;
     cursor: pointer;
@@ -16,20 +17,25 @@
     flex: 0 0 20%;
     transition: all 0.3s ease;
     margin: 0 15px;
+    opacity: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 130px;
     max-height: 130px;
     img {
-      width: 70px;
+      max-width: 120px;
+      max-height: 120px;
     }
     p {
+      font-size: 16px;
       display: none;
       margin: 0;
     }
     &:hover {
-      filter: none;
+      opacity: 1;
+      border-radius: 50%;
+      border: 3px solid white;
       p {
         display: block
       }
@@ -47,36 +53,36 @@
   font-weight: lighter;
   text-transform: uppercase;
 }
-#romantic {
-  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('romantic.jpg');
-  &:hover {
-    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('romantic.jpg');
-  }
-}
-#wild {
-  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('wild.jpg');
-  &:hover {
-    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('wild.jpg');
-  }
-}
-#nerdy {
-  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('nerdy.jpg');
-  &:hover {
-    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('nerdy.jpg');
-  }
-}
-#dramatic {
-  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('drama.jpg');
-  &:hover {
-    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('drama.jpg');
-  }
-}
-#glamorous {
-  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('glamorous.jpg');
-  &:hover {
-    background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('glamorous.jpg');
-  }
-}
+// #romantic {
+//   background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('romantic.jpg');
+//   &:hover {
+//     background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('romantic.jpg');
+//   }
+// }
+// #wild {
+//   background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('wild.jpg');
+//   &:hover {
+//     background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('wild.jpg');
+//   }
+// }
+// #nerdy {
+//   background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('nerdy.jpg');
+//   &:hover {
+//     background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('nerdy.jpg');
+//   }
+// }
+// #dramatic {
+//   background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('drama.jpg');
+//   &:hover {
+//     background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('drama.jpg');
+//   }
+// }
+// #glamorous {
+//   background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.6) 20%), image_url('glamorous.jpg');
+//   &:hover {
+//     background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(85,6,38,0.6) 20%), image_url('glamorous.jpg');
+//   }
+// }
 
 
 

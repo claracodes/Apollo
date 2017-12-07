@@ -26,10 +26,11 @@ def index
     @events = Event.includes(:venue).paginate(:page => params[:page])
     @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
     @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
-    @events = @events.where(category: @query[:category]) if @query[:category].present?
     price_query = (@query[:price_cents].to_i)*100 if @query[:price_cents].present?
     @events = @events.where("events.price_cents <= ?", price_query) if price_query.present?
     @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
+    @events = @events.where(category: @query[:category]) if @query[:category].present?
+
     # @events = @events.where(english: @query[:english]) if @query[:english].present?
   else
     @events = Event.includes(:venue).paginate(:page => params[:page])

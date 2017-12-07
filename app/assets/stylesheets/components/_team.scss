@@ -26,12 +26,12 @@
   }
 }
 .team-back-box {
-  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.2) 80%), url("about2.jpeg");
+  background-image: linear-gradient(-225deg, rgba(29,0,16,0.6) 0%, rgba(14,15,15,0.2) 80%), url("about2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   position: relative;
-  height: 80vh;
+  height: 640px;
   width: 50vw;
   overflow: hidden;
 }
@@ -41,7 +41,7 @@
   a {
     transition: all 0.3s ease;
     position: absolute;
-    height: 100%;
+    height: 170px;
     width: 100%;
     z-index: 1000;
     &:hover {
