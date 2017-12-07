@@ -12,6 +12,8 @@ class EventsController < ApplicationController
 end
 
 def index
+  skip_policy_scope
+  skip_authorization
   @event_pages = true
 
   # @query = params[:search]
@@ -21,7 +23,7 @@ def index
   @query = session[:search_query].with_indifferent_access
 
   if @query
-    @events = policy_scope(Event)
+    @events = Event.includes(:venue).paginate(:page => params[:page])
     @events = @events.where(city: @query[:city].capitalize) if @query[:city].present?
     @events = @events.where(date: @query[:date].to_date) if @query[:date].present?
     @events = @events.where(category: @query[:category]) if @query[:category].present?
@@ -30,7 +32,7 @@ def index
     @events = @events.where(mood: @query[:mood]) if @query[:mood].present?
     # @events = @events.where(english: @query[:english]) if @query[:english].present?
   else
-    @events = policy_scope(Event)
+    @events = Event.includes(:venue).paginate(:page => params[:page])
   end
   @venues = Venue.where(id: @events.map(&:venue_id))
   for_maps

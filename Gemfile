@@ -32,6 +32,7 @@ gem "algoliasearch-rails"
 gem 'shareable'
 gem 'rails-assets-algolia-autocomplete.js', source: 'https://rails-assets.org'
 gem 'meta-tags-helpers', '~> 0.2.0'
+gem 'will_paginate'
 
 source 'https://rails-assets.org' do
  gem "rails-assets-underscore"
