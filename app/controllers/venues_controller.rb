@@ -52,17 +52,8 @@ class VenuesController < ApplicationController
       marker.lat venue.latitude
       marker.lng venue.longitude
       marker.json({ :id => venue.id })
-      marker.picture({url: fetch_moods(venue), width: 32, height: 32})
+      marker.picture({url: 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-32.png', width: 32, height: 32})
       marker.infowindow render_to_string(partial: "/venues/map_box", locals: { venue: venue })
-    end
-  end
-
-  def fetch_moods(venue)
-    # added if/else cause sometimes venue/event don't have moods so it crashes
-    if venue.events.first && venue.events.first.try(:mood)
-      "/assets/icons-apollo-black-#{venue.events.first.mood}.png"
-    else
-      "/assets/icons-apollo-black-Dramatic.png"
     end
   end
 
