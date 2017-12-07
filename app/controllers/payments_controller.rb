@@ -1,8 +1,7 @@
-class PaymentsController < ApplicationController
-  before_action :set_booking
+  class PaymentsController < ApplicationController
+    before_action :set_booking
 
-  def new
-
+    def new
     @event = Event.find(params[:event_id])
     @booking = Booking.find(params[:booking_id])
   end
@@ -24,7 +23,7 @@ class PaymentsController < ApplicationController
     redirect_to @booking
   end
 
-private
+  private
 
   def set_booking
     @booking = Booking.where(state: 'pending').find(params[:booking_id])
