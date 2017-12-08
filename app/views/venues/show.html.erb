@@ -5,7 +5,7 @@
     </div>
 
     <div class="venue-infos">
-      <h1><span><%= @venue.name %></span></h1>
+      <h1><span><%= @venue.name.truncate(35, omission: '', senameparator: /,?\.* +/) %></span></h1>
       <p class="address"><%= @venue.address %></p>
       <!-- <p><i class="fa fa-phone" aria-hidden="true"></i> <%= @venue.phone %> &nbsp;
         <i class="fa fa-envelope" aria-hidden="true"></i> <%= @venue.email %></p> -->
