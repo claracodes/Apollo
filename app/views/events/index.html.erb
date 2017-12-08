@@ -35,28 +35,31 @@
 
 
   <!-- javascript -->
-  <% content_for(:after_js) do %>
+<% content_for(:after_js) do %>
 
   <%= javascript_tag do %>
 
-  $( function() {
+    $( function() {
 
-    $( "#price-slider" ).slider({
-    range: "min",
-    value: parseInt(<%= @query[:price_cents].try(:gsub, " €", "") || 60 %>),
-    min: 0,
-    max: 60,
-    slide: function(event, ui) {
-      $( "#price-display").val( ui.value + " €");
-      var form = document.getElementById("submitSearch");
-      form.click();
-    }
-  });
-  $( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");
-  } );
-<% end %>
+      $( "#price-slider" ).slider({
+      range: "min",
+      value: parseInt(<%= @query[:price_cents].try(:gsub, " €", "") || 60 %>),
+      min: 0,
+      max: 60,
+      stop: function(event, ui) {
+        $( "#price-display").val( ui.value + " €");
+        var form = document.getElementById("submitSearch");
+        form.click();
+      }
+    });
+    $( "#price-display" ).val( $( "#price-slider" ).slider( "value" ) + " €");
+    } );
+
+
+  <% end %>
 
 <%= javascript_tag do %>
+
 var styles = [
 {
   "featureType": "all",
