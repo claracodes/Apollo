@@ -18,10 +18,36 @@ $width: 550px; // Change Me
   font-size: 26px;
   margin-top: 15px;
   box-shadow: none;
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #CCCCCC;
+  }
   &:focus {
     border-color: inherit;
     -webkit-box-shadow: none;
     box-shadow: none;
+    &::-webkit-input-placeholder {
+      color: #999999;
+    }
+  }
+}
+.normal-search {
+  display: none;
+  font-size: 23px !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bolder;
+  color: #BFBFBF;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+  span {
+    padding: 2px 8px;
+    border: 1px solid #7F7F7F;
+  }
+  &:hover {
+    span {
+      border: 0;
+    }
+    color: white;
   }
 }
 .input-form-index {
@@ -75,7 +101,7 @@ $width: 550px; // Change Me
 }
 #cusSelectbox1,
 #cusSelectbox2,
- {
+{
   height: 100%;
   width: 100%;
 }

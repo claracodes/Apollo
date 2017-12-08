@@ -4,7 +4,7 @@
           <div class="img-card" style="background-image: url('<%= cl_image_path(event.photo) %>');"></div>
           <div class="info">
             <div class="event-name-price">
-              <h3><span><%= event.name.truncate(20, omission: '', separator: /,?\.* +/) %></span></h3>
+              <h3><span><%= event.name.truncate(25, omission: '', separator: /,?\.* +/) %></span></h3>
               <% if event.price == 0 %>
                 <p> FREE </p>
               <% else %>

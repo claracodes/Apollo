@@ -41,8 +41,10 @@
   a {
     transition: all 0.3s ease;
     position: absolute;
+    top: 0;
+    left: 0;
     height: 170px;
-    width: 100%;
+    width: 170px;
     z-index: 1000;
     &:hover {
 

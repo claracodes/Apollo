@@ -91,7 +91,7 @@ sleep 3
       r = Event.create!(
         name: @event.xpath("//*[@id='container']/div/div[#{i}]/a/h3").text.strip,
         description: "#{@event_url_nokogiri.xpath("//*[@id='exhibition']/div/div/div[1]/article/div[5]/p[1]").text.strip} #{@event_url_nokogiri.xpath("//*[@id='exhibition']/div/div/div[1]/article/div[4]/p[1]").text.strip} #{@event_url_nokogiri.xpath("//*[@id='exhibition']/div/div/div[1]/article/div[3]/p[1]").text.strip}",
-        category: "exhibition",
+        category: "Exhibition",
         tags: ["Dramatic", "Romantic", "Modern", "Funny"].sample,
         date: @date,
         price_cents: @event_price.to_i * 100,
@@ -110,7 +110,7 @@ sleep 3
 
 # Scraper for Categories Film, Theater and Concert
 
-available_categories = {theater: "theaterperformance", concert: "konzert", movie: "film"}
+available_categories = {Theater: "theaterperformance", Concert: "konzert", Movie: "film"}
 available_categories.each do |cat|
 
 10.times do |d|
