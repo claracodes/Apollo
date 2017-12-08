@@ -102,45 +102,19 @@
           <!-- class="form-inline" -->
           <div class="search-form-bar">
             <div class="form-fields-home">
-              <%= simple_form_for :search, url: events_path, html: {method: "GET", class: "form-inline", id: "home-form"} do |f| %>
-              <%= f.input :city, placeholder: "Where?", input_html: { class: "input-form-banner form-control" }, label: false %>
-              <%= f.input :date, as: :string, input_html: { class: "datepicker input-form-banner form-control" }, label: false, placeholder: "When?" %>
-              <%= f.input :mood, as: :hidden, input_html: { id: "hidden-mood"}, value: "" %>
-              <% f.button :submit, as: :hidden, value: "Search", input_html: { id: "hidden-search" } %>
+
+              <%= simple_form_for :search, url: events_path, html: {method: "GET"} do |f| %>
+              <%= f.input :mood, label: "I'm feeling", collection: Event::MOOD, input_html: { class: "input-form-banner form-control", id: "cusSelectbox3" }, prompt: "bored" %>
+              <%= f.input :date, label: "and on", as: :string, input_html: { class: "datepicker input-form-banner form-control" }, placeholder: "any date" %>
+              <%= f.input :city, label: "I will be in", placeholder: "any city", input_html: { class: "input-form-banner form-control" } %>
+              <%= f.button :submit, value: "Search", class: "normal-search" %>
               <% end %>
+              <div class="nl-overlay"></div>
+
+<!--               <p data-search="Search" class="normal-search text-center"><span>Search</span></p> -->
             </div>
           </div>
         </div>
-
-        <!-- moods new -->
-        <div class="container container-moods">
-      <div class="flex-list">
-        <ul class="list-inline text-center list-moods">
-          <li id="romantic" data-mood="Romantic" class="mood">
-            <%= image_tag "icons-apollo-18.png", class: "mood-icon" %>
-            <p>ROMANTIC</p>
-          </li>
-          <li id="wild" data-mood="Wild" class="mood">
-            <%= image_tag "icons-apollo-17.png", class: "mood-icon" %>
-            <p>WILD</p>
-          </li>
-          <li id="nerdy" data-mood="Nerdy" class="mood">
-            <%= image_tag "icons-apollo-20.png", class: "mood-icon" %>
-            <p>NERDY</p>
-          </li>
-          <li id="glamorous" data-mood="Glamorous" class="mood">
-            <%= image_tag "icons-apollo-21.png", class: "mood-icon" %>
-            <p>GLAMOROUS</p>
-          </li>
-          <li id="dramatic" data-mood="Dramatic" class="mood">
-            <%= image_tag "icons-apollo-19.png", class: "mood-icon" %>
-            <p>DRAMATIC</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <p data-search="Search" class="normal-search text-center"><span>Search</span></p>
-
         <a href="#inspiration-card" class="be-inspired">
           <div class="text-center">
             <div class="director"><%= image_tag "bar-04.png" %> </div>

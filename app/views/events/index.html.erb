@@ -5,6 +5,7 @@
       <%= f.input :city, placeholder: "City", label: false, input_html: { class: "input-form form-control input-form-index search-ajax", value: @query[:city], style: "width: 160px;" } %>
 
       <%= f.input :date, as: :string, input_html: { class: "datepicker form-control input-form input-form-index search-ajax", value: @query[:date], style: "width: 160px;" }, label: false, placeholder: "  Date" %>
+
       <%= f.input :mood,  prompt: "Mood", label: false, input_html: { class: "input-form form-control input-form-index search-ajax", id: "cusSelectbox2"}, selected: @query[:mood], collection: Event::MOOD %>
 
       <%= f.input :category, collection: Event::CATEGORY, label: false, input_html: { class: "input-form form-control input-form-index search-ajax", id: "cusSelectbox1" }, prompt: "Category", selected: @query[:category]%>

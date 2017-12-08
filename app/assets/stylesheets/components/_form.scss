@@ -14,14 +14,41 @@ $width: 550px; // Change Me
   border: 0;
   outline: 0;
   color: white !important;
-  max-width: 300px !important;
-  font-size: 26px;
+  max-width: 200px !important;
+  height: 50px;
+  font-size: 50px;
   margin-top: 15px;
   box-shadow: none;
-  &:focus {
-    border-color: inherit;
+  transition: all 0.3s ease;
+
+  &:focus, &:checked {
+    border-bottom: 3px solid $red !important;
     -webkit-box-shadow: none;
     box-shadow: none;
+  }
+  &:valid {
+    background-color: $red;
+  }
+}
+.normal-search {
+  background-color: transparent;
+  padding: auto 5px;
+  font-size: 16px !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: lighter;
+  color: #7F7F7F;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+  span {
+    padding: 2px 8px;
+    border: 1px solid #7F7F7F;
+  }
+  &:hover {
+    span {
+      border: 0;
+    }
+    color: #BFBFBF;
   }
 }
 .input-form-index {
@@ -54,8 +81,39 @@ $width: 550px; // Change Me
 
 
 // INDEX FILTER BAR //
-.search-form-index {
-
+.search_mood, .search_date, .search_city {
+  display: flex;
+  align-items: center;
+}
+.form-fields-home {
+  text-align: left !important;
+  font-size: 50px;
+  select {
+    -webkit-appearance: none;
+    &:focus {
+      -webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+      -webkit-text-fill-color: $gray !important;
+    }
+    }
+  }
+  input {
+    margin-top: 0;
+    padding: 0;
+    margin-left: 16px;
+  }
+  label {
+    margin-bottom: 0;
+    display: block;
+    font-weight: lighter;
+    abbr {
+      display: none;
+    }
+  }
+  p {
+    font-weight: lighter;
+    white-space: no-wrap;
+  }
 }
 .form-fields-index {
   display: flex;
@@ -75,12 +133,14 @@ $width: 550px; // Change Me
 }
 #cusSelectbox1,
 #cusSelectbox2,
- {
+#cusSelectbox3
+{
   height: 100%;
   width: 100%;
 }
 .cusSelBlock1,
-.cusSelBlock2 {
+.cusSelBlock2,
+.cusSelectbox3 {
   height: 50px;
   min-width: 250px;
   z-index: 10;
@@ -91,7 +151,8 @@ $width: 550px; // Change Me
   perspective: 800px;
 }
 .selectLabel1,
-.selectLabel2 {
+.selectLabel2,
+.selectLabel3 {
   position: absolute;
   left: 0;
   top: 0;
@@ -122,7 +183,8 @@ $width: 550px; // Change Me
   user-select: none;
 }
 .selectLabel1:after,
-.selectLabel2:after {
+.selectLabel2:after,
+.selectLabel3:after {
   content: "\25BC";
   border-left: 1px solid #333;
   color: $red;
@@ -137,17 +199,20 @@ $width: 550px; // Change Me
   width: 50px;
 }
 .selectLabel1:active,
-.selectLabel2:active {
+.selectLabel2:active,
+.selectLabel3:active {
   -webkit-transform: rotateX(30deg);
   transform: rotateX(30deg);
 }
 .selectLabel1:active:after,
-.selectLabel2:active:after {
+.selectLabel2:active:after,
+.selectLabel3:active:after {
   color: $gray;
   content: "\25B2";
 }
 .selectLabel1.active:after,
-.selectLabel2.active:after {
+.selectLabel2.active:after,
+.selectLabel3.active:after {
   color: $gray;
   content: "\25B2";
 }
@@ -155,14 +220,16 @@ $width: 550px; // Change Me
   display: none;
 }
 .options1,
-.options2 {
+.options2,
+.options3 {
   position: absolute;
   top: 50px;
   height: 1px;
   width: 100%;
 }
 .options1 li,
-.options2 li {
+.options2 li,
+.options3 li {
   background-color: white;
   border-bottom: 1px solid #333;
   cursor: pointer;
@@ -186,14 +253,18 @@ $width: 550px; // Change Me
 .options1 li:hover,
 .options1 li.active,
 .options2 li:hover,
-.options2 li.active, {
+.options2 li.active,
+.options3 li:hover,
+.options3 li.active, {
   background-color: $red;
   color: $gray;
 }
 ::-webkit-scrollbar {
   display: none;
 }
-.s-hidden {
+.s-hidden1,
+.s-hidden2,
+.s-hidden3 {
   visibility: hidden;
 }
 
