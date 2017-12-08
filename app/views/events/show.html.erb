@@ -6,7 +6,7 @@
     <div class="col-md-5 col-adjustment">
       <div class="header-event">
         <p class="date-event"> <%= @event.date.strftime("%d %B") %> </p>
-        <h1><span><%= @event.name.truncate(30, omission: '', separator: /,?\.* +/) %></span></h1>
+        <h1><span><%= @event.name.truncate(22, omission: '', separator: /,?\.* +/) %></span></h1>
         <p class="event-category"><span> <%= @event.category %></span> </p>
       </div>
     </div>

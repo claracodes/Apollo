@@ -24,25 +24,6 @@
     opacity: 0.3;
   }
 }
-.normal-search {
-  font-size: 23px !important;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-weight: bolder;
-  color: #7F7F7F;
-  margin-bottom: 30px;
-  transition: all 0.3s ease;
-  span {
-    padding: 2px 8px;
-    border: 1px solid #7F7F7F;
-  }
-  &:hover {
-    span {
-      border: 0;
-    }
-    color: #BFBFBF;
-  }
-}
 
 @media screen and (max-width: 880px) {
   #logo-home {
