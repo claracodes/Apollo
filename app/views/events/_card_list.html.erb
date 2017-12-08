@@ -12,11 +12,11 @@
               <% end %>
             </div>
             <div class="detail-info">
-              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(80, omission: '...', separator: /,?\.* +/) %></p>
+              <p class="event-date"><%= event.date.day %> / <%= event.date.month %> / <%= event.date.year %> - <%= event.venue.name.truncate(35, omission: '', separator: /,?\.* +/) %></p>
               <p class="text-category"> <%= event.category %> </p>
             </div>
             <div class="desc-likes">
-              <p class="desc"><%= event.description.truncate(100, omission: '...', separator: /,?\.* +/) %></p>
+              <p class="desc"><%= event.description.truncate(120, omission: '...', separator: /,?\.* +/) %></p>
               <div class="likes">
                 <% if user_signed_in? %>
                 <%= link_to upvote_event_path(event), class: "heart-bookmark", method: :put, remote: true do %>

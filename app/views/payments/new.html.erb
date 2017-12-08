@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4 log-in">
-        <h3>Booking details:</h3>
+        <h3 class="title-home">Booking details:</h3>
         <div class="payment-details">
 
-          <h4 class="title-checkout"><span ><%= @event.name.truncate(25, omission: '', separator: /,?\.* +/) %></span> </h4>  <br>
+          <h4 class="title-checkout"><span ><%= @event.name.truncate(22, omission: '', separator: /,?\.* +/) %></span> </h4>  <br>
           <p>Date: <%= @event.date.day %>.<%= @event.date.month %>.<%= @event.date.year %> <br>
            Venue: <%= @event.venue.name %></p>
          </div>
