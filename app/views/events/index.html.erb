@@ -47,6 +47,9 @@
       value: parseInt(<%= @query[:price_cents].try(:gsub, " €", "") || 60 %>),
       min: 0,
       max: 60,
+      slide: function(event, ui) {
+        $( "#price-display").val( ui.value + " €");
+      },
       stop: function(event, ui) {
         $( "#price-display").val( ui.value + " €");
         var form = document.getElementById("submitSearch");
