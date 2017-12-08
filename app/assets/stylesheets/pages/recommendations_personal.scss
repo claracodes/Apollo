@@ -25,6 +25,7 @@
   max-width: 100%;
   filter: grayscale(100%);
   opacity: 0.7;
+  background-size: cover;
   &:hover {
     filter: grayscale(0%);
     background: $gray;
