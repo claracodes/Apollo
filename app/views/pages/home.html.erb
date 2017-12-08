@@ -156,7 +156,6 @@
 
   </div>
 </div>
-
 <% if user_signed_in? && @activities.any? && @activities.last&.trackable&.event && @bookmarks.any? && @most_liked.any? && @liked_venues.any? %>
 <%= render 'recommendations_signed_in'  %>
 <% else %>

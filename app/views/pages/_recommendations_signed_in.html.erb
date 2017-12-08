@@ -32,7 +32,7 @@
 
   <div class="element element3">
     <%= link_to (@liked_venues.last) do %>
-      <div class="social-img">
+      <div class="social-img" style="background-image: url('<%= cl_image_path(@liked_venues.last.photo) %>');">
       </div>
       <div class="social-info">
         <p class="social-title">
